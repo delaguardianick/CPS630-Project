@@ -1,0 +1,11 @@
+630 - Project Notes
+
+- Show map - ✓
+    - Show random cars on map (CLICKABLE)
+    - Fix multiple map bug
+    - Make map wider
+    
+
+-EXTRA: Click "use location" button-> street address on origin input bar
+    - Needs reverse geocoding (coordinates -> street address)
+        - https://nominatim.org/release-docs/develop/api/Reverse/ 
