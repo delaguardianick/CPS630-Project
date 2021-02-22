@@ -15,6 +15,7 @@ function geoFindMe() {
       status.textContent = '';
       mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
       mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+      document.querySelector('#origin').value = latitude + "," + longitude;
     }
   
     function error() {
@@ -47,6 +48,19 @@ function geoFindMe() {
     
     map.setCenter(position, zoom);
   }
+
+  // function showMap(){
+  //   var orig = document.querySelector("#origin").value;
+  //   var dest = document.querySelector("#destination").value;
+
+  //   orig = encodeURI(orig);
+  //   dest = encodeURI(dest);
+  //   key = 'AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM';
+  //   url = "https://maps.googleapis.com/maps/dir/?api=1&origin=" + orig + "&destination=" + dest + "&key=" + key;
+  //   console.log(url);
+
+  //   document.querySelector("#static-map").src= url;
+  // }
 
 
 $(document).ready(function (){

@@ -16,8 +16,8 @@
     width: 60px;
 }
 
-#map {
-    height: 800px;
+#Map {
+    height: 50%;
     /* The height is 400 pixels */
     width: 90%;
     /* The width is the width of the web page */
