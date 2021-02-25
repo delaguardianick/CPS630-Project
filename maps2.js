@@ -31,9 +31,14 @@ function geoFindMe() {
   
   }
 
+  // Initially map will be blank.
+  // Press "Use my Current Location" and the input box will fill with users coordinates
+  // Then press search
 function initMap()
 {
     var location = {lat: origin[0], lng: origin[1]};
+    // location = {lat: 43.7575, lng: -79.3910};
+
     destination = document.querySelector("#destination");
 
     var location2 = {lat: 43.7575, lng: -79.3910};
@@ -57,26 +62,6 @@ function initMap()
         { infoWindow2.open(map, marker2); });
 
 }
-
-// function showMap(){
-//   var lat            = origin[0];
-//   var lon            = origin[1];
-//   var zoom           = 15;
-  
-//   var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-//   var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-//   var position       = new OpenLayers.LonLat(lon, lat).transform( fromProjection, toProjection);
-  
-//   map = new OpenLayers.Map("Map");
-//   var mapnik         = new OpenLayers.Layer.OSM();
-//   map.addLayer(mapnik);
-  
-//   var markers = new OpenLayers.Layer.Markers( "Markers" );
-//   map.addLayer(markers);
-//   markers.addMarker(new OpenLayers.Marker(position));
-  
-//   map.setCenter(position, zoom);
-// }
 
 $(document).ready(function (){
     document.querySelector('#find-me').addEventListener('click', geoFindMe);

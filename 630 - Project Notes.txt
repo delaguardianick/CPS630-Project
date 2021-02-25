@@ -1,20 +1,11 @@
 630 - Project Notes
 
 - Show map - ✓
-    - Show random cars on map (CLICKABLE)
-    - Fix multiple map bug
-    - Make map wider
+    - Show random cars on map (CLICKABLE?)
+    - Have multiple markers
+        - Corresponding to input boxes
+        
+- Input:
+    - Allow plain text addresses (ex. "Nathan Phillips Square")
+        - Geocoding (!) to get coordinates from address
     
-
--EXTRA: Click "use location" button-> street address on origin input bar
-    - Needs reverse geocoding (coordinates -> street address)
-        - https://nominatim.org/release-docs/develop/api/Reverse/ 
-
-
-https://maps.googleapis.com/maps/api/staticmap?center=+43.66285680000001,-79.3703366+"&zoom=14&size=400x300&sensor=false&size=600x300&key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM 
-AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
-
-origin = 43.66285680000001,-79.3703366
-https://www.google.com/maps/dir/?api=1&origin=43.66285680000001,-79.3703366&destination=Aura+Building+Toronto
-
-https://maps.googleapis.com/maps/api/staticmap?
