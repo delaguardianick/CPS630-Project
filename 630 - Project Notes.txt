@@ -9,3 +9,12 @@
 -EXTRA: Click "use location" button-> street address on origin input bar
     - Needs reverse geocoding (coordinates -> street address)
         - https://nominatim.org/release-docs/develop/api/Reverse/ 
+
+
+https://maps.googleapis.com/maps/api/staticmap?center=+43.66285680000001,-79.3703366+"&zoom=14&size=400x300&sensor=false&size=600x300&key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM 
+AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
+
+origin = 43.66285680000001,-79.3703366
+https://www.google.com/maps/dir/?api=1&origin=43.66285680000001,-79.3703366&destination=Aura+Building+Toronto
+
+https://maps.googleapis.com/maps/api/staticmap?
