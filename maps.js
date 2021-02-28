@@ -41,10 +41,14 @@ function initMap()
     // location = {lat: 43.7575, lng: -79.3910};
 
     var destination = document.querySelector("#destination").value;
-    destCoords = geocode(destination).then(console.log); 
-    console.log(destCoords);
 
-    var location2 = {lat: destCoords[0], lng: destCoords[1]};
+    geocode(destination).then(data => {
+      var lat = data.results[0].geometry.location.lat;
+      var lng = data.results[0].geometry.location.lng;
+      destCoords =  [lat,lng];
+      location2 = {lat: destCoords[0], lng: destCoords[1]};
+    
+    console.log(destCoords);  
 
     var map = new google.maps.Map(document.getElementById("map"),
         { zoom: 12, center: location});
@@ -56,27 +60,34 @@ function initMap()
     marker.addListener("click", function()
         { infoWindow.open(map, marker); });
 
+    if (typeof location2 !== 'undefined'){
+      var marker2 = new google.maps.Marker(
+          {position: location2, map: map});    
+      var infoWindow2 = new google.maps.InfoWindow(
+          { content: "<h5> dest </h5>"});
+      marker2.addListener("click", function()
+          { infoWindow2.open(map, marker2); });
+        }
+      console.log(destCoords);
 
-    var marker2 = new google.maps.Marker(
-        {position: location2, map: map});    
-    var infoWindow2 = new google.maps.InfoWindow(
-        { content: "<h5> dest </h5>"});
-    marker2.addListener("click", function()
-        { infoWindow2.open(map, marker2); });
-
-    console.log(destCoords);
+    }
+    ); 
 }
 
 async function geocode(address){
   address = address.replace(/\s/g, "+");
   url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM`
   console.log(url);
-  $.get(url, function(data,status){
-    var lat = data.results[0].geometry.location.lat;
-    var lng = data.results[0].geometry.location.lng;
-    destCoords =  [lat,lng];
-    return destCoords;
-  })
+
+  const request = await fetch(url);
+  const data = await request.json();
+  return data;
+
+
+  // await $.get(url, function(data){
+
+  //   return destCoords;
+  // })
 }
 
 $(document).ready(function (){
