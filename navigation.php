@@ -28,10 +28,10 @@
           <a class="nav-link" href="#">Reviews</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign Up</a>
+          <a class="nav-link" href="signup.php">Sign Up</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Shopping Cart</a>
+          <a class="nav-link" href="login.php">Shopping Cart</a>
         </li>
     </ul>
   </div>
