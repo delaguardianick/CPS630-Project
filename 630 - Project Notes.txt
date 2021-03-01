@@ -4,10 +4,11 @@ key: AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
 - Show map ✓
 - Geocoding ✓
 
-- Geocode origin
-    - Take value from #origin
-    - pass through geocodezzz
+- Geocode origin ✓
+- Distance check ✓
         
+
+
 
         
 https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
