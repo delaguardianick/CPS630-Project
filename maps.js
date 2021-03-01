@@ -33,7 +33,7 @@ function geoFindMe() {
   
   }
 
-    
+  // Function to measure the distance of the polyline
   function haversine_distance(mk1, mk2) {
     var R = 6371.0710; // Radius of the Earth in kilometers
     var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
@@ -54,25 +54,19 @@ function geoFindMe() {
 
       // Calls func geocode with the plain text address, returns coordinates
       // Since geocode has an asynchronous api call, 
-      // Promise is used to wait for the data of the fetch.
-      geocode(origin).then(data => {
-        var lat = data.results[0].geometry.location.lat;
-        var lng = data.results[0].geometry.location.lng;
-        originCoords =  [lat,lng];
-
-        console.log("Origin coods: " + originCoords);
+      // Promise is used to wait for the data of geocode.
+      geocode(origin).then(coords => {
+        originCoords = coords;
         mapOrigin = {lat: originCoords[0], lng: originCoords[1]};
-      
+
+        // Get plain text address from input box
         var destination = document.querySelector("#destination").value;
     
-        geocode(destination).then(data => {
-          var lat = data.results[0].geometry.location.lat;
-          var lng = data.results[0].geometry.location.lng;
-          destCoords =  [lat,lng];
+        // Repeat geocode
+        geocode(destination).then(coords => {
+          destCoords =  coords;
           mapDestination = {lat: destCoords[0], lng: destCoords[1]};
         
-          console.log(destCoords);  
-      
           var map = new google.maps.Map(document.getElementById("map"),
               { zoom: 12,
                 center: mapOrigin,
@@ -124,7 +118,10 @@ function geoFindMe() {
   
     const request = await fetch(url);
     const data = await request.json();
-    return data;
+
+    var lat = await data.results[0].geometry.location.lat;
+    var lng = await data.results[0].geometry.location.lng;
+    return [lat,lng];
   }
 
 $(document).ready(function (){
