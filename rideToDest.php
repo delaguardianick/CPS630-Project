@@ -13,15 +13,17 @@
 
     <h5>Ride to a destination from this source (inside the city or out of it max 50km far)</h5>
     <br>
-    <input type="text" name="origin" id="origin" placeholder="Origin">
-    <button type="button" id="find-me" >Use My Current Location</button>
-    <br>
-    <input type="text" name="destination" id="destination" placeholder="Destination">
-    <button type="button" id="show-map" >Search</button>
-    <button type="button" id="test" >Test</button>
-    <p id = "status"></p>
-    <a id = "map-link" target="_blank"></a>
-    <div id="map"> </div>
+    <div id="form">
+        <input type="text" name="origin" id="origin" placeholder="Origin">
+        <button type="button" id="find-me" >Use My Current Location</button>
+        <br>
+        <input type="text" name="destination" id="destination" placeholder="Destination">
+        <button type="button" id="show-map" >Search</button>
+        <button type="button" id="test" >Test</button>
+        <p id = "status"></p>
+        <a id = "map-link" target="_blank"></a>
+    </div>
+        <div id="map"> </div>
     
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM&callback=initMap"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->

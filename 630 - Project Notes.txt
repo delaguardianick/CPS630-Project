@@ -1,11 +1,17 @@
 630 - Project Notes
+key: AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
 
-- Show map - ✓
-    - Show random cars on map (CLICKABLE?)
-    - Have multiple markers
-        - Corresponding to input boxes
+- Show map ✓
+- Geocoding ✓
+
+- Geocode origin
+    - Take value from #origin
+    - pass through geocodezzz
         
-- Input:
-    - Allow plain text addresses (ex. "Nathan Phillips Square")
-        - Geocoding (!) to get coordinates from address
-    
+
+        
+https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
+
+
+https://maps.googleapis.com/maps/api/geocode/json?address=43.6645888,-79.4206809&key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
+
