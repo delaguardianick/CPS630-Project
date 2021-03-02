@@ -12,11 +12,13 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $sql = "SELECT * FROM `rcars` WHERE `tierCode` = $tier";
+    // $sql = "SELECT * FROM `rcars` WHERE `tierCode` = $tier";
+    $sql = "SELECT * FROM `rcars` WHERE 1";
+    // ERROR IS HERE ^^^^^^^^^^^^^^^^^^
     $result = $conn->query($sql) or die($conn->error);
 
     if ($result->num_rows > 0) {
-        echo `
+        echo'
         <table class="table table-striped" id="car-table">
             <caption>Pick one of the available rides:</caption>
         <thead class="thead-dark">
@@ -27,21 +29,21 @@
             <th scope="col">Price</th>
             </tr>
         </thead>
-        <tbody>`;
+        <tbody>';
 
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            echo`<tr>
-            <th scope="row">` + $row['id'] + `</th>
-            <td>` + $row['model'] + `</td>
-            <td>` + $row['tierCode'] + `</td>
+            echo'<tr>
+            <th scope="row">' . $row['id'] . '</th>
+            <td>' . $row['model'] . '</td>
+            <td>' . $row['tierCode'] . '</td>
             <td></td>
-            </tr>`;
+            </tr>';
         } 
-        echo ` </tbody>
-                </table>`;
+        echo ' </tbody>
+                </table>';
     }else {
         echo "0 results";
     }
-    mysqli_close($con);
+    mysqli_close($conn);
 ?>

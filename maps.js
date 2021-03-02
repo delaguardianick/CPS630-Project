@@ -154,7 +154,7 @@ function currDateAndTime() {
 // str = econ/xl/premium
 function showUser(str) {
   if (str == "") {
-    document.getElementById("txtHint").innerHTML = "";
+    // document.getElementById("txtHint").innerHTML = "";
     return;
   } else {
     var xmlhttp = new XMLHttpRequest();

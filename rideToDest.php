@@ -51,16 +51,19 @@
     <br>
     <br>
     <!-- TABLE -->
-    <div id="tier-select">
+
+
+    <form id="tier-select">
         <p>Please select a tier:</p>
         <select name="users" onchange="showUser(this.value)">
         <option value="">Select a person:</option>
         <option value="econ">Economy $</option>
         <option value="xl">XL $$</option>
         <option value="premium">Premium $$$</option>
-    </div>
+        </select>
+    </form>
 
-    <div id="txtHint"><b>Person info will be listed here...</b></div>
+    <div id="txtHint">Person info will be listed here..</div>
 
     
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM&map_ids-6789a6679abe1ef1&callback=initMap"></script>
