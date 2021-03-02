@@ -13,7 +13,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
     // $sql = "SELECT * FROM `rcars` WHERE `tierCode` = $tier";
-    $sql = "SELECT * FROM `rcars` WHERE 1";
+    $sql = 'SELECT * FROM `rcars` WHERE 1 AND `tierCode` = "' . $tier . '"';
     // ERROR IS HERE ^^^^^^^^^^^^^^^^^^
     $result = $conn->query($sql) or die($conn->error);
 
