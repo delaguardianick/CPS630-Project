@@ -27,13 +27,43 @@
   background-color: rgb(130, 161, 161);
 }
 
+#find-me{
+  width: 3em;
+  /* border: 0.5px solid blue; */
+}
 
 #form {
+  /* width: 30em; */
   width: 30em;
   margin-left: auto;
   margin-right: auto;
-
+  border:1px solid black;
+  margin-bottom: 2em;
 }
+
+#pickup-location{
+  width: 20em;
+  float:left; 
+}
+
+#pickup-location input{
+  padding:3%;
+  margin: 1.5%;
+}
+
+#pickup-time{
+  overflow: hidden;
+  padding-left: 2em;
+} 
+
+#pickup-time input {
+  padding: 3%;
+  margin: 1.5%;
+}
+
+/* #show-map {
+  left:50%;
+} */
 
 #map {
   text-align: center;
@@ -42,3 +72,11 @@
   border: 2px solid black;
 }
 
+#tier-select {
+  text-align: center;
+}
+
+#car-table caption{
+  caption-side: top;
+  text-align: center;
+}
