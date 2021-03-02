@@ -19,7 +19,33 @@
                 <input type="password" name="pwdrepeat" placeholder="Repeat Password"></br>
                 <button type="submit" name="submit">Sign Up</button>
             </form>
+            <?php
+            if(isset($_GET["error"])){
+                if($_GET["error"] == "emptyinput"){
+                    echo "<p>Please fill in all fields!</p>";
+                }
+                else if($_GET["error"] == "invaliduid"){
+                    echo "<p>Choose proper username</p>";
+                }
+                else if($_GET["error"] == "invalidemail"){
+                    echo "<p>Choose proper email</p>";
+                }
+                else if($_GET["error"] == "passwordsdontmatch"){
+                    echo "<p>Passwords don't match!</p>";
+                }
+                else if($_GET["error"] == "stmtfailed"){
+                    echo "<p>Something went wrong, try again!</p>";
+                }
+                else if($_GET["error"] == "usernametaken"){
+                    echo "<p>Username already taken</p>";
+                }
+                else if($_GET["error"] == "none"){
+                    echo "<p>You have signed up</p>";
+                }
+            }
+        ?>
         </section>
+
         
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

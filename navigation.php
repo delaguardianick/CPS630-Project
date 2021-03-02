@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <nav class="navbar navbar-expand-lg navbar-light" id="nav-bar">
   <a class="navbar-brand" href="index.php">
     <img src="source/logo.jpg" alt="logo" id="logo">
@@ -27,11 +30,20 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Reviews</a>
         </li>
+        <?php
+        //is the user logged in? if they are then change nav bar
+          if(isset($_SESSION["userid"])){
+            echo "<li class='nav-item'><a class='nav-link' href='profile.php'>Profile Page</a></li>";
+            echo "<li class='nav-item'><a class='nav-link' href='includes/logout.inc.php'>Logout</a></li>";
+          }
+          else{
+            //if not logged in
+            echo "<li class='nav-item'><a class='nav-link' href='signup.php'>Sign Up</a></li>";
+            echo "<li class='nav-item'><a class='nav-link' href='login.php'>Login</a></li>";
+          }
+        ?>
         <li class="nav-item">
-          <a class="nav-link" href="signup.php">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login.php">Shopping Cart</a>
+          <a class="nav-link" href="#">Shopping Cart</a>
         </li>
     </ul>
   </div>

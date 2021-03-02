@@ -2,7 +2,7 @@
 
 function emptyInputSignup($name,$email,$username,$pwd,$pwdRepeat){
     $result;
-    if (empty($name) || empty($username) || empty($username) || empty($pwd) || empty($pwdRepeat)){
+    if (empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)){
         $result = true;
     }
     else{
@@ -88,4 +88,39 @@ function createUser($conn, $name, $email, $username, $pwd){
     mysqli_stmt_close($stmt);
     header("location: ../signup.php?error=none");
     exit(); //stop the script
+}
+function emptyInputLogin($username,$pwd){
+    $result;
+    if (empty($username) || empty($pwd)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+function loginUser($conn, $username, $pwd){
+    //we're checking if it exists -- getting from database
+    $uidExists = uidExists($conn, $username, $username); //bc we said OR in our sql statement
+
+    if($uidExists === false){
+        header("location: ../login.php?error=wronglogin");
+        exit(); //stop the script
+    }
+    //check for password match
+    $pwdHashed = $uidExists["usersPwd"];
+    $checkPwd = password_verify($pwd, $pwdHashed);
+
+    if($checkPwd === false){
+        header("location: ../login.php?error=wronglogin");
+        exit(); //stop the script
+    }
+    else if($checkPwd === true){
+        session_start();
+        $_SESSION["userid"] =  $uidExists["usersId"];
+        $_SESSION["userid"] =  $uidExists["usersUid"];
+        header("location: ../index.php?");
+        exit(); //stop the script
+        
+    }
 }
