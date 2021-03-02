@@ -80,3 +80,7 @@
   caption-side: top;
   text-align: center;
 }
+
+#car-table tr:nth-child(odd) { background-color : white; }
+#car-table tr:nth-child(even) { background-color : #d3d0cb; }
+#car-table tr:hover { background-color : #e6dff7; }

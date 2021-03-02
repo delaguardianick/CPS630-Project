@@ -34,7 +34,10 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo'<tr>
-            <th scope="row">' . $row['id'] . '</th>
+            <th scope="row">
+            <div class="radio">
+                <label><input type="radio" id="regular" name="optradio">' . $row['id'] . '</label>
+            </div></th>
             <td>' . $row['model'] . '</td>
             <td>' . $row['tierCode'] . '</td>
             <td></td>

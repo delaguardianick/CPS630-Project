@@ -151,17 +151,16 @@ function currDateAndTime() {
 }
 
 // DATABASE
-// str = econ/xl/premium
-function showUser(str) {
+function showTable(str) {
   if (str == "") {
-    // document.getElementById("txtHint").innerHTML = "";
+    document.getElementById("show-car-table").innerHTML = "";
     return;
   } else {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         console.log(this.responseText);
-        document.getElementById("txtHint").innerHTML = this.responseText;
+        document.getElementById("show-car-table").innerHTML = this.responseText;
       }
     };
     xmlhttp.open("GET","carTable.php?q="+str,true);

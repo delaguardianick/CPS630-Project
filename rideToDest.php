@@ -55,7 +55,7 @@
 
     <form id="tier-select">
         <p>Please select a tier:</p>
-        <select name="users" onchange="showUser(this.value)">
+        <select name="users" onchange="showTable(this.value)">
         <option value="">Select a person:</option>
         <option value="econ">Economy $</option>
         <option value="xl">XL $$</option>
@@ -63,7 +63,7 @@
         </select>
     </form>
 
-    <div id="txtHint">Person info will be listed here..</div>
+    <div id="show-car-table"></div>
 
     
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM&map_ids-6789a6679abe1ef1&callback=initMap"></script>
