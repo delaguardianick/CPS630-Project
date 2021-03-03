@@ -1,19 +1,22 @@
-/* ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  } */
-  
-  li {
-    display: inline;
-  }
+#nav-bar {
+  background-color: rgb(130, 161, 161);
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
-  /* #nav-right{
-      float: right;
-  } */
+li {
+  display: inline;
+}
+
+#nav-right{
+    float: right;
+}
 
 #logo{
-    width: 60px;
+  width: 60px;
 }
 
 #Map {
@@ -23,9 +26,7 @@
     /* The width is the width of the web page */
   }
   
-#nav-bar {
-  background-color: rgb(130, 161, 161);
-}
+
 
 #find-me{
   width: 3em;
