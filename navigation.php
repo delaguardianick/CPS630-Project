@@ -1,6 +1,9 @@
 <?php
   session_start();
 ?>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
 <nav class="navbar navbar-expand-lg navbar-light" id="nav-bar">
   <a class="navbar-brand" href="index.php">
     <img src="source/logo.jpg" alt="logo" id="logo">
