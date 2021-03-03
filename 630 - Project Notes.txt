@@ -7,12 +7,23 @@ key: AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
 - Geocode origin ✓
 - Distance check ✓
         
-
-
-
-        
 https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
 
 
 https://maps.googleapis.com/maps/api/geocode/json?address=43.6645888,-79.4206809&key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
 
+Populate Tables:
+rCars: (model, color, driver, tierCode, availabilityCode)
+    ('2006 Fiat Ducato', 'blue', 'Delmar Barker', 'xl', 1)
+    ('2006 Toyota Avensis', 'purple', 'Justin Selleck', 'econ', 1)
+    ('2014 Toyota RAV4', 'white', 'Marian Wilson', 'econ', 1)
+    ('2007 Mitsubishi Colt','black','Clifford Richards', 'econ', 1)
+    ('2014 Toyota Sienna', 'silver', 'Faustina Raya ', 'xl', 1)
+    ('2014 Honda Odyssey', 'silver', 'Alegra Carbajal', 'xl', 1)
+    ('2015 Mitsubishi Outlander', 'black', 'Angelica Rush', 'xl', 1)
+    ('2018 Audi A8L', 'silver', 'Brett Shin', 'premium', 1)
+    ('2018 BMW 7 Series', 'black', 'Samuel Freeman', 'premium', 1)
+    ('2018 Genesis G90 5.0 Ultimate', 'black', 'James Clore', 'premium', 1)
+    ('2018 Infiniti Q70L', 'silver', 'Beck Ginyard', 'premium', 1)
+    ('2020 Subaru Impreza', 'red', 'Tracy J. Ware', 'econ', 1)
+    ('2017 Volkswagen Jetta', 'white', 'Norma G. Grace', 'econ', 1)
