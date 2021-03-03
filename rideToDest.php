@@ -14,7 +14,7 @@
 
     <br>
     <div id="form">
-        <div id="pickup-location">Select origin and destination:
+        <div id="pickup-location">
             <input type="text" name="origin" id="origin" placeholder="Origin">
             <input type="image" src="source/find-location.png" id="find-me" ></input>
             <br>

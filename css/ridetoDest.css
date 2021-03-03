@@ -66,15 +66,24 @@
 } */
 
 #map {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  float: left;
+  display: inline;
   border: 2px solid black;
+  width: 55%;
+  margin-left:2em;
 }
 
-hr.dashed {
-  border-top: 3px dashed #bbb;
+#form {
+  padding-left: 2em;
+  float:left; 
+  display:inline; 
+  width: 40%;
 }
+
+
+/* hr.dashed {
+  border-top: 3px dashed #bbb;
+} */
 
 #tier-select {
   text-align: center;
