@@ -2,9 +2,10 @@
     <head>
         <title>Ride And Deliver - Service A</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/rideToDest.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="maps.js"></script>
+        <script src="js/maps.js"></script>
+        <script src="js/rideToDest.js"></script>
     </head>
     <body>
     <nav>
