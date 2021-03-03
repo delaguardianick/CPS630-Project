@@ -2,13 +2,11 @@ var origin = "";
 var destination = "";
 var destCoords;
 var originCoords;
+var radius;
 
 function geoFindMe() {
     const status = document.querySelector('#status');
     const mapLink = document.querySelector('#map-link');
-  
-    mapLink.href = '';
-    mapLink.textContent = '';
   
     function success(position) {
       const latitude  = position.coords.latitude;
@@ -16,8 +14,6 @@ function geoFindMe() {
       origin = [latitude,longitude];
   
       status.textContent = '';
-      // mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-      // mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
       document.querySelector('#origin').value = latitude + "," + longitude;
     }
   
@@ -54,7 +50,13 @@ function initMap()
     // Promise is used to wait for the data of geocode.
     geocode(origin).then(coords => {
       originCoords = coords;
-      mapOrigin = {lat: originCoords[0], lng: originCoords[1]};
+
+
+        mapOrigin = {lat: originCoords[0], lng: originCoords[1]};
+
+      // if (originCoords !== null){
+      // }
+      // else {mapOrigin = {lat: '43.653908', lng: '-79.384293'}}
 
       // Get plain text address from input box
       var destination = document.querySelector("#destination").value;
@@ -68,7 +70,21 @@ function initMap()
             { zoom: 12,
               center: mapOrigin,
             });
-    
+            
+        var inputDest = document.getElementById('destination');
+        var inputOrigin = document.getElementById('origin');
+        var searchBoxDest = new google.maps.places.SearchBox(inputDest);
+        var searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
+        
+        map.addListener('bounds_changed', function(){
+          searchBoxDest.setBounds(map.getBounds());
+        });
+
+        map.addListener('bounds_changed', function(){
+          searchBoxOrigin.setBounds(map.getBounds());
+        });
+
+
         if (typeof mapOrigin !== 'undefined'){
           var marker = new google.maps.Marker(
               {position: mapOrigin, map: map});    
@@ -91,7 +107,7 @@ function initMap()
         
           // Line and distance between markers
           var line = new google.maps.Polyline({path: [mapOrigin, mapDestination], map: map});
-          var radius = haversine_distance(marker, marker2);
+          radius = haversine_distance(marker, marker2);
           console.log(radius);
           document.getElementById('radius').innerHTML = "Distance: " + radius.toFixed(2) + " km.";
 
@@ -159,7 +175,7 @@ function showTable(str) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        console.log(this.responseText);
+        // console.log(this.responseText);
         document.getElementById("show-car-table").innerHTML = this.responseText;
       }
     };
@@ -168,8 +184,18 @@ function showTable(str) {
   }
 }
 
+// function SetPrices(){
+
+// }
+
 $(document).ready(function (){
     document.querySelector('#find-me').addEventListener('click', geoFindMe);
     document.querySelector('#show-map').addEventListener('click', initMap);
     editInputDate();
+
+    $('#show-car-table tr').click(function (event) {
+      if (event.target.type !== 'radio') {
+          $(':radio', this).trigger('click');
+      }
+  });
 })
