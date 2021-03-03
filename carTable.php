@@ -23,6 +23,7 @@
             <caption>Pick one of the available rides:</caption>
         <thead class="thead-dark">
             <tr>
+            <th scope="col"></th>
             <th scope="col">Car ID</th>
             <th scope="col">Model</th>
             <th scope="col">Tier</th>
@@ -36,8 +37,9 @@
             echo'<tr>
             <th scope="row">
             <div class="radio">
-                <label><input type="radio" id="regular" name="optradio">' . $row['id'] . '</label>
+                <label><input type="radio" id="regular" name="optradio"></label>
             </div></th>
+            <td>' . $row['id'] . '</td>
             <td>' . $row['model'] . '</td>
             <td>' . $row['tierCode'] . '</td>
             <td></td>
