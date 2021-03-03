@@ -67,21 +67,50 @@ li {
 } */
 
 #map {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  float: left;
+  display: inline;
   border: 2px solid black;
+  width: 55%;
+  margin-left:2em;
 }
+
+#form {
+  padding-left: 2em;
+  float:left; 
+  display:inline; 
+  width: 40%;
+}
+
+
+/* hr.dashed {
+  border-top: 3px dashed #bbb;
+} */
 
 #tier-select {
   text-align: center;
 }
+
+#car-table {
+  width: 90%;
+}
+
+#car-table tr:nth-child(odd) { background-color : white; }
+#car-table tr:nth-child(even) { background-color : #d3d0cb; }
+#car-table tr:hover { background-color : #e6dff7; }
 
 #car-table caption{
   caption-side: top;
   text-align: center;
 }
 
-#car-table tr:nth-child(odd) { background-color : white; }
-#car-table tr:nth-child(even) { background-color : #d3d0cb; }
-#car-table tr:hover { background-color : #e6dff7; }
+#price {
+  text-align: center;
+}
+
+#beside-table {
+  float:left; display:inline; width: 30%;
+}
+
+#show-car-table{
+  float:left; display:inline; width: 70%;
+}
