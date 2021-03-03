@@ -23,11 +23,10 @@
             <caption>Pick one of the available rides:</caption>
         <thead class="thead-dark">
             <tr>
-            <th scope="col"></th>
-            <th scope="col">Car ID</th>
-            <th scope="col">Model</th>
-            <th scope="col">Tier</th>
-            <th scope="col">Price</th>
+                <th scope="col"></th>
+                <th scope="col">Car ID</th>
+                <th scope="col">Model</th>
+                <th scope="col">Driver</th>
             </tr>
         </thead>
         <tbody>';
@@ -39,10 +38,9 @@
             <div class="radio">
                 <label><input type="radio" id="regular" name="optradio"></label>
             </div></th>
-            <td>' . $row['id'] . '</td>
-            <td>' . $row['model'] . '</td>
-            <td>' . $row['tierCode'] . '</td>
-            <td></td>
+                <td>' . $row['id'] . '</td>
+                <td>' . $row['model'] . '</td>
+                <td>' . $row['driver'] . '</td>
             </tr>';
         } 
         echo ' </tbody>
