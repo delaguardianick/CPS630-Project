@@ -2,7 +2,7 @@ var origin = "";
 var destination = "";
 var destCoords;
 var originCoords;
-var radius;
+var radius =0 ;
 
 function geoFindMe() {
     const status = document.querySelector('#status');
@@ -138,6 +138,7 @@ async function geocode(address){
 }
 
 // END MAP
+// FORMS 
 
 function editInputDate(){
     currDateAndTime = currDateAndTime();
@@ -147,78 +148,81 @@ function editInputDate(){
     document.querySelector("#time").setAttribute("value", currDateAndTime[1])
   }
   
-  function currDateAndTime() {
-    var d = new Date();
-    var month = '' + (d.getMonth() + 1);
-    var day = '' + d.getDate();
-    var year = d.getFullYear();
+function currDateAndTime() {
+  var d = new Date();
+  var month = '' + (d.getMonth() + 1);
+  var day = '' + d.getDate();
+  var year = d.getFullYear();
+
+  if (month.length < 2) 
+      month = '0' + month;
+  if (day.length < 2) 
+      day = '0' + day;
+  var date = [year, month, day].join('-')
+
+  var hours = d.getHours();
+  var min = d.getMinutes();
+  var time = [hours,min].join(':')
+  return [date,time]
+}
   
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
-    var date = [year, month, day].join('-')
-  
-    var hours = d.getHours();
-    var min = d.getMinutes();
-    var time = [hours,min].join(':')
-    return [date,time]
+  // DATABASE / CAR TABLE
+function showTable(str) {
+  if (str == "") {
+    document.getElementById("show-car-table").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // console.log(this.responseText);
+        document.getElementById("show-car-table").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","sql/carTable.php?q="+str,true);
+    xmlhttp.send();
   }
-  
-  // DATABASE
-  function showTable(str) {
-    if (str == "") {
-      document.getElementById("show-car-table").innerHTML = "";
-      return;
-    } else {
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          // console.log(this.responseText);
-          document.getElementById("show-car-table").innerHTML = this.responseText;
-        }
-      };
-      xmlhttp.open("GET","sql/carTable.php?q="+str,true);
-      xmlhttp.send();
-    }
-  }
-  
+    
+}
+
+function EditTable(){
+
+}
 
 function SetPrice(){
   var tier = document.querySelector("#tier").value;
   var distance = radius.toFixed(2); // Distance in km
-  console.log(distance);
+  console.log("radius: " + distance);
   var price = 0;
-  var tripDurInMins = radius / 0.300; // 0.675km/minute is average speed in downtown toronto acc to my calc
-  // if (radius < 50) {
+  var tripDurInMins = radius / 0.500; // 0.675km/minute is average speed in downtown toronto acc to my calc
+  if (radius < 50 && radius != 0) {
     if (tier == 'econ'){
       // Base: $2.50; Booking fee: $2.75; Minimum: $5.25; per Minute: $0.18; per Km: $0.81 
       price = (2.75 + 5.25 + (0.18 * tripDurInMins) + (0.81 * distance))
     }
     else if (tier == 'xl'){
       // Base: $5; Booking fee: $3; Minimum: $8; per Minute: $0.36 ; Per Km: $1.55
-      price = (3 + 3 + 8 + (0.36 * tripDurInMins) + (1.55 * distance))
+      price = (3 + 3 + 8 + (0.40 * tripDurInMins) + (1.75 * distance))
     }
     else if (tier == 'premium'){
       // Base: $8.75; Booking fee: $0; Minimum: $15.75; per Minute: $0.85; Per Km: $2.23
-      price = (5 + 0 + 15.75 + (0.85 * tripDurInMins) + (2.23 * distance))
+      price = (5 + 0 + 15.75 + (0.95 * tripDurInMins) + (2.30 * distance))
     }
-    document.querySelector("#price").innerHTML = 'Price: CA$' + price.toFixed(2) + '\nTrip duration: ' + tripDurInMins.toFixed(0) + "minutes.";
-  // }
-  // else {
-  //   document.querySelector("#price").innerHTML = '';
-  // }
+    document.querySelector("#price").innerHTML = 'Price: CA$' + price.toFixed(2)  + '<br>Trip duration: ' + tripDurInMins.toFixed(0) + " minutes.";
+  }
+  else {
+    document.querySelector("#price").innerHTML = '';
+  }
 }
   
 $(document).ready(function (){
   document.querySelector('#find-me').addEventListener('click', geoFindMe);
   document.querySelector('#show-map').addEventListener('click', initMap);  
-  document.querySelector('#radius').addEventListener('change') = SetPrice();
+  document.querySelector('#radius').addEventListener('change', SetPrice());
   editInputDate();
     
-    $('#car-table tr').click(function (event) {
-        if (event.target.type !== 'radio') {
-            $(':radio', this).trigger('click');
-        }
-    });
+  $('#car-table tr').click(function() {
+    console.log('pressed');
+    $(this).find('th input:radio').prop('checked', true);
+  })
 });
