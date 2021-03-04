@@ -64,7 +64,7 @@
                 <div id="price"></div>
                 <br>
                 <br>
-                <button>Continue to Payment</button>
+                <button id="checkout">Continue to Payment</button>
 
             </div>
             <div class="column" id="show-car-table"></div>
