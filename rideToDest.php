@@ -1,8 +1,10 @@
 <html>
-<head>
+    <head>
         <title>Ride To Destination - Service A</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="css/rideToDest.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet"> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- <script src="js/maps.js"></script> -->
         <script src="js/rideToDest.js"></script>
@@ -15,52 +17,61 @@
     </nav>
 
     <br>
-    <div id="form">
-        <div id="pickup-location">
-            <input type="text" name="origin" id="origin" placeholder="Origin">
-            <input type="image" src="source/find-location.png" id="find-me" ></input>
-            <br>
-            <input type="text" name="destination" id="destination" placeholder="Destination">
-            <br>
-            <br>
+    <div class="container-fluid">
+        <div class="row"> 
+            <div class="column" id="top-left-side">
+                <div>
+                    <h2 id="main-r2d-header">Ride to Destination:</h2>
+                    <br>
+                </div>
+                <div id="form">
+                    <div id="pickup-location">
+                        <input type="text" name="origin" id="origin" placeholder="Enter Pickup Location">
+                        <input type="image" src="source/find-location.png" id="find-me" ></input>
+                        <br>
+                        <input type="text" name="destination" id="destination" placeholder="Enter Destination">
+                        <br>
+                        <br>
+                    </div>
+                    <div id="pickup-time">
+                        <br>
+                        <label for="date">Date:</label>
+                            <input type="date" name="date" id="date">
+                        <label for="time">Time:</label>
+                            <input type="time" name="time" id="time" >
+                    </div>
+                
+                    <button type="button" id="show-map" >Search</button>
+                    <p id = "status"></p>
+                    <p id="radius"></p>
+                </div>
+            </div>
+            <div class="column" id="map"></div>
         </div>
-        <div id="pickup-time">Select pickup date and time:
-            <br>
-            <input type="date" name="date" id="date">
-            <br>
-            <input type="time" id="time" name="time">
+        <!-- TABLE -->
+        <hr class="dashed">
+
+        <div class="row">
+            <div class="column" id="bottom-left-table">
+                <form id="tier-select">
+                    <p>Please select a tier:</p>
+                    <select name="users" onchange="showTable(this.value), setPrice()" id="tier">
+                    <option value="">Select a person:</option>
+                    <option value="econ">Economy $</option>
+                    <option value="xl">XL $$</option>
+                    <option value="premium">Premium $$$</option>
+                    </select>
+                </form>
+
+                <div id="price"></div>
+                <br>
+                <br>
+                <button>Continue to Payment</button>
+
+            </div>
+            <div class="column" id="show-car-table"></div>
         </div>
-       
-        <button type="button" id="show-map" >Search</button>
-        <p id = "status"></p>
-        <p id="radius"></p>
     </div>
-    <div id="map"></div>
-    <br>
-    <br>
-    <!-- TABLE -->
-    <hr class="dashed">
-
-    <div id="beside-table">
-        <form id="tier-select">
-            <p>Please select a tier:</p>
-            <select name="users" onchange="showTable(this.value), SetPrice()" id="tier">
-            <option value="">Select a person:</option>
-            <option value="econ">Economy $</option>
-            <option value="xl">XL $$</option>
-            <option value="premium">Premium $$$</option>
-            </select>
-        </form>
-
-        <div id="price"></div>
-        <br>
-        <br>
-        <button>Continue to Payment</button>
-
-    </div>
-    <div id="show-car-table"></div>
-
-
     
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM&libraries=places&map_ids-6789a6679abe1ef1&callback=initMap"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->

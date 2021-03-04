@@ -1,4 +1,21 @@
 
+
+/* li {
+  display: inline;
+} */
+
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#main-r2d-header{
+  text-align: center;
+}
+
+#logo{
+    width: 60px;
+}
+
 #Map {
     height: 50%;
     /* The height is 400 pixels */
@@ -7,7 +24,8 @@
   }
   
 #find-me{
-  width: 3em;
+  width: 2em;
+  display: inline;
   /* border: 0.5px solid blue; */
 }
 
@@ -16,7 +34,7 @@
   width: 30em;
   margin-left: auto;
   margin-right: auto;
-  border:1px solid black;
+  /* border:1px solid black; */
   margin-bottom: 2em;
 }
 
@@ -25,38 +43,46 @@
   float:left; 
 }
 
-#pickup-location input{
+#pickup-location #destination{
   padding:3%;
-  margin: 1.5%;
+  margin: 1%;
+  width: 100%;
 }
 
-#pickup-time{
-  overflow: hidden;
-  padding-left: 2em;
-} 
+
+#pickup-location #origin{
+  padding:3%;
+  margin: 1%;
+  width: 85%;
+}
 
 #pickup-time input {
   padding: 3%;
   margin: 1.5%;
 }
 
-/* #show-map {
-  left:50%;
-} */
+#top-left-side{
+  background-color: #b4c0d4;
+}
+
+/* Lower half */
 
 #map {
   float: left;
   display: inline;
   border: 2px solid black;
-  width: 55%;
+  width: 70%;
   margin-left:2em;
+}
+
+#Map {
+  height: auto;
 }
 
 #form {
   padding-left: 2em;
   float:left; 
   display:inline; 
-  width: 40%;
 }
 
 
@@ -69,7 +95,6 @@
 }
 
 #car-table {
-  width: 90%;
 }
 
 #car-table tr:nth-child(odd) { background-color : white; }
@@ -85,10 +110,15 @@
   text-align: center;
 }
 
-#beside-table {
-  float:left; display:inline; width: 30%;
+#bottom-left-table {
+  float:left; display:inline; width: 27%;
 }
 
 #show-car-table{
   float:left; display:inline; width: 70%;
+}
+
+.row {
+  padding-left:inherit;
+  padding-right:inherit;
 }
