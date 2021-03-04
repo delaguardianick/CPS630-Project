@@ -20,7 +20,6 @@
     if ($result->num_rows > 0) {
         echo'
         <table class="table table-striped" id="car-table">
-            <caption>Pick one of the available rides:</caption>
         <thead class="thead-dark">
             <tr>
                 <th scope="col"></th>
