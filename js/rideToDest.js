@@ -42,8 +42,34 @@ function haversine_distance(mk1, mk2) {
 
 function initMap()
 {
+
     // Gets address inputted in 'origin' text box
     var origin = document.querySelector("#origin").value; 
+    var destination = document.querySelector("#destination").value;
+
+    if (origin == '' || destination == ''){
+      var mapOrigin = {lat: 43.653908, lng: -79.384293}
+
+      var map = new google.maps.Map(document.getElementById("map"),
+            { zoom: 12,
+              center: mapOrigin,
+            });
+
+      var inputDest = document.getElementById('destination');
+      var inputOrigin = document.getElementById('origin');
+      var searchBoxDest = new google.maps.places.SearchBox(inputDest);
+      var searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
+      
+      map.addListener('bounds_changed', function(){
+        searchBoxDest.setBounds(map.getBounds());
+      });
+
+      map.addListener('bounds_changed', function(){
+        searchBoxOrigin.setBounds(map.getBounds());
+      });
+
+    }else{
+
 
     // Calls func geocode with the plain text address, returns coordinates
     // Since geocode has an asynchronous api call, 
@@ -59,7 +85,6 @@ function initMap()
       // else {mapOrigin = {lat: '43.653908', lng: '-79.384293'}}
 
       // Get plain text address from input box
-      var destination = document.querySelector("#destination").value;
   
       // Repeat geocode
       geocode(destination).then(coords => {
@@ -67,7 +92,7 @@ function initMap()
         mapDestination = {lat: destCoords[0], lng: destCoords[1]};
       
         var map = new google.maps.Map(document.getElementById("map"),
-            { zoom: 12,
+            { zoom: 15,
               center: mapOrigin,
             });
             
@@ -122,6 +147,7 @@ function initMap()
 
       });
   });
+  }
 }
   
 async function geocode(address){
@@ -189,7 +215,7 @@ function EditTable(){
 
 }
 
-function SetPrice(){
+function setPrice(){
   var tier = document.querySelector("#tier").value;
   var distance = radius.toFixed(2); // Distance in km
   console.log("radius: " + distance);
@@ -218,11 +244,11 @@ function SetPrice(){
 $(document).ready(function (){
   document.querySelector('#find-me').addEventListener('click', geoFindMe);
   document.querySelector('#show-map').addEventListener('click', initMap);  
-  document.querySelector('#radius').addEventListener('change', SetPrice());
+  document.querySelector('#radius').addEventListener('change', setPrice());
   editInputDate();
     
-  $('#car-table tr').click(function() {
-    console.log('pressed');
-    $(this).find('th input:radio').prop('checked', true);
-  })
+  // $('#car-table tr').click(function() {
+  //   console.log('pressed');
+  //   $(this).find('th input:radio').prop('checked', true);
+  // })
 });
