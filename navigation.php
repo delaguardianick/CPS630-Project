@@ -3,10 +3,10 @@
 ?>
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="navbar.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/navbar.css">
 </head>
-<nav class="navbar navbar-expand-lg navbar-light" id="nav-bar">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav-bar">
   <a class="navbar-brand" href="index.php">
     <img src="source/logo.jpg" alt="logo" id="logo">
   </a>
@@ -53,7 +53,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0 btn-outline-light" type="submit">Search</button>
     </form>
   </div>
 </nav>

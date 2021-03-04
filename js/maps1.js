@@ -42,6 +42,11 @@ function haversine_distance(mk1, mk2) {
 
 function initMap()
 {
+        var options ={ 
+        center:{lat: 43.654, lng: -79.383},
+        zoom: 10
+        //mapTypeId: google.maps.MapTypeId.HYBRID
+    };
     // Gets address inputted in 'origin' text box
     var origin = document.querySelector("#origin").value; 
 
@@ -59,10 +64,10 @@ function initMap()
       // else {mapOrigin = {lat: '43.653908', lng: '-79.384293'}}
 
       // Get plain text address from input box
-      var destination = document.querySelector("#destination").value;
+      //var destination = document.querySelector("#destination").value;
   
       // Repeat geocode
-      geocode(destination).then(coords => {
+      geocode(selectedValue).then(coords => {
         destCoords =  coords;
         mapDestination = {lat: destCoords[0], lng: destCoords[1]};
       
@@ -71,9 +76,9 @@ function initMap()
               center: mapOrigin,
             });
             
-        var inputDest = document.getElementById('destination');
+        //var inputDest = document.getElementById('destination');
         var inputOrigin = document.getElementById('origin');
-        var searchBoxDest = new google.maps.places.SearchBox(inputDest);
+        var searchBoxDest = new google.maps.places.SearchBox(selectedValue);
         var searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
         
         map.addListener('bounds_changed', function(){
@@ -146,4 +151,19 @@ $(document).ready(function (){
 
 
 })
+
+//stuff i just added
+var selectedValue;
+function btnfunction() {
+  const rbs = document.querySelectorAll('input[name="choice"]');
+  for (const rb of rbs) {
+      if (rb.checked) {
+          selectedValue = rb.value;
+          break;
+      }
+  }
+  //alert(selectedValue);
+  console.log(selectedValue);
+};
+
 
