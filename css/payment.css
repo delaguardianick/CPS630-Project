@@ -25,3 +25,7 @@ input[type="radio"] {
 .bold {
     font-weight: bold
 }
+
+.card-text {
+    font-size: smaller;
+}
