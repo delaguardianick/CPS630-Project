@@ -108,6 +108,7 @@ function initMap()
       });
     });
   }
+  // This event is used to recognize when the map is reloaded - in order to change price
   var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
   document.dispatchEvent(event);
 }
@@ -191,13 +192,12 @@ function showTable(str) {
     
 }
 
-
 function setPrice(){
   console.log("setPrice called");
   tier = document.querySelector("#tier").value;
   var distance = radius.toFixed(2); // Distance in km
   price = 0;
-  tripDurInMins = (radius / 0.500) + 2; // 0.675km/minute is average speed in downtown toronto acc to my calc
+  tripDurInMins = (radius / 0.500) + 1; // 0.675km/minute is average speed in downtown toronto acc to my calc
  
   // Check if within 50km 
   if (radius < 50 && radius != 0) {
@@ -213,9 +213,11 @@ function setPrice(){
       // Base: $8.75; Booking fee: $0; Minimum: $15.75; per Minute: $0.85; Per Km: $2.23
       price = (5 + 0 + 15.75 + (0.95 * tripDurInMins) + (2.30 * distance))
     }
+    // console.log("inside if");
     document.querySelector("#price").innerHTML = 'Price: CA$' + price.toFixed(2)  + '<br>Trip duration: ' + tripDurInMins.toFixed(0) + " minutes.";
   }
   else {
+    // console.log("inside else");
     document.querySelector("#price").innerHTML = '';
   }
 }
@@ -246,7 +248,7 @@ $(document).ready(function (){
   document.querySelector('#show-map').addEventListener('click', initMap);  
   document.querySelector('#radius').addEventListener('change', setPrice);
   document.querySelector('#checkout').addEventListener('click',infoForPayment);
-  document.addEventListener("mapReloadedEvent", setPrice)
+  document.addEventListener("mapReloadedEvent", setPrice);
   editInputDate();
     
   // $('#car-table tr').click(function() {
