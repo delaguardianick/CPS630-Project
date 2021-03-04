@@ -1,16 +1,8 @@
-/* ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  } */
-  
-  li {
-    display: inline;
-  }
 
-  /* #nav-right{
-      float: right;
-  } */
+
+/* li {
+  display: inline;
+} */
 
 body{
   font-family: 'Source Sans Pro', sans-serif;
@@ -74,7 +66,7 @@ body{
 }
 
 #top-left-side{
-  background-color: #e6dff7;
+  background-color: #b4c0d4;
 }
 
 /* Lower half */
@@ -122,8 +114,8 @@ body{
   text-align: center;
 }
 
-#beside-table {
-  float:left; display:inline; width: 30%;
+#bottom-left-table {
+  float:left; display:inline; width: 27%;
 }
 
 #show-car-table{

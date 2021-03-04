@@ -50,7 +50,7 @@
         <hr class="dashed">
 
         <div class="row">
-            <div class="column" id="beside-table">
+            <div class="column" id="bottom-left-table">
                 <form id="tier-select">
                     <p>Please select a tier:</p>
                     <select name="users" onchange="showTable(this.value), setPrice()" id="tier">

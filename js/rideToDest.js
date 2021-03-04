@@ -93,7 +93,6 @@ function initMap()
           // Line and distance between markers
           var line = new google.maps.Polyline({path: [mapOrigin, mapDestination], map: map});
           radius = haversine_distance(marker, marker2);
-          console.log(radius);
           document.getElementById('radius').innerHTML = "Distance: " + radius.toFixed(2) + " km.";
 
           // Has to be under 50km
@@ -107,6 +106,8 @@ function initMap()
       });
     });
   }
+  // var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
+  // document.dispatchEvent(event);
 }
 
 function basicMap(mapOrigin){
@@ -132,7 +133,6 @@ function basicMap(mapOrigin){
 async function geocode(address){
   address = address.replace(/\s/g, "+");
   url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM`
-  console.log(url);
 
   const request = await fetch(url);
   const data = await request.json();
@@ -149,7 +149,6 @@ function editInputDate(){
     currDateAndTime = currDateAndTime();
     document.querySelector("#date").setAttribute("value", currDateAndTime[0]);
     document.querySelector("#date").setAttribute("min", currDateAndTime[0]);
-    console.log(currDateAndTime[1]);
     document.querySelector("#time").setAttribute("value", currDateAndTime[1])
   }
   
@@ -165,10 +164,17 @@ function currDateAndTime() {
       day = '0' + day;
   var date = [year, month, day].join('-')
 
+  var time = getCurrentTime();
+  return [date,time]
+}
+
+function getCurrentTime(){
+  var d = new Date();
+
   var hours = d.getHours();
   var min = d.getMinutes();
   var time = [hours,min].join(':')
-  return [date,time]
+  return time;
 }
   
   // DATABASE / CAR TABLE
@@ -190,14 +196,11 @@ function showTable(str) {
     
 }
 
-function EditTable(){
-
-}
 
 function setPrice(){
+  console.log("setPrice called");
   var tier = document.querySelector("#tier").value;
   var distance = radius.toFixed(2); // Distance in km
-  console.log("radius: " + distance);
   var price = 0;
   var tripDurInMins = radius / 0.500; // 0.675km/minute is average speed in downtown toronto acc to my calc
   if (radius < 50 && radius != 0) {
@@ -224,6 +227,10 @@ $(document).ready(function (){
   document.querySelector('#find-me').addEventListener('click', geoFindMe);
   document.querySelector('#show-map').addEventListener('click', initMap);  
   document.querySelector('#radius').addEventListener('change', setPrice());
+  // document.addEventListener("mapReloadedEvent", setPrice())
+  // function eventHandler(e){
+  //   console.log(e.detail);  
+  // }
   editInputDate();
     
   // $('#car-table tr').click(function() {
