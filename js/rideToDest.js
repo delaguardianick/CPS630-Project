@@ -4,7 +4,9 @@ var destCoords;
 var originCoords;
 var radius =0 ;
 var map;
-
+var tripDurInMins;
+var price;
+var tier;
 
 function geoFindMe() {
     const status = document.querySelector('#status');
@@ -45,8 +47,8 @@ function haversine_distance(mk1, mk2) {
 function initMap()
 {
   // Gets address inputted in 'origin' text box
-  var origin = document.querySelector("#origin").value; 
-  var destination = document.querySelector("#destination").value;
+  origin = document.querySelector("#origin").value; 
+  destination = document.querySelector("#destination").value;
 
   // If text boxes are empty: when refreshing page
   if (origin == '' || destination == ''){ 
@@ -106,8 +108,9 @@ function initMap()
       });
     });
   }
-  // var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
-  // document.dispatchEvent(event);
+  // This event is used to recognize when the map is reloaded - in order to change price
+  var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
+  document.dispatchEvent(event);
 }
 
 function basicMap(mapOrigin){
@@ -164,17 +167,10 @@ function currDateAndTime() {
       day = '0' + day;
   var date = [year, month, day].join('-')
 
-  var time = getCurrentTime();
-  return [date,time]
-}
-
-function getCurrentTime(){
-  var d = new Date();
-
   var hours = d.getHours();
   var min = d.getMinutes();
   var time = [hours,min].join(':')
-  return time;
+  return [date,time]
 }
   
   // DATABASE / CAR TABLE
@@ -196,13 +192,14 @@ function showTable(str) {
     
 }
 
-
 function setPrice(){
   console.log("setPrice called");
-  var tier = document.querySelector("#tier").value;
+  tier = document.querySelector("#tier").value;
   var distance = radius.toFixed(2); // Distance in km
-  var price = 0;
-  var tripDurInMins = radius / 0.500; // 0.675km/minute is average speed in downtown toronto acc to my calc
+  price = 0;
+  tripDurInMins = (radius / 0.500) + 1; // 0.675km/minute is average speed in downtown toronto acc to my calc
+ 
+  // Check if within 50km 
   if (radius < 50 && radius != 0) {
     if (tier == 'econ'){
       // Base: $2.50; Booking fee: $2.75; Minimum: $5.25; per Minute: $0.18; per Km: $0.81 
@@ -216,21 +213,42 @@ function setPrice(){
       // Base: $8.75; Booking fee: $0; Minimum: $15.75; per Minute: $0.85; Per Km: $2.23
       price = (5 + 0 + 15.75 + (0.95 * tripDurInMins) + (2.30 * distance))
     }
+    // console.log("inside if");
     document.querySelector("#price").innerHTML = 'Price: CA$' + price.toFixed(2)  + '<br>Trip duration: ' + tripDurInMins.toFixed(0) + " minutes.";
   }
   else {
+    // console.log("inside else");
     document.querySelector("#price").innerHTML = '';
   }
 }
   
+function infoForPayment(){
+  console.log("got to infoforpayment");
+  origin;
+  destination;
+  radius;
+  tripDurInMins;
+  price;
+  tier;
+  // var time = getCurrentTime();
+  
+
+  console.log("pickup: " + origin + "\n" +
+  "destination: " + destination + "\n" +
+  "distance: " + radius.toFixed(1) + "\n" + 
+  "tripdur: " + tripDurInMins.toFixed(0) + "\n" + 
+  "price: " + price.toFixed(2) + "\n" + 
+  "tier: " + tier + "\n")
+}
+
+
+
 $(document).ready(function (){
   document.querySelector('#find-me').addEventListener('click', geoFindMe);
   document.querySelector('#show-map').addEventListener('click', initMap);  
-  document.querySelector('#radius').addEventListener('change', setPrice());
-  // document.addEventListener("mapReloadedEvent", setPrice())
-  // function eventHandler(e){
-  //   console.log(e.detail);  
-  // }
+  document.querySelector('#radius').addEventListener('change', setPrice);
+  document.querySelector('#checkout').addEventListener('click',infoForPayment);
+  document.addEventListener("mapReloadedEvent", setPrice);
   editInputDate();
     
   // $('#car-table tr').click(function() {
