@@ -243,7 +243,7 @@ function infoForPayment(){
   "price: " + price.toFixed(2) + "\n" + 
   "tier: " + tier + "\n");
 
-  var myJSON = `{"UserId": "",
+  var myJSON = `{"userId": "",
     "pickup": "` + origin + `",
     "destination": "` + destination + `",
     "distance": ` + radius.toFixed(1) + `,
@@ -268,9 +268,11 @@ function infoForPayment(){
   // request.setRequestHeader("Content-type", "application/json");
   // request.send(myJSON);
 
-  $.post('rideToDest.php', myJSON, function(response){
-    console.log(response);
-  })
+  // $.post('payment.php', myJSON, function(response){
+  //   console.log(response);
+  // })
+
+  localStorage.setItem('json',myJSON);
   }
   
 
@@ -282,9 +284,9 @@ $(document).ready(function (){
   document.querySelector('#checkout').addEventListener('click',infoForPayment);
   document.addEventListener("mapReloadedEvent", setPrice, {passive:true});
   editInputDate();
-  // document.getElementById("checkout").onclick = function () {
-  //   location.href = "payment.php";
-  // }
+  document.getElementById("checkout").onclick = function () {
+    window.open("payment.php");
+  }
     
   // $('#car-table tr').click(function() {
   //   console.log('pressed');

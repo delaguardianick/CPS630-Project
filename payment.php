@@ -1,33 +1,3 @@
-<?php
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
-
-    if (isset($_SESSION["favcolor"])){
-        echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
-        echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
-    
-    }
-   
-    $json = file_get_contents('php://input');
-    echo $json;
-    // if (isset($_POST['jsonInfo'])) {
-    //     $_SESSION['json'] = $_POST['jsonInfo'];
-    //     // these echo commands will output to the 'returnedData' variable
-    //     // that can be used in JS
-    //     echo $_SESSION['json'];
-    //     echo "hello";
-    //     echo "<br>";
-    //     echo "<br>";
-       
-        
-        // echo $_SESSION['obj']['intro']['intosub'];
-        // echo "<br>";
-        // echo $_SESSION['obj']['vis']['visub'];
-    // }
-    
-?>
 <html>
     <head>
         <title>Payment</title>
@@ -137,14 +107,14 @@
                             <p class="card-text" >By placing your order, you agree to our privacy notice and conditions of use.</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">User ID: </li>
-                            <li class="list-group-item">Pickup Location: </li>
-                            <li class="list-group-item">Destination: </li>
-                            <li class="list-group-item">Distance: </li>
-                            <li class="list-group-item">ETA: </li>
-                            <li class="list-group-item">Car Model + color:</li>
-                            <li class="list-group-item">Driver ID: </li>
-                            <li class="list-group-item">Price:</li>
+                            <li class="list-group-item" >User ID: <div id="userId"></div></li>
+                            <li class="list-group-item">Pickup Location: <div id="pickup"></div></li>
+                            <li class="list-group-item">Destination: <div id="destination"></div></li>
+                            <li class="list-group-item" id="distance"></li>
+                            <li class="list-group-item">ETA: <div id="eta"></div></li>
+                            <li class="list-group-item">Car Model + color: <div id="carModel"></div></li>
+                            <li class="list-group-item">Car ID: <div id="carId"></div></li>
+                            <li class="list-group-item">Price: <div id="price"></div></li>
                         </ul>
                         <div class="card-body">
                             <a href="#" class="card-link">Card link</a>

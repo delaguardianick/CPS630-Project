@@ -1,16 +1,3 @@
-<?php
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    } 
-
-    $json = file_get_contents('php://input');
-    echo $json;
-
-
-    $_SESSION["favcolor"] = "green";
-    $_SESSION["favanimal"] = "cat";
-?>
 <html>
     <head>
         <title>Ride To Destination - Service A</title>
