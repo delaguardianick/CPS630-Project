@@ -43,4 +43,20 @@
     // } else {
     //     echo "Error creating table: " . mysqli_error($conn);
     // }
+
+     // sql to create ITEMS table
+     $sql = "CREATE TABLE items(
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        item VARCHAR(30) NOT NULL,
+        store_name VARCHAR(30) NOT NULL,
+        address VARCHAR(150) NOT NULL,
+        price DECIMAL(20,2),
+        reg_date TIMESTAMP
+    )";
+    
+    if (mysqli_query($conn, $sql)) {
+        echo "items created successfully";
+    } else {
+        echo "Error creating table: " . mysqli_error($conn);
+    }
 ?>

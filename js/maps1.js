@@ -159,6 +159,7 @@ function btnfunction() {
   for (const rb of rbs) {
       if (rb.checked) {
           selectedValue = rb.value;
+          showTable(selectedValue);
           break;
       }
   }
@@ -166,4 +167,25 @@ function btnfunction() {
   console.log(selectedValue);
 };
 
-
+function test(str){
+  console.log("hello");
+  console.log(str);
+}
+//show items table
+function showTable(str) {
+  if (str == "") {
+    document.getElementById("show-car-table").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // console.log(this.responseText);
+        document.getElementById("show-car-table").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","sql/itemTable.php?q="+str,true);
+    xmlhttp.send();
+  }
+    
+}

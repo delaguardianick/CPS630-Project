@@ -1,12 +1,5 @@
-<!-- <head>
-    <style>
-        table{
-            100px;
-        }
-        </style>
-</head> -->
 <?php 
-    $tier = $_GET['q'];
+    $store = $_GET['q'];
 
     $servername = "localhost";
     $username = "root";
@@ -19,8 +12,8 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    // $sql = "SELECT * FROM `rcars` WHERE `tierCode` = $tier";
-    $sql = 'SELECT * FROM `rcars` WHERE 1 AND `tierCode` = "' . $tier . '"';
+    // $sql = "SELECT * FROM `rcars` WHERE `storeCode` = $store";
+    $sql = 'SELECT * FROM `items` WHERE `store_name` = "' . $store . '"';
     // ERROR IS HERE ^^^^^^^^^^^^^^^^^^
     $result = $conn->query($sql) or die($conn->error);
 
@@ -30,9 +23,10 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col"></th>
-                <th scope="col">Car ID</th>
-                <th scope="col">Model</th>
-                <th scope="col">Driver</th>
+                <th scope="col">Item ID</th>
+                <th scope="col">Item</th>
+                <th scope="col">Store</th>
+                <th scope="col">Price</th>
             </tr>
         </thead>
         <tbody>';
@@ -45,8 +39,9 @@
                 <label><input type="radio" id="regular" name="optradio"></label>
             </div></th>
                 <td>' . $row['id'] . '</td>
-                <td>' . $row['model'] . '</td>
-                <td>' . $row['driver'] . '</td>
+                <td>' . $row['item'] . '</td>
+                <td>' . $row['store_name'] . '</td>
+                <td>' . $row['price'] . '</td>
             </tr>';
         } 
         echo ' </tbody>

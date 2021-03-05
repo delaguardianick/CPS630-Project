@@ -127,3 +127,7 @@ body{
   padding-left:inherit;
   padding-right:inherit;
 }
+
+#car-table{
+  margin-left: 100px;
+}
