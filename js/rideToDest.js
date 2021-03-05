@@ -234,47 +234,56 @@ function infoForPayment(){
   tripDurInMins;
   price;
   tier;
-  // var time = getCurrentTime();
-  
-  console.log("pickup: " + origin + "\n" +
-  "destination: " + destination + "\n" +
-  "distance: " + radius.toFixed(1) + "\n" + 
-  "tripdur: " + tripDurInMins.toFixed(0) + "\n" + 
-  "price: " + price.toFixed(2) + "\n" + 
-  "tier: " + tier + "\n");
+  var date = document.getElementById("date").value;
+  var time = document.getElementById("time").value;
+
+  var selectedRow = findSelectedTableRow();
+  if (selectedRow == null){
+    alert("Please select your driver");
+  }
+  else {
+    var rCars = document.getElementById("car-table");
+    var row = rCars.rows[selectedRow].childNodes;
+
+    var carId = row[3].innerText;
+    var carModel = row[5].innerText;
+    var driver = row[7].innerText;
+  }
 
   var myJSON = `{"userId": "",
     "pickup": "` + origin + `",
     "destination": "` + destination + `",
-    "distance": ` + radius.toFixed(1) + `,
+    "distance": ` + radius.toFixed(2) + `,
     "price": ` + price.toFixed(2) + `,
+    "tripTime": ` + tripDurInMins.toFixed(0) + `,
     "date": {
-      "date": "10-04-1999",
-      "time": "15:30"
+      "date": "` + date + `",
+      "time": "`+ time +`"
     },
     "tier": "` + tier + `",
-    "eta": "15:30",
     "carInfo":{
-      "carId": 1,
-      "carModel": "2004 Subaru",
-      "color": "blue"
+      "carId": `+ carId +`,
+      "carModel": "`+ carModel +`",
+      "driver": "`+ driver +`"
     }
   }`;
 
-  console.log(typeof myJSON);
-
-  // request= new XMLHttpRequest();
-  // request.open("POST", "payment.php", true);
-  // request.setRequestHeader("Content-type", "application/json");
-  // request.send(myJSON);
-
-  // $.post('payment.php', myJSON, function(response){
-  //   console.log(response);
-  // })
-
+  console.log(myJSON);
   localStorage.setItem('json',myJSON);
   }
   
+function findSelectedTableRow(){
+  var allRadios = document.querySelectorAll('input[name="rowSelect"]');
+  var selectedRow = null;
+
+  for (var radio of allRadios) {
+    if (radio.checked) {
+        selectedRow = radio.value;
+        break;
+    }
+  }
+  return selectedRow;
+}
 
 
 $(document).ready(function (){
