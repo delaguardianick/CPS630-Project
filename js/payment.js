@@ -1,5 +1,6 @@
 
 
+var myJSON;
 $(function() {
     $('[data-toggle="tooltip"]').tooltip()
     })
@@ -33,10 +34,25 @@ function setSummaryData(obj){
     // document.getElementById("userId")
 }
 
+function storeRecord(){
+    $.post("sql/storeTripRecord.php",
+    {
+      json: myJSON,
+    },
+    function(data, status){
+        document.getElementById("payment-status").innerHTML = data;
+        console.log("Data: " + data + "\nStatus: " + status);
+    });
+}
+
 $(document).ready(function (){
-    var myJSON = localStorage.getItem("json");
-    console.log(myJSON);
+    // document.getElementById("payment-status").innerHTML = '';
+    myJSON = localStorage.getItem("json");
+    // console.log(myJSON);
 
     var obj = JSON.parse(myJSON);
+    // console.log(obj);
     setSummaryData(obj);
+
+    document.getElementById("confirm-pay").addEventListener('click', storeRecord)
 });
