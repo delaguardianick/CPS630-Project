@@ -110,10 +110,14 @@
                             <li class="list-group-item" >User ID: <div id="userId"></div></li>
                             <li class="list-group-item">Pickup Location: <div id="pickup"></div></li>
                             <li class="list-group-item">Destination: <div id="destination"></div></li>
+                            <li class="list-group-item">Pickup date: <div id="date"></div></li>
+                            <li class="list-group-item">Pickup Time: <div id="time"></div></li>
                             <li class="list-group-item" id="distance"></li>
-                            <li class="list-group-item">ETA: <div id="eta"></div></li>
-                            <li class="list-group-item">Car Model + color: <div id="carModel"></div></li>
+                            <li class="list-group-item">ETA: <div id="tripTime"></div></li>
                             <li class="list-group-item">Car ID: <div id="carId"></div></li>
+                            <li class="list-group-item">Car tier: <div id="tier"></div></li>
+                            <li class="list-group-item">Car Model + color: <div id="carModel"></div></li>
+                            <li class="list-group-item">Driver: <div id="driver"></div></li>
                             <li class="list-group-item">Price: <div id="price"></div></li>
                         </ul>
                         <div class="card-body">
