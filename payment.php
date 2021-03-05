@@ -63,7 +63,7 @@
                                                     </label> <input type="text" required class="form-control"> </div>
                                             </div>
                                         </div>
-                                        <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button>
+                                        <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" id="confirm-pay"> Confirm Payment </button>
                                     </form>
                                 </div>
                             </div> <!-- End -->
@@ -101,7 +101,7 @@
                 </div>
                 </div>
                 <div class="col-6 col-md-4" id="summary">
-                    <div class="card">
+                    <div class="card" id="summary-card">
                         <div class="card-body">
                             <h5 class="card-title">Purchase Summary</h5>
                             <p class="card-text" >By placing your order, you agree to our privacy notice and conditions of use.</p>
@@ -126,6 +126,7 @@
                         </div>
                     </div>  
                 </div>
+                <div id="payment-status"></div>
             </div>
         </div>
 
