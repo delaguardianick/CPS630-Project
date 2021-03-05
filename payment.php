@@ -1,3 +1,33 @@
+<?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
+    if (isset($_SESSION["favcolor"])){
+        echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
+        echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
+    
+    }
+   
+    $json = file_get_contents('php://input');
+    echo $json;
+    // if (isset($_POST['jsonInfo'])) {
+    //     $_SESSION['json'] = $_POST['jsonInfo'];
+    //     // these echo commands will output to the 'returnedData' variable
+    //     // that can be used in JS
+    //     echo $_SESSION['json'];
+    //     echo "hello";
+    //     echo "<br>";
+    //     echo "<br>";
+       
+        
+        // echo $_SESSION['obj']['intro']['intosub'];
+        // echo "<br>";
+        // echo $_SESSION['obj']['vis']['visub'];
+    // }
+    
+?>
 <html>
     <head>
         <title>Payment</title>

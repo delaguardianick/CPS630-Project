@@ -1,5 +1,8 @@
 <?php
-  session_start();
+  if(!isset($_SESSION)) 
+  { 
+      session_start(); 
+  } 
 ?>
 <nav class="navbar navbar-expand-lg navbar-light" id="nav-bar">
   <a class="navbar-brand" href="index.php">

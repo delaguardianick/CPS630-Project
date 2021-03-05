@@ -105,12 +105,13 @@ function initMap()
           else {
             document.getElementById('radius').innerHTML += "<br>Locations not within range. Please reduce distance!";
           }
+          var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
+          document.dispatchEvent(event);
       });
     });
   }
   // This event is used to recognize when the map is reloaded - in order to change price
-  var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
-  document.dispatchEvent(event);
+  
 }
 
 function basicMap(mapOrigin){
@@ -169,6 +170,9 @@ function currDateAndTime() {
 
   var hours = d.getHours();
   var min = d.getMinutes();
+  if (min.length == 1){
+    min = ("0" + min)
+  }
   var time = [hours,min].join(':')
   return [date,time]
 }
@@ -197,7 +201,7 @@ function setPrice(){
   tier = document.querySelector("#tier").value;
   var distance = radius.toFixed(2); // Distance in km
   price = 0;
-  tripDurInMins = (radius / 0.500) + 1; // 0.675km/minute is average speed in downtown toronto acc to my calc
+  tripDurInMins = (radius / 0.35) + 1; // 0.675km/minute is average speed in downtown toronto acc to my calc
  
   // Check if within 50km 
   if (radius < 50 && radius != 0) {
@@ -213,11 +217,11 @@ function setPrice(){
       // Base: $8.75; Booking fee: $0; Minimum: $15.75; per Minute: $0.85; Per Km: $2.23
       price = (5 + 0 + 15.75 + (0.95 * tripDurInMins) + (2.30 * distance))
     }
-    // console.log("inside if");
+    console.log("inside if");
     document.querySelector("#price").innerHTML = 'Price: CA$' + price.toFixed(2)  + '<br>Trip duration: ' + tripDurInMins.toFixed(0) + " minutes.";
   }
   else {
-    // console.log("inside else");
+    console.log("inside else");
     document.querySelector("#price").innerHTML = '';
   }
 }
@@ -232,15 +236,43 @@ function infoForPayment(){
   tier;
   // var time = getCurrentTime();
   
-
   console.log("pickup: " + origin + "\n" +
   "destination: " + destination + "\n" +
   "distance: " + radius.toFixed(1) + "\n" + 
   "tripdur: " + tripDurInMins.toFixed(0) + "\n" + 
   "price: " + price.toFixed(2) + "\n" + 
-  "tier: " + tier + "\n")
-}
+  "tier: " + tier + "\n");
 
+  var myJSON = `{"UserId": "",
+    "pickup": "` + origin + `",
+    "destination": "` + destination + `",
+    "distance": ` + radius.toFixed(1) + `,
+    "price": ` + price.toFixed(2) + `,
+    "date": {
+      "date": "10-04-1999",
+      "time": "15:30"
+    },
+    "tier": "` + tier + `",
+    "eta": "15:30",
+    "carInfo":{
+      "carId": 1,
+      "carModel": "2004 Subaru",
+      "color": "blue"
+    }
+  }`;
+
+  console.log(typeof myJSON);
+
+  // request= new XMLHttpRequest();
+  // request.open("POST", "payment.php", true);
+  // request.setRequestHeader("Content-type", "application/json");
+  // request.send(myJSON);
+
+  $.post('rideToDest.php', myJSON, function(response){
+    console.log(response);
+  })
+  }
+  
 
 
 $(document).ready(function (){
@@ -248,8 +280,11 @@ $(document).ready(function (){
   document.querySelector('#show-map').addEventListener('click', initMap);  
   document.querySelector('#radius').addEventListener('change', setPrice);
   document.querySelector('#checkout').addEventListener('click',infoForPayment);
-  document.addEventListener("mapReloadedEvent", setPrice);
+  document.addEventListener("mapReloadedEvent", setPrice, {passive:true});
   editInputDate();
+  // document.getElementById("checkout").onclick = function () {
+  //   location.href = "payment.php";
+  // }
     
   // $('#car-table tr').click(function() {
   //   console.log('pressed');
