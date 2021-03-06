@@ -101,10 +101,10 @@ function initMap()
           // Has to be under 50km
           if (radius <= 50)
           {
-            document.getElementById('status').innerHTML += "<br>Locations accepted. Please continue below!";
+            document.getElementById('status').innerHTML = "<br>Locations accepted. Please select a tier!";
           }
           else {
-            document.getElementById('status').innerHTML += "<br>Locations not within 50km. Please reduce distance!";
+            document.getElementById('status').innerHTML = "<br>Locations not within 50km. Please reduce distance!";
           }
           var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
           document.dispatchEvent(event);
@@ -154,6 +154,7 @@ function editInputDate(){
     currDateAndTime = currDateAndTime();
     document.querySelector("#date").setAttribute("value", currDateAndTime[0]);
     document.querySelector("#date").setAttribute("min", currDateAndTime[0]);
+    console.log("Tried to change time to " + currDateAndTime[1]);
     document.querySelector("#time").setAttribute("value", currDateAndTime[1])
   }
   
@@ -230,8 +231,10 @@ function setPrice(){
 }
 
 function unhideTableRow(){
-  console.log("Tried to unhide!");
-  $("#bottom-left-table").css("visibility","visible");
+  if (radius < 50){
+    $("#bottom-left-table").css("visibility","visible");
+  }
+  
 }
   
 function infoForPayment(){

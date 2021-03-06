@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div id="post-map-text"> 
-                    <p id="status"></p>
+                    <!-- <div id="status"></div> -->
                 </div>
             </div>
             <div class="col-sm-8" id="map"></div>
@@ -55,9 +55,10 @@
 
         <div class="row">
             <div class="col-sm-4">
+                <h5 id="status"></h5>
                 <div id="bottom-left-table">
                     <form id="tier-select">
-                        <p>Please select a tier:</p>
+                        <!-- <p>Please select a tier:</p> -->
                         <select class="form-select" aria-label="Default select example" name="users" onchange="showTable(this.value), setPrice()" id="tier">
                             <option value="">Select a Tier:</option>
                             <option value="econ">Economy (4 seater)</option>
