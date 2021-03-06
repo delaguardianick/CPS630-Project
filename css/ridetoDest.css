@@ -17,7 +17,7 @@ body{
 }
 
 #Map {
-    height: 50%;
+    /* height: 50%; */
     /* The height is 400 pixels */
     width: 90%;
     /* The width is the width of the web page */
@@ -81,7 +81,7 @@ body{
   display: inline;
   border: 2px solid black;
   width: 70%;
-  margin-left:2em;
+  /* margin-left:2em; */
 }
 
 #Map {

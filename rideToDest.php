@@ -17,40 +17,42 @@
     <br>
     <div class="container-fluid">
         <div class="row"> 
-            <div class="column" id="top-left-side">
-                <div>
-                    <h2 id="main-r2d-header">Ride to Destination:</h2>
-                    <br>
-                </div>
-                <div id="form">
-                    <div id="pickup-location">
-                        <input type="text" name="origin" id="origin" placeholder="Enter Pickup Location">
-                        <input type="image" src="source/find-location.png" id="find-me" ></input>
-                        <br>
-                        <input type="text" name="destination" id="destination" placeholder="Enter Destination">
-                        <br>
+            <div class="col-sm-4">
+                <div id="top-left-side">
+                    <div>
+                        <h2 id="main-r2d-header">Ride to Destination:</h2>
                         <br>
                     </div>
-                    <div id="pickup-time">
-                        <br>
-                        <label for="date">Date:</label>
-                            <input type="date" name="date" id="date">
-                        <label for="time">Time:</label>
-                            <input type="time" name="time" id="time" >
+                    <div id="form">
+                        <div id="pickup-location">
+                            <input type="text" name="origin" id="origin" placeholder="Enter Pickup Location">
+                            <input type="image" src="source/find-location.png" id="find-me" ></input>
+                            <br>
+                            <input type="text" name="destination" id="destination" placeholder="Enter Destination">
+                            <br>
+                            <br>
+                        </div>
+                        <div id="pickup-time">
+                            <br>
+                            <label for="date">Date:</label>
+                                <input type="date" name="date" id="date">
+                            <label for="time">Time:</label>
+                                <input type="time" name="time" id="time" >
+                        </div>
+                    
+                        <button type="button" id="show-map" >Search</button>
+                        <p id = "status"></p>
+                        <p id="radius"></p>
                     </div>
-                
-                    <button type="button" id="show-map" >Search</button>
-                    <p id = "status"></p>
-                    <p id="radius"></p>
                 </div>
             </div>
-            <div class="column" id="map"></div>
+            <div class="col-sm-8" id="map"></div>
         </div>
         <!-- TABLE -->
         <hr class="dashed">
 
         <div class="row">
-            <div class="column" id="bottom-left-table">
+            <div class="col-sm-4" id="bottom-left-table">
                 <form id="tier-select">
                     <p>Please select a tier:</p>
                     <select name="users" onchange="showTable(this.value), setPrice()" id="tier">
@@ -67,7 +69,7 @@
                 <button id="checkout">Continue to Payment</button>
 
             </div>
-            <div class="column" id="show-car-table"></div>
+            <div class="col-sm-8" id="show-car-table"></div>
         </div>
     </div>
     
