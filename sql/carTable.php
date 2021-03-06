@@ -20,7 +20,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
     // $sql = "SELECT * FROM `rcars` WHERE `tierCode` = $tier";
-    $sql = 'SELECT * FROM `rcars` WHERE 1 AND `tierCode` = "' . $tier . '"';
+    $sql = 'SELECT * FROM `rcars` WHERE 1 AND `tierCode` = "' . $tier . '" LIMIT 5';
     // ERROR IS HERE ^^^^^^^^^^^^^^^^^^
     $result = $conn->query($sql) or die($conn->error);
 
@@ -38,16 +38,18 @@
         <tbody>';
 
         // output data of each row
+        $inc = 1; 
         while($row = $result->fetch_assoc()) {
             echo'<tr>
             <th scope="row">
             <div class="radio">
-                <label><input type="radio" id="regular" name="optradio"></label>
+                <label><input type="radio" id="r' . strval($inc) . '" name="rowSelect" value="' . strval($inc) . '"></label>
             </div></th>
                 <td>' . $row['id'] . '</td>
                 <td>' . $row['model'] . '</td>
                 <td>' . $row['driver'] . '</td>
             </tr>';
+            $inc += 1;
         } 
         echo ' </tbody>
                 </table>';
