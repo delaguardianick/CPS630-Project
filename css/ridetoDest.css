@@ -23,10 +23,6 @@ body{
     /* The width is the width of the web page */
   }
   
-#nav-bar {
-  background-color: rgb(130, 161, 161);
-}
-
 #find-me{
   width: 2em;
   display: inline;
@@ -130,4 +126,8 @@ body{
 .row {
   padding-left:inherit;
   padding-right:inherit;
+}
+
+#car-table{
+  margin-left: 100px;
 }

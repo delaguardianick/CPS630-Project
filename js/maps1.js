@@ -2,9 +2,7 @@ var origin = "";
 var destination = "";
 var destCoords;
 var originCoords;
-var radius =0 ;
-var map;
-
+var radius;
 
 function geoFindMe() {
     const status = document.querySelector('#status');
@@ -44,31 +42,53 @@ function haversine_distance(mk1, mk2) {
 
 function initMap()
 {
-  // Gets address inputted in 'origin' text box
-  var origin = document.querySelector("#origin").value; 
-  var destination = document.querySelector("#destination").value;
-
-  // If text boxes are empty: when refreshing page
-  if (origin == '' || destination == ''){ 
-    // Location for toronto
-    var mapOrigin = {lat: 43.653908, lng: -79.384293}
-    basicMap(mapOrigin); // Creates a map object
-
-  }else{
+        var options ={ 
+        center:{lat: 43.654, lng: -79.383},
+        zoom: 10
+        //mapTypeId: google.maps.MapTypeId.HYBRID
+    };
+    // Gets address inputted in 'origin' text box
+    var origin = document.querySelector("#origin").value; 
 
     // Calls func geocode with the plain text address, returns coordinates
     // Since geocode has an asynchronous api call, 
     // Promise is used to wait for the data of geocode.
     geocode(origin).then(coords => {
       originCoords = coords;
-      mapOrigin = {lat: originCoords[0], lng: originCoords[1]};
+
+
+        mapOrigin = {lat: originCoords[0], lng: originCoords[1]};
+
+      // if (originCoords !== null){
+      // }
+      // else {mapOrigin = {lat: '43.653908', lng: '-79.384293'}}
+
+      // Get plain text address from input box
+      //var destination = document.querySelector("#destination").value;
   
       // Repeat geocode
-      geocode(destination).then(coords => {
+      geocode(selectedValue).then(coords => {
         destCoords =  coords;
         mapDestination = {lat: destCoords[0], lng: destCoords[1]};
       
-        basicMap(mapOrigin);
+        var map = new google.maps.Map(document.getElementById("map"),
+            { zoom: 12,
+              center: mapOrigin,
+            });
+            
+        //var inputDest = document.getElementById('destination');
+        var inputOrigin = document.getElementById('origin');
+        var searchBoxDest = new google.maps.places.SearchBox(selectedValue);
+        var searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
+        
+        map.addListener('bounds_changed', function(){
+          searchBoxDest.setBounds(map.getBounds());
+        });
+
+        map.addListener('bounds_changed', function(){
+          searchBoxOrigin.setBounds(map.getBounds());
+        });
+
 
         if (typeof mapOrigin !== 'undefined'){
           var marker = new google.maps.Marker(
@@ -93,6 +113,7 @@ function initMap()
           // Line and distance between markers
           var line = new google.maps.Polyline({path: [mapOrigin, mapDestination], map: map});
           radius = haversine_distance(marker, marker2);
+          console.log(radius);
           document.getElementById('radius').innerHTML = "Distance: " + radius.toFixed(2) + " km.";
 
           // Has to be under 50km
@@ -103,36 +124,15 @@ function initMap()
           else {
             document.getElementById('radius').innerHTML += "<br>Locations not within range. Please reduce distance!";
           }
+
       });
-    });
-  }
-  // var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
-  // document.dispatchEvent(event);
-}
-
-function basicMap(mapOrigin){
-  map = new google.maps.Map(document.getElementById("map"),
-            { zoom: 13,
-              center: mapOrigin,
-            });
-            
-  var inputDest = document.getElementById('destination');
-  var inputOrigin = document.getElementById('origin');
-  var searchBoxDest = new google.maps.places.SearchBox(inputDest);
-  var searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
-  
-  map.addListener('bounds_changed', function(){
-    searchBoxDest.setBounds(map.getBounds());
-  });
-
-  map.addListener('bounds_changed', function(){
-    searchBoxOrigin.setBounds(map.getBounds());
   });
 }
   
 async function geocode(address){
   address = address.replace(/\s/g, "+");
   url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM`
+  console.log(url);
 
   const request = await fetch(url);
   const data = await request.json();
@@ -142,6 +142,9 @@ async function geocode(address){
   return [lat,lng];
 }
 
+// END MAP
+
+
 $(document).ready(function (){
     document.querySelector('#find-me').addEventListener('click', geoFindMe);
     document.querySelector('#show-map').addEventListener('click', initMap);
@@ -149,3 +152,40 @@ $(document).ready(function (){
 
 })
 
+//stuff i just added
+var selectedValue;
+function btnfunction() {
+  const rbs = document.querySelectorAll('input[name="choice"]');
+  for (const rb of rbs) {
+      if (rb.checked) {
+          selectedValue = rb.value;
+          showTable(selectedValue);
+          break;
+      }
+  }
+  //alert(selectedValue);
+  console.log(selectedValue);
+};
+
+function test(str){
+  console.log("hello");
+  console.log(str);
+}
+//show items table
+function showTable(str) {
+  if (str == "") {
+    document.getElementById("show-car-table").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // console.log(this.responseText);
+        document.getElementById("show-car-table").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","sql/itemTable.php?q="+str,true);
+    xmlhttp.send();
+  }
+    
+}
