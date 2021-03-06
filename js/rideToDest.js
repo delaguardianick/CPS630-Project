@@ -7,6 +7,7 @@ var map;
 var tripDurInMins;
 var price;
 var tier;
+var allowCheckout = false;
 
 function geoFindMe() {
     const status = document.querySelector('#status');
@@ -95,15 +96,15 @@ function initMap()
           // Line and distance between markers
           var line = new google.maps.Polyline({path: [mapOrigin, mapDestination], map: map});
           radius = haversine_distance(marker, marker2);
-          document.getElementById('radius').innerHTML = "Distance: " + radius.toFixed(2) + " km.";
+          document.getElementById('distance-value').innerHTML = radius.toFixed(2) + " km.";
 
           // Has to be under 50km
           if (radius <= 50)
           {
-            document.getElementById('radius').innerHTML += "<br>Locations within range. Proceed for checkout!";
+            document.getElementById('status').innerHTML += "<br>Locations accepted. Please continue below!";
           }
           else {
-            document.getElementById('radius').innerHTML += "<br>Locations not within range. Please reduce distance!";
+            document.getElementById('status').innerHTML += "<br>Locations not within 50km. Please reduce distance!";
           }
           var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
           document.dispatchEvent(event);
@@ -218,12 +219,19 @@ function setPrice(){
       price = (5 + 0 + 15.75 + (0.95 * tripDurInMins) + (2.30 * distance))
     }
     console.log("inside if");
-    document.querySelector("#price").innerHTML = 'Price: CA$' + price.toFixed(2)  + '<br>Trip duration: ' + tripDurInMins.toFixed(0) + " minutes.";
+    document.querySelector("#price-value").innerHTML = "CA$" + price.toFixed(2);
+    document.querySelector("#duration-value").innerHTML = tripDurInMins.toFixed(0) + " minutes.";
   }
   else {
     console.log("inside else");
-    document.querySelector("#price").innerHTML = '';
+    document.querySelector("#price-value").innerHTML = '';
+    document.querySelector("#duration-value").innerHTML = '';
   }
+}
+
+function unhideTableRow(){
+  console.log("Tried to unhide!");
+  $("#bottom-left-table").css("visibility","visible");
 }
   
 function infoForPayment(){
@@ -239,9 +247,11 @@ function infoForPayment(){
 
   var selectedRow = findSelectedTableRow();
   if (selectedRow == null){
-    alert("Please select your driver");
+    alert("Please select a car");
+    allowCheckout = false;
   }
   else {
+    allowCheckout = true;
     var rCars = document.getElementById("car-table");
     var row = rCars.rows[selectedRow].childNodes;
 
@@ -288,13 +298,15 @@ function findSelectedTableRow(){
 
 $(document).ready(function (){
   document.querySelector('#find-me').addEventListener('click', geoFindMe);
-  document.querySelector('#show-map').addEventListener('click', initMap);  
-  document.querySelector('#radius').addEventListener('change', setPrice);
+  document.querySelector('#show-map').addEventListener('click',() => {initMap(), unhideTableRow()});  
+  document.querySelector('#distance-value').addEventListener('change', setPrice);
   document.querySelector('#checkout').addEventListener('click',infoForPayment);
   document.addEventListener("mapReloadedEvent", setPrice, {passive:true});
   editInputDate();
   document.getElementById("checkout").onclick = function () {
-    window.open("payment.php");
+    if (allowCheckout){
+      window.open("payment.php");
+    }
   }
     
   // $('#car-table tr').click(function() {

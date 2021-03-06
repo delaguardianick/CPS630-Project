@@ -65,7 +65,7 @@ body{
 }
 
 #top-left-side{
-  background-color: #b4c0d4;
+  background-color: #9CBDBF;
 }
 
 #show-map{
@@ -86,8 +86,21 @@ body{
 }
 
 #post-map-text {
-  background-color: #ced6e3;
+  background-color: #F9D8C7;
   text-align: center;
+}
+
+/* ----------------- */
+
+#bottom-left-table{
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #9CBDBF;
+}
+
+#bottom-left-table{
+  margin-bottom: 1%;
 }
 
 #tier-select {
@@ -112,11 +125,25 @@ body{
   border: black 2px solid;
 }
 
-#price {
+#price-duration-container {
   text-align: center;
+}
+
+#price, #duration, #distance {
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: bold; 
+  
 }
 
 .row {
   padding-left:inherit;
   padding-right:inherit;
+}
+
+#checkout {
+  margin-top:1em;
+  margin-left:0.2em;
+  margin-right:0.2em;
+  margin-bottom:0.2em;
 }
