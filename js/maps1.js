@@ -187,5 +187,11 @@ function showTable(str) {
     xmlhttp.open("GET","sql/itemTable.php?q="+str,true);
     xmlhttp.send();
   }
-    
+}
+function setPrice(){
+  console.log("setPrice called");
+  tier = document.querySelector("#item-price1").innerText;
+  console.log(tier);
+  price = 0;
+ 
 }
