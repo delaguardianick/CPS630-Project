@@ -23,29 +23,31 @@
                 <div id="top-left-side">
                     <div>
                         <h2 id="main-r2d-header">Ride to Destination:</h2>
-                        <br>
                     </div>
                     <div id="form">
                         <div id="pickup-location">
-                            <input type="text" name="origin" id="origin" placeholder="Enter Pickup Location">
-                            <input type="image" src="source/find-location.png" id="find-me" ></input>
-                            <br>
+                            <div id="origin-container"> 
+                                <input type="text" name="origin" id="origin" placeholder="Enter Pickup Location">
+                                <button type="button" id="find-me" class="btn btn-secondary btn-sm">Find me</button>
+                            </div>
+                            <!-- <input type="image" src="source/find-location.png" id="find-me" ></input> -->
                             <input type="text" name="destination" id="destination" placeholder="Enter Destination">
-                            <br>
-                            <br>
                         </div>
+                        <div id="date-header">
+                        <br>
+                            Schedule a date:</div>
                         <div id="pickup-time">
-                            <br>
-                            <label for="date">Date:</label>
+                            <label for="date"></label>
                                 <input type="date" name="date" id="date">
-                            <label for="time">Time:</label>
+                            <label for="time"></label>
                                 <input type="time" name="time" id="time" >
                         </div>
-                    
-                        <button type="button" id="show-map" >Search</button>
-                        <p id = "status"></p>
-                        <p id="radius"></p>
+                        <button type="button" id="show-map" class="btn btn-secondary" >Show map</button>
                     </div>
+                </div>
+                <div id="post-map-text"> 
+                    <p id="status"></p>
+                    <p id="radius"></p>
                 </div>
             </div>
             <div class="col-sm-8" id="map"></div>
@@ -57,18 +59,18 @@
             <div class="col-sm-4" id="bottom-left-table">
                 <form id="tier-select">
                     <p>Please select a tier:</p>
-                    <select name="users" onchange="showTable(this.value), setPrice()" id="tier">
-                    <option value="">Select a Tier:</option>
-                    <option value="econ">Economy (4 seater)</option>
-                    <option value="xl">XL (6+ seater)</option>
-                    <option value="premium">Premium (4 seater luxury) <option>
+                    <select class="form-select" aria-label="Default select example" name="users" onchange="showTable(this.value), setPrice()" id="tier">
+                        <option value="">Select a Tier:</option>
+                        <option value="econ">Economy (4 seater)</option>
+                        <option value="xl">XL (6+ seater)</option>
+                        <option value="premium">Premium (4 seater luxury) <option>
                     </select>
                 </form>
 
                 <div id="price"></div>
                 <br>
                 <br>
-                <button id="checkout"><a href="payment.php">to Payment </a> </button>
+                <button id="checkout">To Payment </a> </button>
 
             </div>
             <div class="col-sm-8" id="show-car-table"></div>

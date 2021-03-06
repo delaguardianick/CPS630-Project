@@ -1,9 +1,3 @@
-
-
-/* li {
-  display: inline;
-} */
-
 body{
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -23,54 +17,61 @@ body{
     /* The width is the width of the web page */
   }
   
+#origin-container {
+  display: flex;
+}
+
 #find-me{
-  width: 2em;
-  display: inline;
-  /* border: 0.5px solid blue; */
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 #form {
-  /* width: 30em; */
-  width: 30em;
-  margin-left: auto;
-  margin-right: auto;
-  /* border:1px solid black; */
-  margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
 }
 
 #pickup-location{
-  width: 20em;
-  float:left; 
+  /* width: 20em; */
+  /* float:left;  */
 }
 
 #pickup-location #destination{
-  padding:3%;
+  padding: 2%;
   margin: 1%;
-  width: 100%;
+  width: 98%;
 }
 
 
 #pickup-location #origin{
-  padding:3%;
+  padding: 2%;
   margin: 1%;
-  width: 85%;
+  width: 79%;
+}
+
+#date-header{
+  text-align: center;
+}
+
+#pickup-time {
+  display: flex;
 }
 
 #pickup-time input {
-  padding: 3%;
-  margin: 1.5%;
+  padding: 1.5%;
+  margin: 0.8%;
+  /* margin-left: 1%; */
+  flex-grow: 1;
 }
 
 #top-left-side{
   background-color: #b4c0d4;
 }
 
-#bottom-left-table {
-  /* background-color: #b4c0d4; */
+#show-map{
+  margin: 1%;
 
 }
-
-/* Lower half */
 
 #map {
   float: left;
@@ -84,50 +85,38 @@ body{
   height: auto;
 }
 
-#form {
-  padding-left: 2em;
-  float:left; 
-  display:inline; 
+#post-map-text {
+  background-color: #ced6e3;
+  text-align: center;
 }
-
-
-/* hr.dashed {
-  border-top: 3px dashed #bbb;
-} */
 
 #tier-select {
   text-align: center;
 }
 
-#car-table {
+#show-car-table{
+  padding-left: 0%;
+  padding-right: 0%;
 }
 
 #car-table tr:nth-child(odd) { background-color : white; }
 #car-table tr:nth-child(even) { background-color : #d3d0cb; }
 #car-table tr:hover { background-color : #e6dff7; }
 
-#car-table caption{
+/* #car-table caption{
   caption-side: top;
   text-align: center;
+} */
+
+#car-table {
+  border: black 2px solid;
 }
 
 #price {
   text-align: center;
 }
 
-#bottom-left-table {
-  float:left; display:inline; width: 27%;
-}
-
-#show-car-table{
-  float:left; display:inline; width: 70%;
-}
-
 .row {
   padding-left:inherit;
   padding-right:inherit;
-}
-
-#car-table{
-  margin-left: 100px;
 }

@@ -11,7 +11,7 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="nav-bar">
   <a class="navbar-brand" href="index.php">
-    <img src="source/logo.jpg" alt="logo" id="logo">
+    <img src="source/logo2.png" alt="logo" id="logo">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
