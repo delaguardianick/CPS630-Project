@@ -56,10 +56,10 @@
                 <form id="tier-select">
                     <p>Please select a tier:</p>
                     <select name="users" onchange="showTable(this.value), setPrice()" id="tier">
-                    <option value="">Select a person:</option>
-                    <option value="econ">Economy $</option>
-                    <option value="xl">XL $$</option>
-                    <option value="premium">Premium $$$</option>
+                    <option value="">Select a Tier:</option>
+                    <option value="econ">Economy (4 seater)</option>
+                    <option value="xl">XL (6+ seater)</option>
+                    <option value="premium">Premium (4 seater luxury) <option>
                     </select>
                 </form>
 

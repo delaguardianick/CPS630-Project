@@ -105,12 +105,13 @@ function initMap()
           else {
             document.getElementById('radius').innerHTML += "<br>Locations not within range. Please reduce distance!";
           }
+          var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
+          document.dispatchEvent(event);
       });
     });
   }
   // This event is used to recognize when the map is reloaded - in order to change price
-  var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
-  document.dispatchEvent(event);
+  
 }
 
 function basicMap(mapOrigin){
@@ -169,6 +170,9 @@ function currDateAndTime() {
 
   var hours = d.getHours();
   var min = d.getMinutes();
+  if (min.length == 1){
+    min = ("0" + min)
+  }
   var time = [hours,min].join(':')
   return [date,time]
 }
@@ -197,7 +201,7 @@ function setPrice(){
   tier = document.querySelector("#tier").value;
   var distance = radius.toFixed(2); // Distance in km
   price = 0;
-  tripDurInMins = (radius / 0.500) + 1; // 0.675km/minute is average speed in downtown toronto acc to my calc
+  tripDurInMins = (radius / 0.35) + 1; // 0.675km/minute is average speed in downtown toronto acc to my calc
  
   // Check if within 50km 
   if (radius < 50 && radius != 0) {
@@ -213,11 +217,11 @@ function setPrice(){
       // Base: $8.75; Booking fee: $0; Minimum: $15.75; per Minute: $0.85; Per Km: $2.23
       price = (5 + 0 + 15.75 + (0.95 * tripDurInMins) + (2.30 * distance))
     }
-    // console.log("inside if");
+    console.log("inside if");
     document.querySelector("#price").innerHTML = 'Price: CA$' + price.toFixed(2)  + '<br>Trip duration: ' + tripDurInMins.toFixed(0) + " minutes.";
   }
   else {
-    // console.log("inside else");
+    console.log("inside else");
     document.querySelector("#price").innerHTML = '';
   }
 }
@@ -230,17 +234,56 @@ function infoForPayment(){
   tripDurInMins;
   price;
   tier;
-  // var time = getCurrentTime();
+  var date = document.getElementById("date").value;
+  var time = document.getElementById("time").value;
+
+  var selectedRow = findSelectedTableRow();
+  if (selectedRow == null){
+    alert("Please select your driver");
+  }
+  else {
+    var rCars = document.getElementById("car-table");
+    var row = rCars.rows[selectedRow].childNodes;
+
+    var carId = row[3].innerText;
+    var carModel = row[5].innerText;
+    var driver = row[7].innerText;
+  }
+
+  var myJSON = `{"userId": "",
+    "pickup": "` + origin + `",
+    "destination": "` + destination + `",
+    "distance": ` + radius.toFixed(2) + `,
+    "price": ` + price.toFixed(2) + `,
+    "tripTime": ` + tripDurInMins.toFixed(0) + `,
+    "date": {
+      "date": "` + date + `",
+      "time": "`+ time +`"
+    },
+    "tier": "` + tier + `",
+    "carInfo":{
+      "carId": `+ carId +`,
+      "carModel": "`+ carModel +`",
+      "driver": "`+ driver +`"
+    }
+  }`;
+
+  console.log(myJSON);
+  localStorage.setItem('json',myJSON);
+  }
   
+function findSelectedTableRow(){
+  var allRadios = document.querySelectorAll('input[name="rowSelect"]');
+  var selectedRow = null;
 
-  console.log("pickup: " + origin + "\n" +
-  "destination: " + destination + "\n" +
-  "distance: " + radius.toFixed(1) + "\n" + 
-  "tripdur: " + tripDurInMins.toFixed(0) + "\n" + 
-  "price: " + price.toFixed(2) + "\n" + 
-  "tier: " + tier + "\n")
+  for (var radio of allRadios) {
+    if (radio.checked) {
+        selectedRow = radio.value;
+        break;
+    }
+  }
+  return selectedRow;
 }
-
 
 
 $(document).ready(function (){
@@ -248,8 +291,11 @@ $(document).ready(function (){
   document.querySelector('#show-map').addEventListener('click', initMap);  
   document.querySelector('#radius').addEventListener('change', setPrice);
   document.querySelector('#checkout').addEventListener('click',infoForPayment);
-  document.addEventListener("mapReloadedEvent", setPrice);
+  document.addEventListener("mapReloadedEvent", setPrice, {passive:true});
   editInputDate();
+  document.getElementById("checkout").onclick = function () {
+    window.open("payment.php");
+  }
     
   // $('#car-table tr').click(function() {
   //   console.log('pressed');
