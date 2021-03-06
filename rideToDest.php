@@ -30,7 +30,6 @@
                                 <input type="text" name="origin" id="origin" placeholder="Enter Pickup Location">
                                 <button type="button" id="find-me" class="btn btn-secondary btn-sm">Find me</button>
                             </div>
-                            <!-- <input type="image" src="source/find-location.png" id="find-me" ></input> -->
                             <input type="text" name="destination" id="destination" placeholder="Enter Destination">
                         </div>
                         <div id="date-header">
@@ -47,7 +46,6 @@
                 </div>
                 <div id="post-map-text"> 
                     <p id="status"></p>
-                    <p id="radius"></p>
                 </div>
             </div>
             <div class="col-sm-8" id="map"></div>
@@ -56,22 +54,31 @@
         <hr class="dashed">
 
         <div class="row">
-            <div class="col-sm-4" id="bottom-left-table">
-                <form id="tier-select">
-                    <p>Please select a tier:</p>
-                    <select class="form-select" aria-label="Default select example" name="users" onchange="showTable(this.value), setPrice()" id="tier">
-                        <option value="">Select a Tier:</option>
-                        <option value="econ">Economy (4 seater)</option>
-                        <option value="xl">XL (6+ seater)</option>
-                        <option value="premium">Premium (4 seater luxury) <option>
-                    </select>
-                </form>
+            <div class="col-sm-4">
+                <div id="bottom-left-table">
+                    <form id="tier-select">
+                        <p>Please select a tier:</p>
+                        <select class="form-select" aria-label="Default select example" name="users" onchange="showTable(this.value), setPrice()" id="tier">
+                            <option value="">Select a Tier:</option>
+                            <option value="econ">Economy (4 seater)</option>
+                            <option value="xl">XL (6+ seater)</option>
+                            <option value="premium">Premium (4 seater luxury) <option>
+                        </select>
+                    </form>
+                    <div id="price-duration-container">
+                        <div id="distance">
+                            Distance: <div id="distance-value"></div>
+                        </div>
+                        <div id="price">
+                            Price: <div id="price-value"></div>
+                        </div>
+                        <div id="duration">
+                            Trip duration: <div id="duration-value"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" id="checkout">To Payment</button>
 
-                <div id="price"></div>
-                <br>
-                <br>
-                <button id="checkout">To Payment </a> </button>
-
+                </div>
             </div>
             <div class="col-sm-8" id="show-car-table"></div>
         </div>
