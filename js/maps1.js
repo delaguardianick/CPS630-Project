@@ -221,7 +221,6 @@ console.log("THE JASON");
   var myJSON = `{"userId": "",
     "pickup": "` + storename + `",
     "destination": "` + origin + `",
-    "price": ` + price + `,
     "itemInfo":{
       "itemId": `+ itemId +`,
       "item": "`+ item +`",
