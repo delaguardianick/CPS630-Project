@@ -48,7 +48,7 @@ function initMap()
         //mapTypeId: google.maps.MapTypeId.HYBRID
     };
 
-    var origin = document.querySelector("#origin").value; 
+    origin = document.querySelector("#origin").value; 
 
     if (origin == '' || selectedStore == ''){ 
       // Location for toronto
@@ -146,15 +146,6 @@ async function geocode(address){
 // END MAP
 
 
-$(document).ready(function (){
-    document.querySelector('#find-me').addEventListener('click', geoFindMe);
-    document.querySelector('#show-map').addEventListener('click', initMap);
-    document.querySelector('#checkout').addEventListener('click',infoForPayment);
-    document.getElementById("#checkout").onclick = function () {
-      window.open("paymentItems.php");
-    }
-})
-
 //stuff i just added
 var selectedStore;
 function btnfunction() {
@@ -218,21 +209,22 @@ function infoForPayment(){
     var storename = row[7].innerText;
     var price = row[9].innerText;
   }
-console.log("THE JASON");
-  var myJSON = `{"userId": "",
-    "pickup": "` + storename + `",
-    "destination": "` + origin + `",
-    "itemInfo":{
-      "itemId": `+ itemId +`,
-      "item": "`+ item +`",
-      "storename": "`+ storename +`",
-      "price":"`+ price +`"
-    }
-  }`;
+  console.log("THE JASON");
+    var myJSON = `{"userId": "",
+      "pickup": "` + storename + `",
+      "destination": "` + origin + `",
+      "itemInfo":{
+        "itemId": `+ itemId +`,
+        "item": "`+ item +`",
+        "storename": "`+ storename +`",
+        "price":"`+ price +`"
+      }
+    }`;
 
   console.log(myJSON);
   localStorage.setItem('jsonItems',myJSON);
   }
+
 function findSelectedTableRow(){
   var allRadios = document.querySelectorAll('input[name="rowSelect"]');
   var selectedRow = null;
@@ -245,3 +237,12 @@ function findSelectedTableRow(){
   }
   return selectedRow;
 }
+
+$(document).ready(function (){
+  document.querySelector('#find-me').addEventListener('click', geoFindMe);
+  document.querySelector('#show-map').addEventListener('click', initMap);
+  document.querySelector('#checkout').addEventListener('click',infoForPayment);
+  document.getElementById("#checkout").onclick = function () {
+    window.open("paymentItems.php");
+  }
+})
