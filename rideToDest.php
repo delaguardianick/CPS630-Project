@@ -67,12 +67,13 @@
                         </select>
                     </form>
                     <div id="price-duration-container">
-                        <div id="distance">
-                            Distance: <div id="distance-value"></div>
-                        </div>
                         <div id="price">
                             Price: <div id="price-value"></div>
                         </div>
+                        <div id="distance">
+                            Distance: <div id="distance-value"></div>
+                        </div>
+                        
                         <div id="duration">
                             Trip duration: <div id="duration-value"></div>
                         </div>
