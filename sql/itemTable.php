@@ -20,7 +20,7 @@
     if ($result->num_rows > 0) {
         echo'
         
-        <table class="center"; cellpadding="4"; cellspacing:"100"; text-align:"center";>
+        <table class="center"; cellpadding="4"; cellspacing:"100"; text-align:"center" id="car-table";>
             <tr>
                 <th></th>
                 <th>Item ID</th>
@@ -30,20 +30,24 @@
             </tr>';
 
         // output data of each row
+        $inc = 1; 
         while($row = $result->fetch_assoc()) {
             echo'<tr>
-            <td>
+            <td scope="row">
             <div class="radio">
-                <input type="checkbox" id="tier" name="optradio" value ="'.$row['price'].'" onclick="setPrice()">
+                <label><input type="radio" id="r' . strval($inc) . '" name="rowSelect" value="' . strval($inc) . '"></label>
             </div></td>
                 <td>' . $row['id'] . '</td>
                 <td>' . $row['item'] . '</td>
                 <td>' . $row['store_name'] . '</td>
-                <td id="item-price1">' . $row['price'] . '</td>
+                <td>' . $row['price'] . '</td>
             </tr>';
+            $inc += 1;
         } 
-        echo '</table>
-        <button class="checkout">Proceed to Checkout</button>';
+        echo ' </tbody>
+                </table>
+                <button class="show-price" onclick="infoForPayment()">log price</button>
+                <button class="checkout"><a href="paymentItems.php">Proceed to Checkout</a></button>';
     }else {
         echo "0 results";
     }

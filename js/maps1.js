@@ -67,7 +67,7 @@ function initMap()
       //var destination = document.querySelector("#destination").value;
   
       // Repeat geocode
-      geocode(selectedValue).then(coords => {
+      geocode(selectedStore).then(coords => {
         destCoords =  coords;
         mapDestination = {lat: destCoords[0], lng: destCoords[1]};
       
@@ -78,7 +78,7 @@ function initMap()
             
         //var inputDest = document.getElementById('destination');
         var inputOrigin = document.getElementById('origin');
-        var searchBoxDest = new google.maps.places.SearchBox(selectedValue);
+        var searchBoxDest = new google.maps.places.SearchBox(selectedStore);
         var searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
         
         map.addListener('bounds_changed', function(){
@@ -148,23 +148,25 @@ async function geocode(address){
 $(document).ready(function (){
     document.querySelector('#find-me').addEventListener('click', geoFindMe);
     document.querySelector('#show-map').addEventListener('click', initMap);
-
-
+    document.querySelector('#checkout').addEventListener('click',infoForPayment);
+    document.getElementById("#checkout").onclick = function () {
+      window.open("paymentItems.php");
+    }
 })
 
 //stuff i just added
-var selectedValue;
+var selectedStore;
 function btnfunction() {
   const rbs = document.querySelectorAll('input[name="choice"]');
   for (const rb of rbs) {
       if (rb.checked) {
-          selectedValue = rb.value;
-          showTable(selectedValue);
+          selectedStore = rb.value;
+          showTable(selectedStore);
           break;
       }
   }
-  //alert(selectedValue);
-  console.log(selectedValue);
+  //alert(selectedStore);
+  console.log(selectedStore);
 };
 
 function test(str){
@@ -194,4 +196,52 @@ function setPrice(){
   console.log(tier);
   price = 0;
  
+}
+function infoForPayment(){
+  console.log("got to infoforpayment");
+  origin;
+  console.log(origin);
+  selectedStore;
+  console.log(selectedStore);
+
+  var selectedRow = findSelectedTableRow();
+  if (selectedRow == null){
+    alert("Please select what you want");
+  }
+  else {
+    var rCars = document.getElementById("car-table");
+    var row = rCars.rows[selectedRow].childNodes;
+
+    var itemId = row[3].innerText;
+    var item = row[5].innerText;
+    var storename = row[7].innerText;
+    var price = row[9].innerText;
+  }
+console.log("THE JASON");
+  var myJSON = `{"userId": "",
+    "pickup": "` + storename + `",
+    "destination": "` + origin + `",
+    "price": ` + price + `,
+    "itemInfo":{
+      "itemId": `+ itemId +`,
+      "item": "`+ item +`",
+      "storename": "`+ storename +`",
+      "price":"`+ price +`"
+    }
+  }`;
+
+  console.log(myJSON);
+  localStorage.setItem('jsonItems',myJSON);
+  }
+function findSelectedTableRow(){
+  var allRadios = document.querySelectorAll('input[name="rowSelect"]');
+  var selectedRow = null;
+
+  for (var radio of allRadios) {
+    if (radio.checked) {
+        selectedRow = radio.value;
+        break;
+    }
+  }
+  return selectedRow;
 }

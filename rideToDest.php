@@ -66,7 +66,7 @@
                 <div id="price"></div>
                 <br>
                 <br>
-                <button id="checkout"><a href="payment.php">to Payment </a> </button>
+                <button id="checkout">to Payment</button>
 
             </div>
             <div class="column" id="show-car-table"></div>

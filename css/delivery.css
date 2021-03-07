@@ -110,7 +110,7 @@ btn{
     padding: 0.5vw;
   }
   
-  input[type=radio] {
+  #pictures input[type=radio] {
     display: none;
   }
   
@@ -181,3 +181,6 @@ th td{
   color: white;
 }
 
+input[type="radio"]{
+  -webkit-appearance: radio;
+}
