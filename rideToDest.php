@@ -19,57 +19,69 @@
     <br>
     <div class="container-fluid">
         <div class="row"> 
-            <div class="column" id="top-left-side">
-                <div>
-                    <h2 id="main-r2d-header">Ride to Destination:</h2>
-                    <br>
+            <div class="col-sm-4">
+                <div id="top-left-side">
+                    <div>
+                        <h2 id="main-r2d-header">Ride to Destination:</h2>
+                    </div>
+                    <div id="form">
+                        <div id="pickup-location">
+                            <div id="origin-container"> 
+                                <input type="text" name="origin" id="origin" placeholder="Enter Pickup Location">
+                                <button type="button" id="find-me" class="btn btn-secondary btn-sm">Find me</button>
+                            </div>
+                            <input type="text" name="destination" id="destination" placeholder="Enter Destination">
+                        </div>
+                        <div id="date-header">
+                        <br>
+                            Schedule a date:</div>
+                        <div id="pickup-time">
+                            <label for="date"></label>
+                                <input type="date" name="date" id="date">
+                            <label for="time"></label>
+                                <input type="time" name="time" id="time" >
+                        </div>
+                        <button type="button" id="show-map" class="btn btn-secondary" >Show map</button>
+                    </div>
                 </div>
-                <div id="form">
-                    <div id="pickup-location">
-                        <input type="text" name="origin" id="origin" placeholder="Enter Pickup Location">
-                        <input type="image" src="source/find-location.png" id="find-me" ></input>
-                        <br>
-                        <input type="text" name="destination" id="destination" placeholder="Enter Destination">
-                        <br>
-                        <br>
-                    </div>
-                    <div id="pickup-time">
-                        <br>
-                        <label for="date">Date:</label>
-                            <input type="date" name="date" id="date">
-                        <label for="time">Time:</label>
-                            <input type="time" name="time" id="time" >
-                    </div>
-                
-                    <button type="button" id="show-map" >Search</button>
-                    <p id = "status"></p>
-                    <p id="radius"></p>
+                <div id="post-map-text"> 
+                    <!-- <div id="status"></div> -->
                 </div>
             </div>
-            <div class="column" id="map"></div>
+            <div class="col-sm-8" id="map"></div>
         </div>
         <!-- TABLE -->
         <hr class="dashed">
 
         <div class="row">
-            <div class="column" id="bottom-left-table">
-                <form id="tier-select">
-                    <p>Please select a tier:</p>
-                    <select name="users" onchange="showTable(this.value), setPrice()" id="tier">
-                    <option value="">Select a Tier:</option>
-                    <option value="econ">Economy (4 seater)</option>
-                    <option value="xl">XL (6+ seater)</option>
-                    <option value="premium">Premium (4 seater luxury) <option>
-                    </select>
-                </form>
+            <div class="col-sm-4">
+                <h5 id="status"></h5>
+                <div id="bottom-left-table">
+                    <form id="tier-select">
+                        <!-- <p>Please select a tier:</p> -->
+                        <select class="form-select" aria-label="Default select example" name="users" onchange="showTable(this.value), setPrice()" id="tier">
+                            <option value="">Select a Tier:</option>
+                            <option value="econ">Economy (4 seater)</option>
+                            <option value="xl">XL (6+ seater)</option>
+                            <option value="premium">Premium (4 seater luxury) <option>
+                        </select>
+                    </form>
+                    <div id="price-duration-container">
+                        <div id="distance">
+                            Distance: <div id="distance-value"></div>
+                        </div>
+                        <div id="price">
+                            Price: <div id="price-value"></div>
+                        </div>
+                        <div id="duration">
+                            Trip duration: <div id="duration-value"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" id="checkout">To Payment</button>
 
-                <div id="price"></div>
-                <br>
-                <br>
-                <button id="checkout">to Payment</button>
-
+                </div>
             </div>
-            <div class="column" id="show-car-table"></div>
+            <div class="col-sm-8" id="show-car-table"></div>
         </div>
     </div>
     

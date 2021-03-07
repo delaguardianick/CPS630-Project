@@ -48,22 +48,23 @@
     } else {
         echo "Error creating table: " . mysqli_error($conn);
     }
-    $sql = "CREATE TABLE itemOrders(
-        orderId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        userId VARCHAR(30),
-        carId VARCHAR(30) NOT NULL,
-        origin VARCHAR(30) NOT NULL,
-        dest VARCHAR(30) NOT NULL,
-        distance INT(6) NOT NULL,
-        tier VARCHAR(30) NOT NULL,
-        price INT(6),
-        rideDate DATETIME, 
-        dateOfTransaction TIMESTAMP
+
+     // sql to create ITEMS table
+     $sql = "CREATE TABLE items(
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        item VARCHAR(30) NOT NULL,
+        store_name VARCHAR(30) NOT NULL,
+        address VARCHAR(150) NOT NULL,
+        price DECIMAL(20,2),
+        reg_date TIMESTAMP
     )";
     
     if (mysqli_query($conn, $sql)) {
-        echo "Trips table created successfully";
+        echo "items created successfully";
     } else {
         echo "Error creating table: " . mysqli_error($conn);
     }
+
+    mysqli_close($conn);
+    
 ?>

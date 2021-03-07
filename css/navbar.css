@@ -1,21 +1,21 @@
 #nav-bar {
     /* background-color: pink; */
-  }
-  ul {
-    /* list-style-type: none; */
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar li {
-    color: white;
-    /* display: inline; */
-  }
+}
+.navbar ul {
+  /* list-style-type: none; */
+  margin: 0;
+  padding: 0;
+}
 
-  #nav-right{
-      float: right;
-  }
+.navbar li {
+  color: white;
+  /* display: inline; */
+}
+
+#nav-right{
+    float: right;
+}
 
 #logo{
-    width: 60px;
+    width: 3.2em;
 }
