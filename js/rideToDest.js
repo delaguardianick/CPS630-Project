@@ -297,10 +297,6 @@ $(document).ready(function (){
     window.open("payment.php");
   }
     
-  // $('#car-table tr').click(function() {
-  //   console.log('pressed');
-  //   $(this).find('th input:radio').prop('checked', true);
-  // })
  //$('#car-table tr').click(function() {
  //  console.log('pressed');
  //  $(this).find('th input:radio').prop('checked', true);
