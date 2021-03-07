@@ -301,4 +301,8 @@ $(document).ready(function (){
   //   console.log('pressed');
   //   $(this).find('th input:radio').prop('checked', true);
   // })
+ //$('#car-table tr').click(function() {
+ //  console.log('pressed');
+ //  $(this).find('th input:radio').prop('checked', true);
+ //})
 });
