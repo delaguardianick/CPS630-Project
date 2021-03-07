@@ -47,48 +47,33 @@ function initMap()
         zoom: 10
         //mapTypeId: google.maps.MapTypeId.HYBRID
     };
+
+    origin = document.querySelector("#origin").value; 
+
+    if (origin == '' || selectedStoreAddress == ''){ 
+      // Location for toronto
+      var mapOrigin = {lat: 43.653908, lng: -79.384293}
+      basicMap(mapOrigin); // Creates a map object
+  
+    }else{
     // Gets address inputted in 'origin' text box
-    var origin = document.querySelector("#origin").value; 
 
     // Calls func geocode with the plain text address, returns coordinates
     // Since geocode has an asynchronous api call, 
     // Promise is used to wait for the data of geocode.
     geocode(origin).then(coords => {
       originCoords = coords;
-
-
-        mapOrigin = {lat: originCoords[0], lng: originCoords[1]};
-
-      // if (originCoords !== null){
-      // }
-      // else {mapOrigin = {lat: '43.653908', lng: '-79.384293'}}
+      mapOrigin = {lat: originCoords[0], lng: originCoords[1]};
 
       // Get plain text address from input box
       //var destination = document.querySelector("#destination").value;
   
       // Repeat geocode
-      geocode(selectedValue).then(coords => {
+      geocode(selectedStoreAddress).then(coords => {
         destCoords =  coords;
         mapDestination = {lat: destCoords[0], lng: destCoords[1]};
-      
-        var map = new google.maps.Map(document.getElementById("map"),
-            { zoom: 12,
-              center: mapOrigin,
-            });
-            
-        //var inputDest = document.getElementById('destination');
-        var inputOrigin = document.getElementById('origin');
-        var searchBoxDest = new google.maps.places.SearchBox(selectedValue);
-        var searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
-        
-        map.addListener('bounds_changed', function(){
-          searchBoxDest.setBounds(map.getBounds());
-        });
 
-        map.addListener('bounds_changed', function(){
-          searchBoxOrigin.setBounds(map.getBounds());
-        });
-
+        basicMap(mapOrigin);
 
         if (typeof mapOrigin !== 'undefined'){
           var marker = new google.maps.Marker(
@@ -128,6 +113,22 @@ function initMap()
       });
   });
 }
+}
+
+
+function basicMap(mapOrigin){
+  map = new google.maps.Map(document.getElementById("map"),
+            { zoom: 13,
+              center: mapOrigin,
+            });
+            
+  var inputOrigin = document.getElementById('origin');
+  var searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
+
+  map.addListener('bounds_changed', function(){
+    searchBoxOrigin.setBounds(map.getBounds());
+  });
+}
   
 async function geocode(address){
   address = address.replace(/\s/g, "+");
@@ -145,26 +146,19 @@ async function geocode(address){
 // END MAP
 
 
-$(document).ready(function (){
-    document.querySelector('#find-me').addEventListener('click', geoFindMe);
-    document.querySelector('#show-map').addEventListener('click', initMap);
-
-
-})
-
 //stuff i just added
-var selectedValue;
+var selectedStoreAddress;
 function btnfunction() {
   const rbs = document.querySelectorAll('input[name="choice"]');
   for (const rb of rbs) {
       if (rb.checked) {
-          selectedValue = rb.value;
-          showTable(selectedValue);
+          selectedStoreAddress = rb.value;
+          showTable(selectedStoreAddress);
           break;
       }
   }
-  //alert(selectedValue);
-  console.log(selectedValue);
+  //alert(selectedStoreAddress);
+  console.log(selectedStoreAddress);
 };
 
 function test(str){
@@ -195,3 +189,63 @@ function setPrice(){
   price = 0;
  
 }
+function infoForPayment(){
+  console.log("got to infoforpayment");
+  origin;
+  console.log(origin);
+  selectedStoreAddress;
+  console.log(selectedStoreAddress);
+  // if(origin == ""){
+  //   alert("Please enter your address!");
+  // }
+
+  var selectedRow = findSelectedTableRow();
+  if (selectedRow == null){
+    alert("Please select what you want");
+  }
+  else {
+    var rCars = document.getElementById("car-table");
+    var row = rCars.rows[selectedRow].childNodes;
+
+    var itemId = row[3].innerText;
+    var item = row[5].innerText;
+    var storename = row[7].innerText;
+    var price = row[9].innerText;
+  }
+  console.log("THE JASON");
+    var myJSON = `{"userId": "",
+      "storename": "` + storename + `",
+      "destination": "` + origin + `",
+      "itemInfo":{
+        "itemId": `+ itemId +`,
+        "item": "`+ item +`",
+        "pickup": "`+ selectedStoreAddress +`",
+        "price":"`+ price +`"
+      }
+    }`;
+
+  console.log(myJSON);
+  localStorage.setItem('jsonItems',myJSON);
+  }
+
+function findSelectedTableRow(){
+  var allRadios = document.querySelectorAll('input[name="rowSelect"]');
+  var selectedRow = null;
+
+  for (var radio of allRadios) {
+    if (radio.checked) {
+        selectedRow = radio.value;
+        break;
+    }
+  }
+  return selectedRow;
+}
+
+$(document).ready(function (){
+  document.querySelector('#find-me').addEventListener('click', geoFindMe);
+  document.querySelector('#show-map').addEventListener('click', initMap);
+  document.querySelector('#checkout').addEventListener('click',infoForPayment());
+  document.getElementById("#checkout").onclick = function () {
+    window.open("paymentItems.php");
+  }
+})
