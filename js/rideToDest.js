@@ -249,7 +249,7 @@ function infoForPayment(){
 
   var selectedRow = findSelectedTableRow();
   if (selectedRow == null){
-    alert("Please select a car");
+    alert("Please select a car on the table.");
     allowCheckout = false;
   }
   else {
