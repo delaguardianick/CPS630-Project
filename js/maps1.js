@@ -47,21 +47,23 @@ function initMap()
         zoom: 10
         //mapTypeId: google.maps.MapTypeId.HYBRID
     };
-    // Gets address inputted in 'origin' text box
+
     var origin = document.querySelector("#origin").value; 
+
+    if (origin == '' || selectedStore == ''){ 
+      // Location for toronto
+      var mapOrigin = {lat: 43.653908, lng: -79.384293}
+      basicMap(mapOrigin); // Creates a map object
+  
+    }else{
+    // Gets address inputted in 'origin' text box
 
     // Calls func geocode with the plain text address, returns coordinates
     // Since geocode has an asynchronous api call, 
     // Promise is used to wait for the data of geocode.
     geocode(origin).then(coords => {
       originCoords = coords;
-
-
-        mapOrigin = {lat: originCoords[0], lng: originCoords[1]};
-
-      // if (originCoords !== null){
-      // }
-      // else {mapOrigin = {lat: '43.653908', lng: '-79.384293'}}
+      mapOrigin = {lat: originCoords[0], lng: originCoords[1]};
 
       // Get plain text address from input box
       //var destination = document.querySelector("#destination").value;
@@ -70,25 +72,8 @@ function initMap()
       geocode(selectedStore).then(coords => {
         destCoords =  coords;
         mapDestination = {lat: destCoords[0], lng: destCoords[1]};
-      
-        var map = new google.maps.Map(document.getElementById("map"),
-            { zoom: 12,
-              center: mapOrigin,
-            });
-            
-        //var inputDest = document.getElementById('destination');
-        var inputOrigin = document.getElementById('origin');
-        var searchBoxDest = new google.maps.places.SearchBox(selectedStore);
-        var searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
-        
-        map.addListener('bounds_changed', function(){
-          searchBoxDest.setBounds(map.getBounds());
-        });
 
-        map.addListener('bounds_changed', function(){
-          searchBoxOrigin.setBounds(map.getBounds());
-        });
-
+        basicMap(mapOrigin);
 
         if (typeof mapOrigin !== 'undefined'){
           var marker = new google.maps.Marker(
@@ -126,6 +111,22 @@ function initMap()
           }
 
       });
+  });
+}
+}
+
+
+function basicMap(mapOrigin){
+  map = new google.maps.Map(document.getElementById("map"),
+            { zoom: 13,
+              center: mapOrigin,
+            });
+            
+  var inputOrigin = document.getElementById('origin');
+  var searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
+
+  map.addListener('bounds_changed', function(){
+    searchBoxOrigin.setBounds(map.getBounds());
   });
 }
   
