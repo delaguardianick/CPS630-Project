@@ -10,6 +10,15 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+    // sql to create car table
+    $sql = "CREATE TABLE users(
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        usersId VARCHAR(30) NOT NULL,
+        usersName VARCHAR(30) NOT NULL,
+        usersEmail VARCHAR(150) NOT NULL,
+        usersUid VARCHAR(50),
+        usersPwd VARCHAR(50)
+    )";
 
     // sql to create car table
     $sql = "CREATE TABLE rCars(
