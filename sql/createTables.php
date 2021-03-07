@@ -67,4 +67,24 @@
 
     mysqli_close($conn);
     
+
+        // order table
+        $sql = "CREATE TABLE orders(
+            orderId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            userId VARCHAR(30),
+            itemId VARCHAR(30) NOT NULL,
+            store_name VARCHAR(30) NOT NULL,
+            store_address INT(6) NOT NULL,
+            dest VARCHAR(30) NOT NULL,
+            item VARCHAR(30) NOT NULL,
+            price INT(6),
+            orderDate DATETIME, 
+            dateOfTransaction TIMESTAMP
+        )";
+        
+        if (mysqli_query($conn, $sql)) {
+            echo "Trips table created successfully";
+        } else {
+            echo "Error creating table: " . mysqli_error($conn);
+        }
 ?>

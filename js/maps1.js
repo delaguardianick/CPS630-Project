@@ -48,7 +48,7 @@ function initMap()
         //mapTypeId: google.maps.MapTypeId.HYBRID
     };
     // Gets address inputted in 'origin' text box
-    var origin = document.querySelector("#origin").value; 
+    origin = document.querySelector("#origin").value; 
 
     // Calls func geocode with the plain text address, returns coordinates
     // Since geocode has an asynchronous api call, 
@@ -224,7 +224,7 @@ console.log("THE JASON");
     "itemInfo":{
       "itemId": `+ itemId +`,
       "item": "`+ item +`",
-      "storename": "`+ storename +`",
+      "storename": "`+ selectedStore +`",
       "price":"`+ price +`"
     }
   }`;
