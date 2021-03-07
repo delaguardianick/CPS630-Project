@@ -107,7 +107,17 @@
                             <p class="card-text" >By placing your order, you agree to our privacy notice and conditions of use.</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" >User ID: <div id="userId"></div></li>
+                        <?php
+                                        //is the user logged in? if they are then change nav bar
+                                if(isset($_SESSION["userid"])){
+                                    echo "<li class='list-group-item' id='userId'>User ID: " . $_SESSION["userid"] ."</li>";
+                                }
+                                else{
+                                    //if not logged in
+                                    echo "<li class='list-group-item' id='userId'>User ID: None, Please Login! </li>";
+                                }
+                                ?>
+                            <!-- <li class="list-group-item" >User ID: <div id="userId"></div></li> -->
                             <li class="list-group-item">Pickup Location: <div id="pickup"></div></li>
                             <li class="list-group-item">Destination: <div id="destination"></div></li>
                             <li class="list-group-item">Pickup date: <div id="date"></div></li>

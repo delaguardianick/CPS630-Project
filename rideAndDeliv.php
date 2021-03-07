@@ -12,6 +12,9 @@
     <nav>
         <?php include 'navigation.php';?>
     </nav>
+    <div class="container">
+  <div class="row">
+    <div class="col-4">
     <div id="form">
         <div id="pickup-location"> <h4>Where are you:</h4>
             <input class="form-control" type="text" name="origin" id="origin" placeholder="your location">
@@ -24,7 +27,13 @@
             </div> 
         </div>
     </div>
+    </div>
+    <div class="col-8">
     <div id="map"></div>
+    </div>
+  </div>
+    </div>
+    
     <br>
     <br>
     <div class="bottom">
@@ -40,14 +49,14 @@
                     <h5>Toronto Flower Gallery</h5>
                 </div>
                 <div class="col-sm">
-                    <input type="radio" name="choice" id="choose-2" value="50 Gould St, Toronto, ON M5B 2K3" onclick="btnfunction()"/>
+                    <input type="radio" name="choice" id="choose-2" value="106 Mutual St Unit 8, Toronto, ON M5B 2R7" onclick="btnfunction()"/>
                         <label for="choose-2">
                         <img src="source/coffee.png" width="300px;">
                     </label>
                     <h5>Page One Cafe</h5>
                 </div>
                 <div class="col-sm">
-                <input type="radio" name="choice" id="choose-3" value="106 Mutual St Unit 8, Toronto, ON M5B 2R7" onclick="btnfunction()"/>
+                <input type="radio" name="choice" id="choose-3" value="50 Gould St, Toronto, ON M5B 2K3" onclick="btnfunction()"/>
                         <label for="choose-3">
                         <img src="source/timmies.png" width="300px;">
                     </label>

@@ -50,7 +50,7 @@ function initMap()
 
     origin = document.querySelector("#origin").value; 
 
-    if (origin == '' || selectedStore == ''){ 
+    if (origin == '' || selectedStoreAddress == ''){ 
       // Location for toronto
       var mapOrigin = {lat: 43.653908, lng: -79.384293}
       basicMap(mapOrigin); // Creates a map object
@@ -69,7 +69,7 @@ function initMap()
       //var destination = document.querySelector("#destination").value;
   
       // Repeat geocode
-      geocode(selectedStore).then(coords => {
+      geocode(selectedStoreAddress).then(coords => {
         destCoords =  coords;
         mapDestination = {lat: destCoords[0], lng: destCoords[1]};
 
@@ -147,18 +147,18 @@ async function geocode(address){
 
 
 //stuff i just added
-var selectedStore;
+var selectedStoreAddress;
 function btnfunction() {
   const rbs = document.querySelectorAll('input[name="choice"]');
   for (const rb of rbs) {
       if (rb.checked) {
-          selectedStore = rb.value;
-          showTable(selectedStore);
+          selectedStoreAddress = rb.value;
+          showTable(selectedStoreAddress);
           break;
       }
   }
-  //alert(selectedStore);
-  console.log(selectedStore);
+  //alert(selectedStoreAddress);
+  console.log(selectedStoreAddress);
 };
 
 function test(str){
@@ -193,8 +193,11 @@ function infoForPayment(){
   console.log("got to infoforpayment");
   origin;
   console.log(origin);
-  selectedStore;
-  console.log(selectedStore);
+  selectedStoreAddress;
+  console.log(selectedStoreAddress);
+  // if(origin == ""){
+  //   alert("Please enter your address!");
+  // }
 
   var selectedRow = findSelectedTableRow();
   if (selectedRow == null){
@@ -211,12 +214,12 @@ function infoForPayment(){
   }
   console.log("THE JASON");
     var myJSON = `{"userId": "",
-      "pickup": "` + storename + `",
+      "storename": "` + storename + `",
       "destination": "` + origin + `",
       "itemInfo":{
         "itemId": `+ itemId +`,
         "item": "`+ item +`",
-        "storename": "`+ storename +`",
+        "pickup": "`+ selectedStoreAddress +`",
         "price":"`+ price +`"
       }
     }`;
@@ -241,7 +244,7 @@ function findSelectedTableRow(){
 $(document).ready(function (){
   document.querySelector('#find-me').addEventListener('click', geoFindMe);
   document.querySelector('#show-map').addEventListener('click', initMap);
-  document.querySelector('#checkout').addEventListener('click',infoForPayment);
+  document.querySelector('#checkout').addEventListener('click',infoForPayment());
   document.getElementById("#checkout").onclick = function () {
     window.open("paymentItems.php");
   }

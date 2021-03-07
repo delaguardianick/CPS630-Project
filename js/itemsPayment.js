@@ -1,5 +1,4 @@
 
-
 var myJSON;
 $(function() {
     $('[data-toggle="tooltip"]').tooltip()
@@ -7,11 +6,11 @@ $(function() {
 
 function setSummaryData(obj){
     //var userID = obj.userId;
-    var pickup = obj.pickup;
+    var pickup = obj.itemInfo.pickup;
     var destination = obj.destination;
     var itemId = obj.itemInfo.itemId;
     var item = obj.itemInfo.item;
-    var storename = obj.itemInfo.storename;
+    var storename = obj.storename;
     var price = obj.itemInfo.price;
 
     //document.getElementById("userId").innerHTML = userID;
@@ -21,19 +20,25 @@ function setSummaryData(obj){
     document.getElementById("item").textContent = item;
     document.getElementById("address").textContent = storename;
     document.getElementById("price").innerHTML = price;
-    // document.getElementById("userId")
+    var hello = document.getElementById("userId").innerText;
+    console.log("BITCH");
+    console.log(hello);
+    console.log(pickup);
+    console.log(item);
+    console.log(storename);
+    console.log(price);
 }
 
-// function storeRecord(){
-//     $.post("sql/storeTripRecord.php",
-//     {
-//       json: myJSON,
-//     },
-//     function(data, status){
-//         document.getElementById("payment-status").innerHTML = data;
-//         console.log("Data: " + data + "\nStatus: " + status);
-//     });
-// }
+function storeRecord(){
+    $.post("sql/orderRecord.php",
+    {
+      json: myJSON,
+    },
+    function(data, status){
+        document.getElementById("payment-status").innerHTML = data;
+        console.log("Data: " + data + "\nStatus: " + status);
+    });
+}
 
 $(document).ready(function (){
     // document.getElementById("payment-status").innerHTML = '';

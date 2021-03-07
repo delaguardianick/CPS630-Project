@@ -107,7 +107,18 @@
                             <p class="card-text" >By placing your order, you agree to our privacy notice and conditions of use.</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" >User ID: <div id="userId"></div></li>
+                            <?php
+                                        //is the user logged in? if they are then change nav bar
+                                if(isset($_SESSION["userid"])){
+                                    echo "<li class='list-group-item' id='userId'>User ID: " . $_SESSION["userid"] ."</li>";
+                                }
+                                else{
+                                    //if not logged in
+                                    echo "<li class='list-group-item' id='userId'>User ID: None, Please Login! </li>";
+                                }
+                                ?>
+                        
+                            <!-- <li class="list-group-item" >User ID: <div id="userId"></div></li> -->
                             <li class="list-group-item">Store: <div id="pickup"></div></li>
                             <li class="list-group-item">Destination: <div id="destination"></div></li>
                             <li class="list-group-item">Item ID: <div id="itemId"></div></li>
@@ -126,7 +137,7 @@
         </div>
 
   
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM&libraries=places&map_ids-6789a6679abe1ef1&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM&libraries=places&map_ids-6789a6679abe1ef1"></script>
         <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

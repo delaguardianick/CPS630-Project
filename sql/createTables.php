@@ -10,6 +10,25 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+    // order table
+    $sql = "CREATE TABLE orders(
+        orderId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        userId VARCHAR(30),
+        itemId INT(30) NOT NULL,
+        store_name VARCHAR(50) NOT NULL,
+        store_address VARCHAR(150) NOT NULL,
+        dest VARCHAR(150) NOT NULL,
+        item VARCHAR(30) NOT NULL,
+        price DECIMAL(20,2),
+        orderDate DATETIME, 
+        dateOfTransaction TIMESTAMP
+    )";
+    
+    if (mysqli_query($conn, $sql)) {
+        echo "Trips table created successfully";
+    } else {
+        echo "Error creating table: " . mysqli_error($conn);
+    }
     // sql to create car table
     $sql = "CREATE TABLE users(
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -76,24 +95,4 @@
 
     mysqli_close($conn);
     
-
-        // order table
-        $sql = "CREATE TABLE orders(
-            orderId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            userId VARCHAR(30),
-            itemId VARCHAR(30) NOT NULL,
-            store_name VARCHAR(30) NOT NULL,
-            store_address INT(6) NOT NULL,
-            dest VARCHAR(30) NOT NULL,
-            item VARCHAR(30) NOT NULL,
-            price INT(6),
-            orderDate DATETIME, 
-            dateOfTransaction TIMESTAMP
-        )";
-        
-        if (mysqli_query($conn, $sql)) {
-            echo "Trips table created successfully";
-        } else {
-            echo "Error creating table: " . mysqli_error($conn);
-        }
 ?>

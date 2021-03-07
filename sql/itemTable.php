@@ -46,10 +46,10 @@
         } 
         echo ' </tbody>
                 </table>
-                <button class="show-price" onclick="infoForPayment()">log price</button>
                 <button class="checkout"><a href="paymentItems.php">Proceed to Checkout</a></button>';
     }else {
         echo "0 results";
     }
     mysqli_close($conn);
+    // <button class="show-price" onclick="infoForPayment()">log price</button>
 ?>
