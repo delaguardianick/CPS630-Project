@@ -51,7 +51,7 @@
                 <div class="col-sm">
                     <input type="radio" name="choice" id="choose-2" value="106 Mutual St Unit 8, Toronto, ON M5B 2R7" onclick="btnfunction()"/>
                         <label for="choose-2">
-                        <img src="source/coffee.png" width="300px;">
+                        <a class="" href="rideAndDeliv.php"><img src="source/coffee.png" width="300px;"></a>
                     </label>
                     <h5>Page One Cafe</h5>
                 </div>

@@ -38,6 +38,9 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Reviews</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contactUs.php">Contact Us</a>
+        </li>
         <?php
         //is the user logged in? if they are then change nav bar
           if(isset($_SESSION["userid"])){
