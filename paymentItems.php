@@ -19,7 +19,7 @@
         <div class="container py-5">
             <div class="row mb-4">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-4">Proceed to Checkout</h1>
+                    <h1 id="payment-header" class="display-4">Proceed to Checkout</h1>
                 </div>
             </div> <!-- End -->
             <div class="row">
@@ -109,21 +109,21 @@
                         <ul class="list-group list-group-flush">
                             <?php
                                 if(isset($_SESSION["userid"])){
-                                    echo "<li class='list-group-item' id='userId'>User ID: " . $_SESSION["userid"] ."</li>";
+                                    echo "<li class='list-group-item' id='userId'>User ID: <div class='value'>" . $_SESSION["userid"] ."</div></li>";
                                 }
                                 else{
                                     //if not logged in
-                                    echo "<li class='list-group-item' id='userId'>User ID: None, Please Login! </li>";
+                                    echo "<li class='list-group-item' id='userId'>User ID: <div class='value'>None, Please Login! </div></li>";
                                 }
                             ?>
                         
                             <!-- <li class="list-group-item" >User ID: <div id="userId"></div></li> -->
-                            <li class="list-group-item">Store: <div id="pickup"></div></li>
-                            <li class="list-group-item">Destination: <div id="destination"></div></li>
-                            <li class="list-group-item">Item ID: <div id="itemId"></div></li>
-                            <li class="list-group-item">Item: <div id="item"></div></li>
-                            <li class="list-group-item">Store Address: <div id="address"></div></li>
-                            <li class="list-group-item">Price: <div id="price"></div></li>
+                            <li class="list-group-item">Store: <div class="value" id="pickup"></div></li>
+                            <li class="list-group-item">Destination: <div class="value" id="destination"></div></li>
+                            <li class="list-group-item">Item ID: <div class="value" id="itemId"></div></li>
+                            <li class="list-group-item">Item: <div class="value" id="item"></div></li>
+                            <li class="list-group-item">Store Address: <div class="value" id="address"></div></li>
+                            <li class="list-group-item">Price: <div class="value" id="price"></div></li>
                         </ul>
                         <div class="card-body">
                             <a href="#" class="card-link">Card link</a>
@@ -131,7 +131,7 @@
                         </div>
                     </div>  
                 </div>
-                <div id="payment-status"></div>
+                <!-- <div id="payment-status"></div> -->
             </div>
         </div>
 

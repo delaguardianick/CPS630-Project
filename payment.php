@@ -114,7 +114,7 @@
                                 }
                                 else{
                                     //if not logged in
-                                    echo "<li class='list-group-item' id='userId'>User ID: None, Please Login! </li>";
+                                    echo "<li class='list-group-item' id='userId'>User ID: <div class='value'> None, Please Login! </div></li>";
                                 }
                             ?>
                             <!-- <li class="list-group-item" >User ID: <div class="value" id="userId"></div></li> -->
