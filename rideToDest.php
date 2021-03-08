@@ -16,7 +16,6 @@
         <?php include 'navigation.php';?>
     </nav>
 
-    <br>
     <div class="container-fluid">
         <div class="row"> 
             <div class="col-sm-4">
@@ -32,9 +31,8 @@
                             </div>
                             <input type="text" name="destination" id="destination" placeholder="Enter Destination">
                         </div>
-                        <div id="date-header">
-                        <br>
-                            Schedule a date:</div>
+                        <h5 id="date-header">
+                            Schedule a date:</h5>
                         <div id="pickup-time">
                             <label for="date"></label>
                                 <input type="date" name="date" id="date">
@@ -67,12 +65,13 @@
                         </select>
                     </form>
                     <div id="price-duration-container">
-                        <div id="distance">
-                            Distance: <div id="distance-value"></div>
-                        </div>
                         <div id="price">
                             Price: <div id="price-value"></div>
                         </div>
+                        <div id="distance">
+                            Distance: <div id="distance-value"></div>
+                        </div>
+                        
                         <div id="duration">
                             Trip duration: <div id="duration-value"></div>
                         </div>

@@ -86,6 +86,7 @@ span{
 
 #main-r2d-header{
   text-align: center;
+
 }
 
 #logo{
@@ -203,6 +204,7 @@ span{
 #car-table tr:nth-child(even) { background-color : #d3d0cb; }
 #car-table tr:hover { background-color : #e6dff7; }
 
+/* <caption>Please select your driver:</caption> */
 /* #car-table caption{
   caption-side: top;
   text-align: center;
@@ -229,8 +231,5 @@ span{
 }
 
 #checkout {
-  margin-top:1em;
-  margin-left:0.2em;
-  margin-right:0.2em;
-  margin-bottom:0.2em;
+  margin: 1%;
 }
