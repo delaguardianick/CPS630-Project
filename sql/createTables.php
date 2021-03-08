@@ -38,6 +38,11 @@
         usersUid VARCHAR(50),
         usersPwd VARCHAR(50)
     )";
+    if (mysqli_query($conn, $sql)) {
+        echo "<br>Trips table created successfully";
+    } else {
+        echo "<br>Error creating table: " . mysqli_error($conn);
+    }
 
     // sql to create car table
     $sql = "CREATE TABLE rCars(
@@ -51,9 +56,9 @@
     )";
     
     if (mysqli_query($conn, $sql)) {
-        echo "carTable created successfully";
+        echo "<br>carTable created successfully";
     } else {
-        echo "Error creating table: " . mysqli_error($conn);
+        echo "<br>Error creating table: " . mysqli_error($conn);
     }
     // echo("<br>");
     // sql to create trips table
@@ -72,9 +77,9 @@
     )";
     
     if (mysqli_query($conn, $sql)) {
-        echo "Trips table created successfully";
+        echo "<br>Trips table created successfully";
     } else {
-        echo "Error creating table: " . mysqli_error($conn);
+        echo "<br>Error creating table: " . mysqli_error($conn);
     }
 
      // sql to create ITEMS table
@@ -88,9 +93,9 @@
     )";
     
     if (mysqli_query($conn, $sql)) {
-        echo "items created successfully";
+        echo "<br>items created successfully";
     } else {
-        echo "Error creating table: " . mysqli_error($conn);
+        echo "<br>Error creating table: " . mysqli_error($conn);
     }
 
     mysqli_close($conn);
