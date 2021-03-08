@@ -20,9 +20,9 @@ function setSummaryData(obj){
     document.getElementById("item").textContent = item;
     document.getElementById("address").textContent = storename;
     document.getElementById("price").innerHTML = price;
-    var hello = document.getElementById("userId").innerText;
+    var username = document.getElementById("userId").innerText;
     console.log("BITCH");
-    console.log(hello);
+    console.log(username);
     console.log(pickup);
     console.log(item);
     console.log(storename);
