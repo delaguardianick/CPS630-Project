@@ -108,7 +108,6 @@
                         </div>
                         <ul class="list-group list-group-flush">
                             <?php
-                                        //is the user logged in? if they are then change nav bar
                                 if(isset($_SESSION["userid"])){
                                     echo "<li class='list-group-item' id='userId'>User ID: " . $_SESSION["userid"] ."</li>";
                                 }
@@ -116,7 +115,7 @@
                                     //if not logged in
                                     echo "<li class='list-group-item' id='userId'>User ID: None, Please Login! </li>";
                                 }
-                                ?>
+                            ?>
                         
                             <!-- <li class="list-group-item" >User ID: <div id="userId"></div></li> -->
                             <li class="list-group-item">Store: <div id="pickup"></div></li>

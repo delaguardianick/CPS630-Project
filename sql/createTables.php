@@ -29,15 +29,15 @@
     } else {
         echo "Error creating table: " . mysqli_error($conn);
     }
-    // sql to create user table
-    $sql = "CREATE TABLE users(
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        usersId VARCHAR(30) NOT NULL,
-        usersName VARCHAR(30) NOT NULL,
-        usersEmail VARCHAR(150) NOT NULL,
-        usersUid VARCHAR(50),
-        usersPwd VARCHAR(50)
-    )";
+    // sql to create car table
+    $sql = "CREATE TABLE `users` (
+        `usersId` int(11) NOT NULL,
+        `usersName` varchar(128) NOT NULL,
+        `usersEmail` varchar(128) NOT NULL,
+        `usersUid` varchar(128) NOT NULL,
+        `usersPwd` varchar(128) NOT NULL
+      )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
+
 
     // sql to create car table
     $sql = "CREATE TABLE rCars(

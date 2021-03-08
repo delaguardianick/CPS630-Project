@@ -46,7 +46,7 @@
         } 
         echo ' </tbody>
                 </table>
-                <button class="checkout"><a href="paymentItems.php">Proceed to Checkout</a></button>';
+                <button class="checkout" onclick="infoForPayment()"><a href="paymentItems.php">Proceed to Checkout</a></button>';
     }else {
         echo "0 results";
     }
