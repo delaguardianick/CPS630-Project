@@ -241,10 +241,15 @@ function findSelectedTableRow(){
   return selectedRow;
 }
 
+function unhideItemsTable(){
+  $("#car-table").css("visibility","visible");
+}
+
 $(document).ready(function (){
   document.querySelector('#find-me').addEventListener('click', geoFindMe);
   document.querySelector('#show-map').addEventListener('click', initMap);
-  document.querySelector('#checkout').addEventListener('click',infoForPayment());
+  document.querySelector('#show-map').addEventListener('click', unhideItemsTable);
+  document.querySelector('#checkout').addEventListener('click',infoForPayment);
   document.getElementById("#checkout").onclick = function () {
     window.open("paymentItems.php");
   }
