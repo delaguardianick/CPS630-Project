@@ -4,7 +4,7 @@ $(function() {
     })
 
 function setSummaryData(obj){
-    var userID = obj.userId;
+    //var userID = obj.userId;
     var pickup = obj.pickup;
     var destination = obj.destination;
     var distance = obj.distance;
@@ -17,7 +17,7 @@ function setSummaryData(obj){
     var carModel = obj.carInfo.carModel;
     var driver = obj.carInfo.driver;
 
-    document.getElementById("userId").innerHTML = userID;
+    //document.getElementById("userId").innerHTML = userID;
     document.getElementById("pickup").textContent = pickup;
     document.getElementById("destination").innerHTML = destination;
     document.getElementById("date").innerHTML = date;
@@ -29,7 +29,9 @@ function setSummaryData(obj){
     document.getElementById("carId").textContent = carId;
     document.getElementById("driver").textContent = driver;
     document.getElementById("price").innerHTML = price;
-    // document.getElementById("userId")
+    var username = document.getElementById("userId").innerText;
+    console.log(username);
+    console.log("FINCKSLA");
 }
 
 function storeRecord(){
