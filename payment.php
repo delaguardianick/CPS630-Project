@@ -110,25 +110,29 @@
                              <?php
                                         //is the user logged in? if they are then change nav bar
                                 if(isset($_SESSION["userid"])){
-                                    echo "<li class='list-group-item' id='userId'>User ID: " . $_SESSION["userid"] ."</li>";
+                                    echo "<li class='list-group-item' id='userId'>User ID: <div class='value'>" . $_SESSION["userid"] ."</div></li>";
                                 }
                                 else{
                                     //if not logged in
                                     echo "<li class='list-group-item' id='userId'>User ID: None, Please Login! </li>";
                                 }
                             ?>
-                            <!-- <li class="list-group-item" >User ID: <div id="userId"></div></li> -->
-                            <li class="list-group-item">Pickup Location: <div id="pickup"></div></li>
-                            <li class="list-group-item">Destination: <div id="destination"></div></li>
-                            <li class="list-group-item">Pickup date: <div id="date"></div></li>
-                            <li class="list-group-item">Pickup Time: <div id="time"></div></li>
-                            <li class="list-group-item" id="distance"></li>
-                            <li class="list-group-item">ETA: <div id="tripTime"></div></li>
-                            <li class="list-group-item">Car ID: <div id="carId"></div></li>
-                            <li class="list-group-item">Car tier: <div id="tier"></div></li>
-                            <li class="list-group-item">Car Model + color: <div id="carModel"></div></li>
-                            <li class="list-group-item">Driver: <div id="driver"></div></li>
-                            <li class="list-group-item">Price: <div id="price"></div></li>
+                            <!-- <li class="list-group-item" >User ID: <div class="value" id="userId"></div></li> -->
+                            <li class="list-group-item">Pickup Location: <div class="value" id="pickup"></div></li>
+                            <li class="list-group-item">Destination: <div class="value" id="destination"></div></li>
+                            <li class="list-group-item">Pickup date: <div class="value" id="date"></div></li>
+                            <div id="summary-car-info">
+                                <li class="list-group-item">Distance: <div class="value" id="distance">></div></li>
+                                <li class="list-group-item">Trip Time: <div class="value" id="tripTime">></div></li>
+                            </div>
+                            <div id="summary-car-info">
+                                <li class="list-group-item">Car ID:<div class="value" id="carId"></div></li>
+                                <li class="list-group-item">Car Model: <div class="value" id="carModel"></div></li>
+                            </div>
+                            <div id="summary-car-info">
+                                <li class="list-group-item">Driver: <div class="value" id="driver"></div></li>
+                                <li class="list-group-item">Price: <div class="value" id="price"></div></li>
+                            </div>
                         </ul>
                         <div class="card-body">
                             <a href="#" class="card-link">Card link</a>
