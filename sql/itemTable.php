@@ -1,5 +1,5 @@
 <?php 
-    $store = $_GET['q'];
+    $address = $_GET['q'];
 
     $servername = "localhost";
     $username = "root";
@@ -13,41 +13,43 @@
         die("Connection failed: " . $conn->connect_error);
     }
     // $sql = "SELECT * FROM `rcars` WHERE `storeCode` = $store";
-    $sql = 'SELECT * FROM `items` WHERE `store_name` = "' . $store . '"';
+    $sql = 'SELECT * FROM `items` WHERE `address` = "' . $address . '"';
     // ERROR IS HERE ^^^^^^^^^^^^^^^^^^
     $result = $conn->query($sql) or die($conn->error);
 
     if ($result->num_rows > 0) {
         echo'
-        <table class="table table-striped" id="car-table">
-        <thead class="thead-dark">
+        
+        <table class="center"; cellpadding="4"; cellspacing:"100"; text-align:"center" id="car-table";>
             <tr>
-                <th scope="col"></th>
-                <th scope="col">Item ID</th>
-                <th scope="col">Item</th>
-                <th scope="col">Store</th>
-                <th scope="col">Price</th>
-            </tr>
-        </thead>
-        <tbody>';
+                <th></th>
+                <th>Item ID</th>
+                <th>Item</th>
+                <th>Store</th>
+                <th>Price</th>
+            </tr>';
 
         // output data of each row
+        $inc = 1; 
         while($row = $result->fetch_assoc()) {
             echo'<tr>
-            <th scope="row">
+            <td scope="row">
             <div class="radio">
-                <label><input type="radio" id="regular" name="optradio"></label>
-            </div></th>
+                <label><input type="radio" id="r' . strval($inc) . '" name="rowSelect" value="' . strval($inc) . '"></label>
+            </div></td>
                 <td>' . $row['id'] . '</td>
                 <td>' . $row['item'] . '</td>
                 <td>' . $row['store_name'] . '</td>
                 <td>' . $row['price'] . '</td>
             </tr>';
+            $inc += 1;
         } 
         echo ' </tbody>
-                </table>';
+                </table>
+                <button class="checkout"><a href="paymentItems.php">Proceed to Checkout</a></button>';
     }else {
         echo "0 results";
     }
     mysqli_close($conn);
+    // <button class="show-price" onclick="infoForPayment()">log price</button>
 ?>

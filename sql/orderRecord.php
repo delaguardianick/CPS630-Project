@@ -3,23 +3,19 @@
   { 
       session_start(); 
   } 
-
     $json = $_POST['json'];
 
     $data = json_decode($json, true);
     // $userId = $data["userId"];
-    $carId = $data["carInfo"]["carId"];
-    $origin = $data["pickup"];
+    $itemId = $data["itemInfo"]["itemId"];
+    $origin = $data["itemInfo"]["pickup"];
     $dest = $data["destination"];
-    $distance = $data["distance"];
-    $carModel = $data["carInfo"]["carModel"];
+    $item = $data["itemInfo"]["item"];
     // $driver = $data["carInfo"]["driver"];
-    $price = $data["price"];
-    // $tripTime = $data["tripTime"];
-    $date = $data["date"]["date"];
-    $time = $data["date"]["time"];
-    $rideDate = $date . " " . $time . ":00";
-    $tier = $data["tier"];
+    $storename = $data["storename"];
+    echo "here is store name";
+    echo $storename;
+    $price = $data["itemInfo"]["price"];
 
     if(isset($_SESSION["userid"])){
         $userId = $_SESSION["userid"];
@@ -29,7 +25,8 @@
         $userId = "";
     }
 
-    //echo $userId, $carId, $origin, $dest, $distance, $tier, $price, $rideDate;
+    //echo "USER ID IS " . $userId, $itemId, $storename, $origin, $dest, $distance, $item, $price;
+    //$itemId, $storename, $origin, $dest, $distance, $item, $price;
 
 
     $servername = "localhost";
@@ -44,8 +41,8 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO rTrips (userId, carId, origin, dest, distance, tier, price, rideDate)
-    VALUES ('$userId', '$carId', '$origin', '$dest', '$distance', '$tier', '$price', '$rideDate')";
+    $sql = "INSERT INTO orders (userId, itemId, store_name, store_address, dest, item, price)
+    VALUES ('$userId', '$itemId', '$origin', '$storename', '$dest', '$item', '$price')";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";

@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet"> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- <script src="js/maps.js"></script> -->
-        <script src="js/payment.js"></script>
+        <script src="js/itemsPayment.js"></script>
     </head>
     <body>
         <nav>
@@ -107,7 +107,7 @@
                             <p class="card-text" >By placing your order, you agree to our privacy notice and conditions of use.</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                        <?php
+                            <?php
                                         //is the user logged in? if they are then change nav bar
                                 if(isset($_SESSION["userid"])){
                                     echo "<li class='list-group-item' id='userId'>User ID: " . $_SESSION["userid"] ."</li>";
@@ -117,17 +117,13 @@
                                     echo "<li class='list-group-item' id='userId'>User ID: None, Please Login! </li>";
                                 }
                                 ?>
+                        
                             <!-- <li class="list-group-item" >User ID: <div id="userId"></div></li> -->
-                            <li class="list-group-item">Pickup Location: <div id="pickup"></div></li>
+                            <li class="list-group-item">Store: <div id="pickup"></div></li>
                             <li class="list-group-item">Destination: <div id="destination"></div></li>
-                            <li class="list-group-item">Pickup date: <div id="date"></div></li>
-                            <li class="list-group-item">Pickup Time: <div id="time"></div></li>
-                            <li class="list-group-item" id="distance"></li>
-                            <li class="list-group-item">ETA: <div id="tripTime"></div></li>
-                            <li class="list-group-item">Car ID: <div id="carId"></div></li>
-                            <li class="list-group-item">Car tier: <div id="tier"></div></li>
-                            <li class="list-group-item">Car Model + color: <div id="carModel"></div></li>
-                            <li class="list-group-item">Driver: <div id="driver"></div></li>
+                            <li class="list-group-item">Item ID: <div id="itemId"></div></li>
+                            <li class="list-group-item">Item: <div id="item"></div></li>
+                            <li class="list-group-item">Store Address: <div id="address"></div></li>
                             <li class="list-group-item">Price: <div id="price"></div></li>
                         </ul>
                         <div class="card-body">
@@ -141,7 +137,7 @@
         </div>
 
   
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM&libraries=places&map_ids-6789a6679abe1ef1&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM&libraries=places&map_ids-6789a6679abe1ef1"></script>
         <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -1,5 +1,3 @@
-
-
 var myJSON;
 $(function() {
     $('[data-toggle="tooltip"]').tooltip()
