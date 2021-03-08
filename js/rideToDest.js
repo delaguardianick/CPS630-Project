@@ -252,6 +252,9 @@ function infoForPayment(){
     alert("Please select a car on the table.");
     allowCheckout = false;
   }
+  else if (radius > 50) {
+    alert("Locations more than 50km apart, please reduce distance.")
+  }
   else {
     allowCheckout = true;
     var rCars = document.getElementById("car-table");
