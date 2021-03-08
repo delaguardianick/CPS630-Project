@@ -27,9 +27,6 @@ function setSummaryData(obj){
     document.getElementById("carId").textContent = carId;
     document.getElementById("driver").textContent = driver;
     document.getElementById("price").innerHTML = "$CA " + price;
-    var username = document.getElementById("userId").innerText;
-    console.log(username);
-    console.log("FINCKSLA");
 }
 
 function storeRecord(){
@@ -38,7 +35,7 @@ function storeRecord(){
       json: myJSON,
     },
     function(data, status){
-        document.getElementById("payment-status").innerHTML = data;
+        // document.getElementById("payment-status").innerHTML = data;
         console.log("Data: " + data + "\nStatus: " + status);
     });
 }
@@ -53,4 +50,11 @@ $(document).ready(function (){
     setSummaryData(obj);
 
     document.getElementById("confirm-pay").addEventListener('click', storeRecord)
+    document.getElementById("confirm-pay").onclick = function (){
+        alert("Success! Trip added to DB");
+        $("#payment").css("display","none");
+        $("#payment-header").text("Please wait for your ride.");
+        $("#summary").css("margin-right","auto");
+        $("#summary").css("margin-left","auto");
+    }
 });

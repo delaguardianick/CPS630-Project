@@ -19,7 +19,7 @@
         <div class="container py-5">
             <div class="row mb-4">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-4">Proceed to Checkout</h1>
+                    <h1 id="payment-header" class="display-4">Proceed to Checkout</h1>
                 </div>
             </div> <!-- End -->
             <div class="row">
@@ -140,7 +140,7 @@
                         </div>
                     </div>  
                 </div>
-                <div id="payment-status"></div>
+                <!-- <div id="payment-status"></div> -->
             </div>
         </div>
 
