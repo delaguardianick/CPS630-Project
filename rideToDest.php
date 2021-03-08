@@ -16,7 +16,6 @@
         <?php include 'navigation.php';?>
     </nav>
 
-    <br>
     <div class="container-fluid">
         <div class="row"> 
             <div class="col-sm-4">
