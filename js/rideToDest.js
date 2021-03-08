@@ -101,12 +101,12 @@ function initMap()
           // Has to be under 50km
           if (radius <= 50)
           {
-            document.getElementById('status').innerHTML = "<br>Locations accepted. Please select a tier!";
+            document.getElementById('status').innerHTML = "Locations accepted. Please select a tier!";
           }
           else {
-            document.getElementById('status').innerHTML = "<br>Locations not within 50km. Please reduce distance!";
+            document.getElementById('status').innerHTML = "Locations not within 50km. Please reduce distance!";
           }
-          var event = new CustomEvent("mapReloadedEvent", {detail: 'YES IT WORKED'});
+          var event = new CustomEvent("mapReloadedEvent");
           document.dispatchEvent(event);
       });
     });
@@ -234,7 +234,6 @@ function unhideTableRow(){
   if (radius < 50){
     $("#bottom-left-table").css("visibility","visible");
   }
-  
 }
   
 function infoForPayment(){
@@ -250,7 +249,7 @@ function infoForPayment(){
 
   var selectedRow = findSelectedTableRow();
   if (selectedRow == null){
-    alert("Please select a car");
+    alert("Please select a car on the table.");
     allowCheckout = false;
   }
   else {
@@ -306,11 +305,17 @@ $(document).ready(function (){
   document.querySelector('#checkout').addEventListener('click',infoForPayment);
   document.addEventListener("mapReloadedEvent", setPrice, {passive:true});
   editInputDate();
+  
   document.getElementById("checkout").onclick = function () {
     if (allowCheckout){
       window.open("payment.php");
     }
-  }
+  };
+
+  // document.querySelector('input[name="rowSelect"]').onclick = function(){
+  //   console.log("radio pressed");
+  //   $("#checkout").css("visibility","visible");
+  // };
     
   // $('#car-table tr').click(function() {
   //   console.log('pressed');
