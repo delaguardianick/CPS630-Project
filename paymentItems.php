@@ -125,10 +125,10 @@
                             <li class="list-group-item">Store Address: <div class="value" id="address"></div></li>
                             <li class="list-group-item">Price: <div class="value" id="price"></div></li>
                         </ul>
-                        <div class="card-body">
-                            <!-- <a href="#" class="card-link">Card link</a> -->
-                            <!-- <a href="#" class="card-link">Another link</a> -->
-                        </div>
+                        <!-- <div class="card-body">
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div> -->
                     </div>  
                 </div>
                 <!-- <div id="payment-status"></div> -->
