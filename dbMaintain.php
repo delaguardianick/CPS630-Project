@@ -20,9 +20,12 @@
             </select>
         </form>
 
+        <input type="text" id="opOnId" placeholder="ID of record to delete">
+        <br>
+
         <form id="table-select">
             <!-- <p>Please select a tier:</p> -->
-            <select class="form-select" aria-label="Default select example" name="users" onchange="dbMode(this.value)" id="mode">
+            <select class="form-select" aria-label="Default select example" name="users" onchange="dbView(this.value)" id="mode">
                 <option value="">Select a DB Table:</option>
                 <option value="items">Item Records</option>
                 <option value="rcars">Car Records</option>
@@ -30,6 +33,7 @@
         </form>
 
         <div id="show-table"></div>
+        <div id="operation-status"></div>
 
 
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->

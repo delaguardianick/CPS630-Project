@@ -32,6 +32,8 @@
                     <th scope="col"></th>
                     <th scope="col">Car ID</th>
                     <th scope="col">Model</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Service Tier</th>
                     <th scope="col">Driver</th>
                 </tr>
             </thead>
@@ -47,6 +49,8 @@
                 </div></th>
                     <td>' . $row['id'] . '</td>
                     <td>' . $row['model'] . '</td>
+                    <td>' . $row['color'] . '</td>
+                    <td>' . $row['tierCode'] . '</td>
                     <td>' . $row['driver'] . '</td>
                 </tr>';
                 $inc += 1;
