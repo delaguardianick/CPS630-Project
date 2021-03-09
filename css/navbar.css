@@ -19,3 +19,7 @@
 #logo{
     width: 3.2em;
 }
+
+html{
+  font-family: 'Ubuntu', sans-serif;
+}
