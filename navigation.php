@@ -43,7 +43,7 @@
         <?php
         //is the user logged in? if they are then change nav bar
           if(isset($_SESSION["userid"])){
-            echo "<li class='nav-item'><a class='nav-link' href='profile.php'>Profile Page</a></li>";
+            echo "<li class='nav-item'><a class='nav-link' href='index.php'>". $_SESSION["userid"] ."</a></li>";
             echo "<li class='nav-item'><a class='nav-link' href='includes/logout.inc.php'>Logout</a></li>";
           }
           else{
