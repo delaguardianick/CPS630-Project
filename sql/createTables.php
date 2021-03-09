@@ -31,7 +31,7 @@
     }
     // sql to create car table
     $sql = "CREATE TABLE `users` (
-        `usersId` int(11) NOT NULL,
+        `usersId` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         `usersName` varchar(128) NOT NULL,
         `usersEmail` varchar(128) NOT NULL,
         `usersUid` varchar(128) NOT NULL,
