@@ -36,9 +36,6 @@
           <a class="nav-link" href="aboutUs.php">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Reviews</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="contactUs.php">Contact Us</a>
         </li>
         <?php
@@ -53,9 +50,6 @@
             echo "<li class='nav-item'><a class='nav-link' href='login.php'>Login</a></li>";
           }
         ?>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Shopping Cart</a>
-        </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
