@@ -123,6 +123,8 @@ span{
   padding: 2%;
   margin: 1%;
   width: 98%;
+  text-align: left;
+
 }
 
 
@@ -130,6 +132,7 @@ span{
   padding: 2%;
   margin: 1%;
   width: 79%;
+  text-align: left;
 }
 
 #date-header{

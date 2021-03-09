@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <a class="shops" href="rideAndDeliv.php"><img src="source/items-collage.jpg" width="300px;"></a>
-                <h3>Florist and Coffe Shops</h3>
+                <h3>Florist and Coffee Shops</h3>
             </div>
             <div class="col-sm-6 other">
                 <a class="shops" href="rideToDest.php"><img src="source/ride.jpg" width="350px;"></a>
