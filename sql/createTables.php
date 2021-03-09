@@ -20,10 +20,10 @@
         dest VARCHAR(150) NOT NULL,
         item VARCHAR(30) NOT NULL,
         price DECIMAL(20,2),
-        orderDate DATETIME, 
+        orderDate DATETIME,
         dateOfTransaction TIMESTAMP
     )";
-    
+
     if (mysqli_query($conn, $sql)) {
         echo "Trips table created successfully";
     } else {
@@ -53,7 +53,7 @@
         availabilityCode BOOL,
         reg_date TIMESTAMP
     )";
-    
+
     if (mysqli_query($conn, $sql)) {
         echo "<br>carTable created successfully";
     } else {
@@ -71,7 +71,7 @@
         distance INT(6) NOT NULL,
         tier VARCHAR(30) NOT NULL,
         price INT(6),
-        rideDate DATETIME, 
+        rideDate DATETIME,
         dateOfTransaction TIMESTAMP
     )";
     
@@ -90,7 +90,7 @@
         price DECIMAL(20,2),
         reg_date TIMESTAMP
     )";
-    
+
     if (mysqli_query($conn, $sql)) {
         echo "<br>items created successfully";
     } else {
@@ -98,5 +98,5 @@
     }
 
     mysqli_close($conn);
-    
+
 ?>

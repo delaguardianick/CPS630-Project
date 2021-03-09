@@ -1,5 +1,87 @@
+* {
+  text-align: center;
+}
+
 body{
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+.gap {
+  margin-top: 2%;
+}
+
+.container {
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+
+.container img {
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+img:hover
+{
+  opacity: 0.3;
+  filter: alpha(opacity=30);
+  transition: 0.5s;
+}
+
+.div-car{
+  position: absolute;
+  bottom: 0;
+  animation: drive 15s linear infinite;
+}
+
+.wheel1{
+  left: 32px;
+}
+.wheel2{
+  left: 242px;
+}
+span{
+/*   font-size:20px; */
+  background: white;
+}
+
+.wheel1, .wheel2{
+  border: 6px solid black;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: silver;
+  position: absolute;
+  top: 55%;
+  animation: turn 3s linear infinite
+}
+
+@keyframes drive{
+  0%{
+    transform: translateX(-500px);
+  }
+  100%{
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes turn{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+
+.col-sm-6 {
+  background: #CDCDC2;
+}
+
+.other {
+  background: #A0ADA1;
 }
 
 #main-r2d-header{
