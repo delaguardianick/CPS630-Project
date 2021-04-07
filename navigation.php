@@ -28,7 +28,7 @@
         <li class="nav-item active">
           <a class="nav-link" href="#/!">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Types of Services
           </a>
@@ -37,6 +37,12 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#!rideAndDeliv">Ride & Deliver</a>
           </div>
+        </li> -->
+        <li class="nav-item">
+            <a class="nav-link" href="#!rideToDest">Ride to Destination</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#!rideAndDeliv">Ride & Deliver</a>
         </li>
           <li class="nav-item">
             <a class="nav-link" href="#!aboutUs">About Us</a>
