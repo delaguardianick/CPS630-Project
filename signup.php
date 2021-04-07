@@ -6,9 +6,6 @@
         <link rel="stylesheet" href="css/sign-up.css">
     </head>
     <body>
-        <nav>
-            <?php include 'navigation.php';?>
-        </nav>
         <section class="signup-form" align="center">
             <h2>Sign Up!</h2>
             <form action="includes/signup.inc.php" method="post">

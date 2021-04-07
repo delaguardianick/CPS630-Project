@@ -311,7 +311,7 @@ $(document).ready(function (){
   
   document.getElementById("checkout").onclick = function () {
     if (allowCheckout){
-      window.open("payment.php");
+      window.open("#!payment");
     }
   };
 

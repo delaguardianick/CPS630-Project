@@ -10,9 +10,6 @@
         <script src="js/itemsPayment.js"></script>
     </head>
     <body>
-        <nav>
-            <?php include 'navigation.php';?>
-        </nav>
 
         <!-- PAYMENT
      -->

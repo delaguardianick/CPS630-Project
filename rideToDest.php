@@ -9,9 +9,6 @@
         <script src="js/rideToDest.js"></script>
     </head>
     <body>
-    <nav>
-        <?php include 'navigation.php';?>
-    </nav>
 
     <div class="container-fluid">
         <div class="row"> 
