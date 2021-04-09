@@ -1,14 +1,11 @@
 <html>
     <head>
-        <title>Sign Up</title>
+        <title>Login</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="css/ridetoDest.css">
         <link rel="stylesheet" href="css/sign-up.css">
     </head>
     <body>
-        <nav>
-            <?php include 'navigation.php';?>
-        </nav>
         <section class="signup-form" align="center">
             <h2>Login!</h2>
             <form action="includes/login.inc.php" method="post">

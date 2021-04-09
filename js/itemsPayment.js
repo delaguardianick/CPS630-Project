@@ -49,5 +49,12 @@ $(document).ready(function (){
     // console.log(obj);
     setSummaryData(obj);
 
-    document.getElementById("confirm-pay").addEventListener('click', storeRecord)
+    document.getElementById("confirm-pay").addEventListener('click', storeRecord);
+    document.getElementById("confirm-pay").onclick = function (){
+        alert("Success! Order added to DB");
+        $("#payment").css("display","none");
+        $("#payment-header").text("Your item will be delivered shortly.");
+        $("#summary").css("margin-right","auto");
+        $("#summary").css("margin-left","auto");
+    }
 });

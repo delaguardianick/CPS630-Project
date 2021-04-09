@@ -20,18 +20,13 @@ function setSummaryData(obj){
     //document.getElementById("userId").innerHTML = userID;
     document.getElementById("pickup").textContent = pickup;
     document.getElementById("destination").innerHTML = destination;
-    document.getElementById("date").innerHTML = date;
-    document.getElementById("time").innerHTML = time;
-    document.getElementById("distance").textContent = "Distance: " + distance + "km";
-    document.getElementById("tripTime").textContent = tripTime;
-    document.getElementById("tier").textContent = tier;
+    document.getElementById("date").innerHTML = date + " " + time;
+    document.getElementById("distance").textContent = distance + "km" 
+    document.getElementById("tripTime").textContent = tripTime + " " + "minutes";
     document.getElementById("carModel").textContent = carModel;
     document.getElementById("carId").textContent = carId;
     document.getElementById("driver").textContent = driver;
-    document.getElementById("price").innerHTML = price;
-    var username = document.getElementById("userId").innerText;
-    console.log(username);
-    console.log("FINCKSLA");
+    document.getElementById("price").innerHTML = "$CA " + price;
 }
 
 function storeRecord(){
@@ -40,7 +35,7 @@ function storeRecord(){
       json: myJSON,
     },
     function(data, status){
-        document.getElementById("payment-status").innerHTML = data;
+        // document.getElementById("payment-status").innerHTML = data;
         console.log("Data: " + data + "\nStatus: " + status);
     });
 }
@@ -55,4 +50,11 @@ $(document).ready(function (){
     setSummaryData(obj);
 
     document.getElementById("confirm-pay").addEventListener('click', storeRecord)
+    document.getElementById("confirm-pay").onclick = function (){
+        alert("Success! Trip added to DB");
+        $("#payment").css("display","none");
+        $("#payment-header").text("Please wait for your ride.");
+        $("#summary").css("margin-right","auto");
+        $("#summary").css("margin-left","auto");
+    }
 });

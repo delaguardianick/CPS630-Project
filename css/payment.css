@@ -30,6 +30,17 @@ input[type="radio"] {
     font-size: smaller;
 }
 
+.list-group-flush .list-group-item{
+    font-weight: bold;
+}
+
+.value {
+    font-weight:normal;
+}
+
+#summary-car-info{
+    display: flex;
+}
 /* #summary-card ul li{
     
 } */

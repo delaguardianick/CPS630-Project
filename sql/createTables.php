@@ -31,14 +31,18 @@
     }
     // sql to create car table
     $sql = "CREATE TABLE `users` (
-        `usersId` int(11) NOT NULL,
+        `usersId` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         `usersName` varchar(128) NOT NULL,
         `usersEmail` varchar(128) NOT NULL,
         `usersUid` varchar(128) NOT NULL,
         `usersPwd` varchar(128) NOT NULL
       )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
-
+    if (mysqli_query($conn, $sql)) {
+        echo "<br>Trips table created successfully";
+    } else {
+        echo "<br>Error creating table: " . mysqli_error($conn);
+    }
     // sql to create car table
     $sql = "CREATE TABLE rCars(
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -51,9 +55,9 @@
     )";
 
     if (mysqli_query($conn, $sql)) {
-        echo "carTable created successfully";
+        echo "<br>carTable created successfully";
     } else {
-        echo "Error creating table: " . mysqli_error($conn);
+        echo "<br>Error creating table: " . mysqli_error($conn);
     }
     // echo("<br>");
     // sql to create trips table
@@ -70,22 +74,12 @@
         rideDate DATETIME,
         dateOfTransaction TIMESTAMP
     )";
-
-    // trips
-    // $sql = "CREATE TABLE rTrips(
-    //     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    //     model VARCHAR(30) NOT NULL,
-    //     model VARCHAR(30) NOT NULL,
-    //     tierCode VARCHAR(50),
-    //     availabilityCode BOOL,
-    //     reg_date TIMESTAMP
-    // )";
-
-    // if (mysqli_query($conn, $sql)) {
-    //     echo "carTable created successfully";
-    // } else {
-    //     echo "Error creating table: " . mysqli_error($conn);
-    // }
+    
+    if (mysqli_query($conn, $sql)) {
+        echo "<br>Trips table created successfully";
+    } else {
+        echo "<br>Error creating table: " . mysqli_error($conn);
+    }
 
      // sql to create ITEMS table
      $sql = "CREATE TABLE items(
@@ -98,9 +92,9 @@
     )";
 
     if (mysqli_query($conn, $sql)) {
-        echo "items created successfully";
+        echo "<br>items created successfully";
     } else {
-        echo "Error creating table: " . mysqli_error($conn);
+        echo "<br>Error creating table: " . mysqli_error($conn);
     }
 
     mysqli_close($conn);

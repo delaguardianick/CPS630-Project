@@ -3,6 +3,7 @@ var destination = "";
 var destCoords;
 var originCoords;
 var radius;
+var allowCheckout = false;
 
 function geoFindMe() {
     const status = document.querySelector('#status');
@@ -202,8 +203,10 @@ function infoForPayment(){
   var selectedRow = findSelectedTableRow();
   if (selectedRow == null){
     alert("Please select what you want");
+    allowCheckout = false;
   }
   else {
+    allowCheckout = true;
     var rCars = document.getElementById("car-table");
     var row = rCars.rows[selectedRow].childNodes;
 
@@ -241,11 +244,18 @@ function findSelectedTableRow(){
   return selectedRow;
 }
 
+function unhideItemsTable(){
+  $("#car-table").css("visibility","visible");
+}
+
 $(document).ready(function (){
   document.querySelector('#find-me').addEventListener('click', geoFindMe);
   document.querySelector('#show-map').addEventListener('click', initMap);
-  document.querySelector('#checkout').addEventListener('click',infoForPayment());
+  document.querySelector('#show-map').addEventListener('click', unhideItemsTable);
+  document.querySelector('#checkout').addEventListener('click',infoForPayment);
   document.getElementById("#checkout").onclick = function () {
-    window.open("paymentItems.php");
+    if (allowCheckout){
+      window.open("paymentItems.php");
+    }
   }
 })
