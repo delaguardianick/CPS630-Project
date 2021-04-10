@@ -10,9 +10,6 @@
         <script src="js/payment.js"></script>
     </head>
     <body>
-        <nav>
-            <?php include 'navigation.php';?>
-        </nav>
 
         <!-- PAYMENT
      -->
@@ -134,10 +131,10 @@
                                 <li class="list-group-item">Price: <div class="value" id="price"></div></li>
                             </div>
                         </ul>
-                        <div class="card-body">
+                        <!-- <div class="card-body">
                             <a href="#" class="card-link">Card link</a>
                             <a href="#" class="card-link">Another link</a>
-                        </div>
+                        </div> -->
                     </div>  
                 </div>
                 <!-- <div id="payment-status"></div> -->

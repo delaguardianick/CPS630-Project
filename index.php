@@ -5,9 +5,6 @@
         <link rel="stylesheet" href="css/ridetoDest.css">
     </head>
     <body>
-    <nav>
-        <?php include 'navigation.php';?>
-    </nav>
     <div class="gap"></div>
 
     <?php
@@ -23,17 +20,17 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <a class="shops" href="rideAndDeliv.php"><img src="source/items-collage.jpg" width="300px;"></a>
+                <a class="shops" href="#!rideAndDeliv"><img src="source/items-collage.jpg" width="300px;"></a>
                 <h3>Florist and Coffee Shops</h3>
             </div>
             <div class="col-sm-6 other">
-                <a class="shops" href="rideToDest.php"><img src="source/ride.jpg" width="350px;"></a>
+                <a class="shops" href="#!rideToDest"><img src="source/ride.jpg" width="350px;"></a>
                 <h3>Ride to Destination</h3>
             </div>
         </div>
     </div>
 
-    <div class="div-car">
+    <!-- <div class="div-car">
         <a class="ride" href="rideToDest.php">
         <img src="https://res.cloudinary.com/softcom/image/upload/v1559750356/CLP/test-car.png" class="car"></a>
         <div class="wheel1">
@@ -42,7 +39,7 @@
             <div class="wheel2">
             <span>.</span>
         </div>
-    </div>
+    </div> -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
