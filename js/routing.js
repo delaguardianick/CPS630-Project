@@ -30,5 +30,8 @@ app.config(function($routeProvider) {
     })
     .when("/paymentItems", {
         templateUrl : "paymentItems.php"
-    });
+    })
+    .when("/doublePayment", {
+        templateUrl : "doublePayment.php"
+    })
 });

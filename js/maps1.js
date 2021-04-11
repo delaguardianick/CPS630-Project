@@ -189,24 +189,28 @@ function setPrice(){
   tier = document.querySelector("#item-price1").innerText;
   console.log(tier);
   price = 0;
- 
 }
 //FUNCTION FOR PART C
 var numItems = 0;
 function secondItem(){
-  if (confirm('Press cancel if you want to add another item, OK if done')) {
+  numItems ++;
+  console.log("num items is: " + numItems)
+  if (confirm('Press OK if you want to add another item, Cancel if done')) {
       infoForPayment();
-      window.open("#!paymentItems");
-    
-    console.log('Thing was saved to the database.');
+      //location.reload();
+      if(numItems == 2){
+        numItems = 0;
+        window.open("#!doublePayment");
+      }
+      document.getElementById('store-selector').reset();
+      console.log('you have: ' + numItems);
+
   } else {
-    infoForPayment();
-    numItems ++;
-    //location.reload();
-    document.getElementById('store-selector').reset();
-    // document.getElementByName('rowSelect').reset();
-    
-    console.log('you have: ' + numItems);
+      infoForPayment();
+      if(numItems == 1){
+        numItems = 0;
+        window.open("#!paymentItems");
+      }
   }
 }
 //END HERE
@@ -247,7 +251,7 @@ function infoForPayment(){
       }
     }`;
 
-    if(numItems < 1){
+    if(numItems == 1){
       console.log("FIRST ITEM")
       console.log(myJSON);
       localStorage.setItem('jsonItems',myJSON);
