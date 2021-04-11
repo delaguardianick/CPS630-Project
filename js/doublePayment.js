@@ -1,7 +1,7 @@
 var ride1Raw;
 var ride1;
 var ride2;
-var dual = false;
+var finalSelection;
 // $(function() {
 //     $('[data-toggle="tooltip"]').tooltip()
 //     })
@@ -67,6 +67,20 @@ function storeRecord(){
     });
 }
 
+function hideUnselected(){
+    console.log("WER GET HERER");
+    console.log(document.getElementById('chooseRide1').checked);
+    
+    if (document.getElementById('chooseRide1').checked){
+        $("#summary2").css('display','none');
+        finalSelection = '1';
+    }
+    else if (document.getElementById('chooseRide2').checked){
+        $("#summary1").css('display','none');
+        finalSelection = '2';
+        }   
+    }
+
 $(document).ready(function (){
     // document.getElementById("payment-status").innerHTML = '';
     var ride1Raw = localStorage.getItem("ride1");
@@ -84,7 +98,11 @@ $(document).ready(function (){
         alert("Success! Trip added to DB");
         $("#payment").css("display","none");
         $("#payment-header").text("Please wait for your ride.");
-        $("#summary").css("margin-right","auto");
-        $("#summary").css("margin-left","auto");
+        hideUnselected();
+        var id = '#summary-card' + finalSelection
+        $(id).css("margin-right","auto");
+        $(id).css("margin-left","auto");
+        $(id).css("width","50%");
+
     }
 });
