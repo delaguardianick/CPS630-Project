@@ -57,9 +57,10 @@ function setSummaryData(ride1, ride2){
 }
 
 function storeRecord(){
+    var file = "ride" + finalSelection + "Raw"
     $.post("sql/storeTripRecord.php",
     {
-      json: ride1Raw,
+      json: file,
     },
     function(data, status){
         // document.getElementById("payment-status").innerHTML = data;
@@ -78,7 +79,11 @@ function hideUnselected(){
     else if (document.getElementById('chooseRide2').checked){
         $("#summary1").css('display','none');
         finalSelection = '2';
-        }   
+        }
+    else {
+        finalSelection = null;
+        alert("Please choose one of the two rides.");
+    }   
     }
 
 $(document).ready(function (){
@@ -95,14 +100,17 @@ $(document).ready(function (){
 
     document.getElementById("confirm-pay").addEventListener('click', storeRecord)
     document.getElementById("confirm-pay").onclick = function (){
-        alert("Success! Trip added to DB");
-        $("#payment").css("display","none");
-        $("#payment-header").text("Please wait for your ride.");
         hideUnselected();
-        var id = '#summary-card' + finalSelection
-        $(id).css("margin-right","auto");
-        $(id).css("margin-left","auto");
-        $(id).css("width","50%");
+        if (finalSelection != null){
+            alert("Success! Trip added to DB");
+            $("#payment").css("display","none");
+            $("#payment-header").text("Please wait for your ride.");
+            var id = '#summary-card' + finalSelection
+            $(id).css("margin-right","auto");
+            $(id).css("margin-left","auto");
+            $(id).css("width","50%");
+        }
+        
 
     }
 });
