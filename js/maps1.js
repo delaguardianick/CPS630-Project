@@ -160,6 +160,7 @@ function btnfunction() {
   }
   //alert(selectedStoreAddress);
   console.log(selectedStoreAddress);
+  console.log(numItems);
 };
 
 function test(str){
@@ -190,6 +191,25 @@ function setPrice(){
   price = 0;
  
 }
+//FUNCTION FOR PART C
+var numItems = 0;
+function secondItem(){
+  if (confirm('Press cancel if you want to add another item, OK if done')) {
+      infoForPayment();
+      window.open("#!paymentItems");
+    
+    console.log('Thing was saved to the database.');
+  } else {
+    infoForPayment();
+    numItems ++;
+    //location.reload();
+    document.getElementById('store-selector').reset();
+    // document.getElementByName('rowSelect').reset();
+    
+    console.log('you have: ' + numItems);
+  }
+}
+//END HERE
 function infoForPayment(){
   console.log("got to infoforpayment");
   origin;
@@ -227,8 +247,16 @@ function infoForPayment(){
       }
     }`;
 
-  console.log(myJSON);
-  localStorage.setItem('jsonItems',myJSON);
+    if(numItems < 1){
+      console.log("FIRST ITEM")
+      console.log(myJSON);
+      localStorage.setItem('jsonItems',myJSON);
+    }
+    else{
+      console.log("second ITEM")
+      console.log(myJSON);
+      localStorage.setItem('jsonItems2',myJSON);
+    }
   }
 
 function findSelectedTableRow(){
@@ -255,7 +283,7 @@ $(document).ready(function (){
   document.querySelector('#checkout').addEventListener('click',infoForPayment);
   document.getElementById("#checkout").onclick = function () {
     if (allowCheckout){
-      window.open("paymentItems.php");
+      window.open("#!paymentItems");
     }
   }
 })
