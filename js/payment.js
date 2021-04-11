@@ -57,6 +57,13 @@ $(document).ready(function (){
     setSummaryData(ride1);
     console.log(dual);
 
+    $("input[type='radio']").click(function(){
+        var sim = $("input[type='radio']:checked").val();
+        //alert(sim);
+        if (sim<3) { $('.myratings').css('color','red'); $(".myratings").text(sim); }else{ $('.myratings').css('color','green'); $(".myratings").text(sim); } 
+        $('#thanks').html("Thank you!");
+    });
+
     document.getElementById("confirm-pay").addEventListener('click', storeRecord)
     document.getElementById("confirm-pay").onclick = function (){
         alert("Success! Trip added to DB");
@@ -64,5 +71,12 @@ $(document).ready(function (){
         $("#payment-header").text("Please wait for your ride.");
         $("#summary").css("margin-right","auto");
         $("#summary").css("margin-left","auto");
+
+        $('#rating-all').css({'display':'flex',
+            'flex-direction' : 'column',
+            'align-items' : 'center',
+            'padding' : 'inherit',
+            'justify-content' : 'center'});
+
     }
 });

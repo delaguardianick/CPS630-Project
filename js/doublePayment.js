@@ -98,6 +98,14 @@ $(document).ready(function (){
     console.log(ride2);
     setSummaryData(ride1,ride2);
 
+    $("input[type='radio']").click(function(){
+        var sim = $("input[type='radio']:checked").val();
+        //alert(sim);
+        if (sim<3) { $('.myratings').css('color','red'); $(".myratings").text(sim); }else{ $('.myratings').css('color','green'); $(".myratings").text(sim); } 
+        $('#thanks').html("Thank you!");
+    });
+        
+
     document.getElementById("confirm-pay").addEventListener('click', storeRecord)
     document.getElementById("confirm-pay").onclick = function (){
         hideUnselected();
@@ -109,6 +117,11 @@ $(document).ready(function (){
             $(id).css("margin-right","auto");
             $(id).css("margin-left","auto");
             $(id).css("width","50%");
+            $('#rating-all').css({'display':'flex',
+            'flex-direction' : 'column',
+            'align-items' : 'center',
+            'padding' : 'inherit',
+            'justify-content' : 'center'});
         }
         
 
