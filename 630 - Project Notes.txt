@@ -1,4 +1,27 @@
 630 - Project Notes
+Part 2
+
+- Adding one trip to shopping cart
+    - "Add to Cart" Button after selecting ride
+        - Calls addToCart(1) -
+            - Subcalls infoForPayment() to get json
+            - Add JSON to localStorage - Trip 1 - ex name: username1
+        - "Would you like to add a second trip? (Service C)"
+            - Yes
+                - Clear input fields in page
+                - Add #!2 to the url, use as paramater for addToCart()
+                - Change "Add to Cart" to "Add to Cart (2)"
+                    - Click Button: Call addToCart(2)
+            - No, take me to payment
+
+
+
+
+
+
+
+
+Part 1
 key: AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM
 
 - Show map ✓
