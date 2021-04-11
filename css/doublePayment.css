@@ -40,6 +40,7 @@ input[type="radio"] {
 
 #summary-car-info{
     display: flex;
+    justify-content: space-between;
 }
 /* #summary-card ul li{
     
