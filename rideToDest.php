@@ -70,7 +70,7 @@
                             Trip duration: <div id="duration-value"></div>
                         </div>
                     </div>
-                    <button class="btn btn-secondary" id="checkout">To Payment</button>
+                    <button class="btn btn-secondary" id="checkout">Add to Cart</button>
 
                 </div>
             </div>

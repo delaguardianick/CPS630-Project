@@ -8,6 +8,7 @@ var tripDurInMins;
 var price;
 var tier;
 var allowCheckout = false;
+var firstItem = true;
 
 function geoFindMe() {
     const status = document.querySelector('#status');
@@ -91,7 +92,6 @@ function initMap()
               { infoWindow2.open(map, marker2); });
             }
 
-          console.log(destCoords);
         
           // Line and distance between markers
           var line = new google.maps.Polyline({path: [mapOrigin, mapDestination], map: map});
@@ -154,7 +154,6 @@ function editInputDate(){
     currDateAndTime = currDateAndTime();
     document.querySelector("#date").setAttribute("value", currDateAndTime[0]);
     document.querySelector("#date").setAttribute("min", currDateAndTime[0]);
-    console.log("Tried to change time to " + currDateAndTime[1]);
     document.querySelector("#time").setAttribute("value", currDateAndTime[1])
   }
   
@@ -199,7 +198,6 @@ function showTable(str) {
 }
 
 function setPrice(){
-  console.log("setPrice called");
   tier = document.querySelector("#tier").value;
   var distance = radius.toFixed(2); // Distance in km
   price = 0;
@@ -219,12 +217,10 @@ function setPrice(){
       // Base: $8.75; Booking fee: $0; Minimum: $15.75; per Minute: $0.85; Per Km: $2.23
       price = (5 + 0 + 15.75 + (0.95 * tripDurInMins) + (2.30 * distance))
     }
-    console.log("inside if");
     document.querySelector("#price-value").innerHTML = "CA$" + price.toFixed(2);
     document.querySelector("#duration-value").innerHTML = tripDurInMins.toFixed(0) + " minutes.";
   }
   else {
-    console.log("inside else");
     document.querySelector("#price-value").innerHTML = '';
     document.querySelector("#duration-value").innerHTML = '';
   }
@@ -237,7 +233,6 @@ function unhideTableRow(){
 }
   
 function infoForPayment(){
-  console.log("got to infoforpayment");
   origin;
   destination;
   radius;
@@ -283,9 +278,61 @@ function infoForPayment(){
     }
   }`;
 
-  console.log(myJSON);
-  localStorage.setItem('json',myJSON);
+  return myJSON;
   }
+
+function addToCart(){
+  var url = new URL(window.location.href);
+  rideNum = url.searchParams.get("t");
+  console.log("url value = " +  rideNum);
+
+  // If this is the first ride being added
+  if (rideNum != 2){
+    myJSON = infoForPayment();
+    localStorage.setItem('ride1', myJSON);
+
+    // Ask for filling out ride 2
+    if (allowCheckout){
+      var another = confirm("Would you like to add another trip? (Ride Green - Service C)");
+
+    // If yes
+      if (another){
+        url.searchParams.append("t",2) ;
+        window.location.href = url;
+        
+      }else{
+        localStorage.removeItem('ride2');
+        checkout();
+      }
+    }
+  }
+  // if second item
+  else if (rideNum == 2) {
+    myJSON = infoForPayment();
+    localStorage.setItem('ride2', myJSON);
+    checkout();
+  } 
+}
+
+function checkout(){
+  console.log("checkout called")
+  if (allowCheckout){
+    if (localStorage.getItem("ride2") === null)
+    {
+      window.location.replace("#!payment");
+        
+    }
+    else{
+        window.location.replace("#!doublePayment");
+      }
+    }
+  };
+
+function printLocalStorage(){
+  for (var i = 0; i < localStorage.length; i++){
+    console.log(localStorage.getItem(localStorage.key(i)));
+}
+}
   
 function findSelectedTableRow(){
   var allRadios = document.querySelectorAll('input[name="rowSelect"]');
@@ -300,28 +347,14 @@ function findSelectedTableRow(){
   return selectedRow;
 }
 
-
 $(document).ready(function (){
   document.querySelector('#find-me').addEventListener('click', geoFindMe);
   document.querySelector('#show-map').addEventListener('click',() => {initMap(), unhideTableRow()});  
   document.querySelector('#distance-value').addEventListener('change', setPrice);
-  document.querySelector('#checkout').addEventListener('click',infoForPayment);
+  document.querySelector('#checkout').addEventListener('click',addToCart);
   document.addEventListener("mapReloadedEvent", setPrice, {passive:true});
   editInputDate();
-  
-  document.getElementById("checkout").onclick = function () {
-    if (allowCheckout){
-      window.open("#!payment");
-    }
-  };
 
-  // document.querySelector('input[name="rowSelect"]').onclick = function(){
-  //   console.log("radio pressed");
-  //   $("#checkout").css("visibility","visible");
-  // };
-    
- //$('#car-table tr').click(function() {
- //  console.log('pressed');
- //  $(this).find('th input:radio').prop('checked', true);
- //})
+  
+  // printLocalStorage();
 });
