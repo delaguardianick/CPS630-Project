@@ -124,3 +124,22 @@ function loginUser($conn, $username, $pwd){
         
     }
 }
+function createApplication($conn, $email, $phone, $city, $car, $tier){
+    $sql = "INSERT INTO applications (email, phone, city, car, tier) VALUES(?,?,?,?,?);"; 
+    // question mark is placeholder bc were gonna be
+    //using prepared data instead of what the user inputted directly cause thats not good
+
+    //PREPARE STATEMENT -- initilizing a new prepared statement -- tell it the connection
+    $stmt = mysqli_stmt_init($conn); // this makes it secure so people dont write code into inputs
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../driverSignup.php?error=stmtfailed");
+        exit(); //stop the script
+    }
+
+    //where is the preapred statmetent? ss -- two strings 
+    mysqli_stmt_bind_param($stmt, "sssss", $email, $phone, $city, $car, $tier);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../home.php?error=none");
+    exit(); //stop the script
+}

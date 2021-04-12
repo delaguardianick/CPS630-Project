@@ -39,7 +39,7 @@
       )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
 
     if (mysqli_query($conn, $sql)) {
-        echo "<br>Trips table created successfully";
+        echo "<br>User table created successfully";
     } else {
         echo "<br>Error creating table: " . mysqli_error($conn);
     }
@@ -93,6 +93,21 @@
 
     if (mysqli_query($conn, $sql)) {
         echo "<br>items created successfully";
+    } else {
+        echo "<br>Error creating table: " . mysqli_error($conn);
+    }
+             // sql to create applications table
+     $sql = "CREATE TABLE applications(
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        email VARCHAR(128) NOT NULL,
+        phone VARCHAR(128) NOT NULL,
+        city VARCHAR(128) NOT NULL,
+        car VARCHAR(128)NOT NULL,
+        tier VARCHAR (30) NOT NULL
+    )";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "<br>applications created successfully";
     } else {
         echo "<br>Error creating table: " . mysqli_error($conn);
     }
