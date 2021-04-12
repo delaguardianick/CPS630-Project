@@ -8,7 +8,8 @@
     <head>
         <title>Plan for Smart Services (PS2)</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/ridetoDest.css">
+        <!-- <link rel="stylesheet" href="css/ridetoDest.css"> -->
+        <link rel="stylesheet" href="css/new.css">
         <script src="js/index.js"></script>
     </head>
     <body>
@@ -17,27 +18,45 @@
     <?php
         if(isset($_SESSION["userid"])){
                 echo "<h1>Welcome " . $_SESSION["userid"] . " to Plan for Smart Services!</h1>";
+                echo " <div class='container'>";
+                echo "<p>Using browser: <span id='browser'></span></p>";
+                echo "<div class='row'>";
+                echo "<div class='col-sm-6'>";
+                echo "<a class='shops' href='#!rideAndDeliv'><img src='source/items-collage.jpg' width='300px;'></a>";
+                echo "<h3>Florist and Coffee Shops</h3></div>";
+                echo " <div class='col-sm-6 other'>";
+                echo "<a class='shops' href='#!rideToDest'><img src='source/ride.jpg' width='350px;'></a>";
+                echo "<h3>Ride to Destination</h3></div></div></div>";
             }
         else{
             //if not logged in
             echo "<h1><center>Welcome to Plan for Smart Services!<center></h1>";
             echo "<h4><center>Please login to use our services<center></h4>";
+            echo " <div class='container'>";
+            echo "<p>Using browser: <span id='browser'></span></p>";
+            echo "<div class='row'>";
+            echo "<div class='col-sm-6'>";
+            echo "<a class='shops'><img src='source/items-collage.jpg' width='300px;'></a>";
+            echo "<h3>Florist and Coffee Shops</h3></div>";
+            echo " <div class='col-sm-6 other'>";
+            echo "<a class='shops'><img src='source/ride.jpg' width='350px;'></a>";
+            echo "<h3>Ride to Destination</h3></div></div></div>";
         }
     ?>
 
-    <div class="container">
+    <!-- <div class="container">
         <p>Using browser: <span id="browser"></span></p>
         <div class="row">
             <div class="col-sm-6">
-                <a class="shops" href="#!rideAndDeliv"><img src="source/items-collage.jpg" width="300px;"></a>
+                <a class="shops"><img src="source/items-collage.jpg" width="300px;"></a>
                 <h3>Florist and Coffee Shops</h3>
             </div>
             <div class="col-sm-6 other">
-                <a class="shops" href="#!rideToDest"><img src="source/ride.jpg" width="350px;"></a>
+                <a class="shops"><img src="source/ride.jpg" width="350px;"></a>
                 <h3>Ride to Destination</h3>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- <div class="div-car">
         <a class="ride" href="rideToDest.php">

@@ -86,7 +86,7 @@ function createUser($conn, $name, $email, $username, $pwd){
     mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../home.php?error=none");
+    header("location: ../home.php#!/login?error=none");
     exit(); //stop the script
 }
 function emptyInputLogin($username,$pwd){
@@ -140,6 +140,8 @@ function createApplication($conn, $email, $phone, $city, $car, $tier){
     mysqli_stmt_bind_param($stmt, "sssss", $email, $phone, $city, $car, $tier);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../home.php#!");
+    header("location: ../home.php#!/thankyou?error=none");
+    // header("location: ../home.php#!/signUp?error=none");
+
     exit(); //stop the script
 }

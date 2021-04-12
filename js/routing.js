@@ -40,7 +40,7 @@ app.config(function($routeProvider) {
     .when("/driverSignup", {
         templateUrl : "driverSignup.php"
     })
-    .when("/thankYou", {
-        templateUrl : "thankYou.php"
+    .when("/thankyou", {
+        templateUrl : "thankyou.php"
     })
 });
