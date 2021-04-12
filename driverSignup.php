@@ -38,7 +38,7 @@
         </div>
         <section class="signup">
         <div id="driver-form" class="col">
-        <form action="includes/apply2.inc.php" method="post">
+        <form action="includes/apply.inc.php" method="post">
             <div class="form-group">
                 <label for="dEmail">Email address</label>
                 <input type="email" class="form-control" name="dEmail" aria-describedby="emailHelp" placeholder="PS2@bahoo.ca">
@@ -80,17 +80,17 @@
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
     <?php
-            // if(isset($_GET["error"])){
-            //     if($_GET["error"] == "emptyinput"){
-            //         echo "<p>Please fill in all fields!</p>";
-            //     }
-            //     else if($_GET["error"] == "invalidemail"){
-            //         echo "<p>Choose proper email</p>";
-            //     }
-            //     else if($_GET["error"] == "none"){
-            //         echo "<p>You have signed up</p>";
-            //     }
-            // }
+            if(isset($_GET["error"])){
+                if($_GET["error"] == "emptyinput"){
+                    echo "<p>Please fill in all fields!</p>";
+                }
+                else if($_GET["error"] == "invalidemail"){
+                    echo "<p>Choose proper email</p>";
+                }
+                else if($_GET["error"] == "none"){
+                    echo "<p>You have signed up</p>";
+                }
+            }
         ?>
     </div>
     </section>

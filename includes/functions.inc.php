@@ -140,6 +140,6 @@ function createApplication($conn, $email, $phone, $city, $car, $tier){
     mysqli_stmt_bind_param($stmt, "sssss", $email, $phone, $city, $car, $tier);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../home.php?error=none");
+    header("location: ../home.php#!");
     exit(); //stop the script
 }
