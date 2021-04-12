@@ -2,6 +2,9 @@ var ride1Raw;
 var ride1;
 var ride2;
 var dual = false;
+var ratings = [];
+var firstRating ;
+
 // $(function() {
 //     $('[data-toggle="tooltip"]').tooltip()
 //     })
@@ -46,6 +49,18 @@ function storeRecord(){
     });
 }
 
+function storeReview(){
+    console.log(firstRating);
+    $.post("sql/ratingsRecord.php",
+    {
+      rating: firstRating,
+    },
+    function(data, status){
+        // document.getElementById("payment-status").innerHTML = data;
+        console.log("Data: " + data + "\nStatus: " + status);
+    });
+}
+
 $(document).ready(function (){
     // document.getElementById("payment-status").innerHTML = '';
     ride1Raw = localStorage.getItem("ride1");
@@ -60,10 +75,15 @@ $(document).ready(function (){
     console.log(dual);
 
     $("input[type='radio']").click(function(){
+        ratings;
         var sim = $("input[type='radio']:checked").val();
         //alert(sim);
         if (sim<3) { $('.myratings').css('color','red'); $(".myratings").text(sim); }else{ $('.myratings').css('color','green'); $(".myratings").text(sim); } 
         $('#thanks').html("Thank you!");
+        var rating = $('input[name=rating]:checked').val();
+        ratings.push(rating);
+        firstRating = ratings[0];
+        storeReview();
     });
 
     document.getElementById("confirm-pay").addEventListener('click', storeRecord)
@@ -79,6 +99,6 @@ $(document).ready(function (){
             'align-items' : 'center',
             'padding' : 'inherit',
             'justify-content' : 'center'});
-
     }
+      
 });

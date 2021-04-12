@@ -97,6 +97,16 @@
         echo "<br>Error creating table: " . mysqli_error($conn);
     }
 
+    // ratings table
+    $sql = "CREATE TABLE ratings ( 
+        Stars INT(6), reviewDate TIMESTAMP )";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "<br>items created successfully";
+    } else {
+        echo "<br>Error creating table: " . mysqli_error($conn);
+    }
+
     mysqli_close($conn);
 
 ?>
