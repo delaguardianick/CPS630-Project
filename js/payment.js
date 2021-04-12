@@ -34,6 +34,8 @@ function setSummaryData(ride1){
 }
 
 function storeRecord(){
+    console.log("Sending JSON to Database");
+    console.log(ride1Raw)
     $.post("sql/storeTripRecord.php",
     {
       json: ride1Raw,
@@ -46,7 +48,7 @@ function storeRecord(){
 
 $(document).ready(function (){
     // document.getElementById("payment-status").innerHTML = '';
-    var ride1Raw = localStorage.getItem("ride1");
+    ride1Raw = localStorage.getItem("ride1");
     var ride1 = JSON.parse(ride1Raw);
 
     // var ride2Raw = localStorage.getItem("ride2");
