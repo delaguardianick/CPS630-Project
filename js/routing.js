@@ -34,4 +34,7 @@ app.config(function($routeProvider) {
     .when("/doublePayment", {
         templateUrl : "doublePayment.php"
     })
+    .when("/doubleItems", {
+        templateUrl : "doubleItems.php"
+    })
 });

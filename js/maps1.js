@@ -200,7 +200,7 @@ function secondItem(){
       //location.reload();
       if(numItems == 2){
         numItems = 0;
-        window.open("#!doublePayment");
+        window.open("#!doubleItems");
       }
       document.getElementById('store-selector').reset();
       console.log('you have: ' + numItems);
