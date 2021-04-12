@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet"> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- <script src="js/maps.js"></script> -->
-        <script src="js/itemsPayment.js"></script>
+        <script src="js/doubleItems.js"></script>
     </head>
     <body>
 
@@ -20,15 +20,15 @@
                 </div>
             </div> <!-- End -->
             <div class="row">
-                <div class="col-12 col-md-8" id="payment">
+                <div class="col-sm" id="payment">
                     <div class="card">
                         <div class="card-header">
                             <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
                                 <!-- Credit card form tabs -->
                                 <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
                                     <li class="nav-item"> <a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Credit Card </a> </li>
-                                    <li class="nav-item"> <a data-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> Paypal </a> </li>
-                                    <li class="nav-item"> <a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Net Banking </a> </li>
+                                    <li class="nav-item"> <a data-toggle="pill" href="#paypal" class="nav-link disabled"> <i class="fab fa-paypal mr-2"></i> Paypal </a> </li>
+                                    <li class="nav-item"> <a data-toggle="pill" href="#net-banking" class="nav-link disabled"> <i class="fas fa-mobile-alt mr-2"></i> Net Banking </a> </li>
                                 </ul>
                             </div> <!-- End -->
                             <!-- Credit card form content -->
@@ -64,56 +64,28 @@
                                     </form>
                                 </div>
                             </div> <!-- End -->
-                            <!-- Paypal info -->
-                            <div id="paypal" class="tab-pane fade pt-3">
-                                <h6 class="pb-2">Select your paypal account type</h6>
-                                <div class="form-group "> <label class="radio-inline"> <input type="radio" name="optradio" checked> Domestic </label> <label class="radio-inline"> <input type="radio" name="optradio" class="ml-5">International </label></div>
-                                <p> <button type="button" class="btn btn-primary "><i class="fab fa-paypal mr-2"></i> Log into my Paypal</button> </p>
-                                <p class="text-muted"> Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
-                            </div> <!-- End -->
-                            <!-- bank transfer info -->
-                            <div id="net-banking" class="tab-pane fade pt-3">
-                                <div class="form-group "> <label for="Select Your Bank">
-                                        <h6>Select your Bank</h6>
-                                    </label> <select class="form-control" id="ccmonth">
-                                        <option value="" selected disabled>--Please select your Bank--</option>
-                                        <option>Bank 1</option>
-                                        <option>Bank 2</option>
-                                        <option>Bank 3</option>
-                                        <option>Bank 4</option>
-                                        <option>Bank 5</option>
-                                        <option>Bank 6</option>
-                                        <option>Bank 7</option>
-                                        <option>Bank 8</option>
-                                        <option>Bank 9</option>
-                                        <option>Bank 10</option>
-                                    </select> </div>
-                                <div class="form-group">
-                                    <p> <button type="button" class="btn btn-primary "><i class="fas fa-mobile-alt mr-2"></i> Proceed Pyment</button> </p>
-                                </div>
-                                <p class="text-muted">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order. </p>
-                            </div> <!-- End -->
                         </div>
                     </div>    
                 </div>
                 </div>
-                <div class="col-6 col-md-4" id="summary">
-                    <div class="card" id="summary-card">
+                <div class="col-sm" id="summary1">
+                    <div class="card" id="summary-card1">
                         <div class="card-body">
-                            <h5 class="card-title">Purchase Summary</h5>
-                            <p class="card-text" >By placing your order, you agree to our privacy notice and conditions of use.</p>
+                            <input type="radio" name="chooseRide" value="summary1" id="chooseitem1">
+                            <!-- <h5 class="card-title">Purchase Summary</h5>
+                            <p class="card-text" >By placing your order, you agree to our privacy notice and conditions of use.</p> -->
                         </div>
                         <ul class="list-group list-group-flush">
-                            <?php
+                             <?php
+                                        //is the user logged in? if they are then change nav bar
                                 if(isset($_SESSION["userid"])){
                                     echo "<li class='list-group-item' id='userId'>User ID: <div class='value'>" . $_SESSION["userid"] ."</div></li>";
                                 }
                                 else{
                                     //if not logged in
-                                    echo "<li class='list-group-item' id='userId'>User ID: <div class='value'>None, Please Login! </div></li>";
+                                    echo "<li class='list-group-item' id='userId'>User ID: <div class='value'> None, Please Login! </div></li>";
                                 }
                             ?>
-                        
                             <!-- <li class="list-group-item" >User ID: <div id="userId"></div></li> -->
                             <li class="list-group-item">Store: <div class="value" id="pickup1"></div></li>
                             <li class="list-group-item">Destination: <div class="value" id="destination1"></div></li>
@@ -128,12 +100,49 @@
                         </div> -->
                     </div>  
                 </div>
-                <!-- <div id="payment-status"></div> -->
+                <div class="col-sm" id="summary2">
+                    <div class="card" id="summary-card2">
+                        <div class="card-body">
+                            <input type="radio" name="chooseRide" id="chooseitem2" value="summary2">
+
+                            <!-- <h5 class="card-title">Purchase Summary</h5>
+                            <p class="card-text" >By placing your order, you agree to our privacy notice and conditions of use.</p> -->
+                        </div>
+                        <ul class="list-group list-group-flush">
+                             <?php
+                                        //is the user logged in? if they are then change nav bar
+                                if(isset($_SESSION["userid"])){
+                                    echo "<li class='list-group-item' id='userId'>User ID: <div class='value'>" . $_SESSION["userid"] ."</div></li>";
+                                }
+                                else{
+                                    //if not logged in
+                                    echo "<li class='list-group-item' id='userId'>User ID: <div class='value'> None, Please Login! </div></li>";
+                                }
+                            ?>
+                            <!-- <li class="list-group-item" >User ID: <div id="userId"></div></li> -->
+                            <li class="list-group-item">Store: <div class="value" id="pickup2"></div></li>
+                            <li class="list-group-item">Destination: <div class="value" id="destination2"></div></li>
+                            <li class="list-group-item">Item ID: <div class="value" id="itemId2"></div></li>
+                            <li class="list-group-item">Item: <div class="value" id="item2"></div></li>
+                            <li class="list-group-item">Store Address: <div class="value" id="address2"></div></li>
+                            <li class="list-group-item">Price: <div class="value" id="price2"></div></li>
+                        </ul>
+                        <!-- <div class="card-body">
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div> -->
+                    </div>  
+                </div>
+                <div class="row" id="rating-all">
+                <h5>Please take a moment to review the service received</h5>
+                <fieldset class="rating"> <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label> <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label> <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label> <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label> <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label> <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label> <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label> <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label> <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label> <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label> <input type="radio" class="reset-option" name="rating" value="reset" /> </fieldset>
+                <p id="thanks"></p>
             </div>
+                <!-- <div id="payment-status"></div> -->
+            </div> 
         </div>
 
   
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM&libraries=places&map_ids-6789a6679abe1ef1"></script>
         <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

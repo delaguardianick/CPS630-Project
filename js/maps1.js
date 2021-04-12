@@ -211,6 +211,10 @@ function secondItem(){
         numItems = 0;
         window.open("#!paymentItems");
       }
+      if(numItems == 2){
+        numItems = 0;
+        window.open("#!doubleItems");
+      }
   }
 }
 //END HERE

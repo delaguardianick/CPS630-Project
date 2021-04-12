@@ -37,4 +37,7 @@ app.config(function($routeProvider) {
     .when("/doubleItems", {
         templateUrl : "doubleItems.php"
     })
+    .when("/driverSignup", {
+        templateUrl : "driverSignup.php"
+    })
 });

@@ -1,3 +1,9 @@
+<?php
+  if(!isset($_SESSION)) 
+  { 
+      session_start(); 
+  } 
+?>
 <html>
     <head>
         <title>Plan for Smart Services (PS2)</title>
@@ -15,6 +21,7 @@
         else{
             //if not logged in
             echo "<h1><center>Welcome to Plan for Smart Services!<center></h1>";
+            echo "<h4><center>Please login to use our services<center></h4>";
         }
     ?>
 
