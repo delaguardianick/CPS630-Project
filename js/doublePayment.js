@@ -1,4 +1,5 @@
 var ride1Raw;
+var ride2Raw;
 var ride1;
 var ride2;
 var finalSelection;
@@ -58,14 +59,32 @@ function setSummaryData(ride1, ride2){
 
 function storeRecord(){
     var file = "ride" + finalSelection + "Raw"
-    $.post("sql/storeTripRecord.php",
+    console.log("Filename =" + file);
+
+    if (file == 'ride1Raw')
     {
-      json: file,
-    },
-    function(data, status){
-        // document.getElementById("payment-status").innerHTML = data;
-        console.log("Data: " + data + "\nStatus: " + status);
-    });
+        console.log(ride1Raw)
+        $.post("sql/storeTripRecord.php",
+        {
+        json: ride1Raw,
+        },
+        function(data, status){
+            // document.getElementById("payment-status").innerHTML = data;
+            console.log("Data: " + data + "\nStatus: " + status);
+        });
+    }
+    else if (file == "ride2Raw")
+    {
+        console.log(ride2Raw)
+        $.post("sql/storeTripRecord.php",
+        {
+        json: ride2Raw,
+        },
+        function(data, status){
+            // document.getElementById("payment-status").innerHTML = data;
+            console.log("Data: " + data + "\nStatus: " + status);
+        });
+    } 
 }
 
 function hideUnselected(){
@@ -88,11 +107,11 @@ function hideUnselected(){
 
 $(document).ready(function (){
     // document.getElementById("payment-status").innerHTML = '';
-    var ride1Raw = localStorage.getItem("ride1");
+    ride1Raw = localStorage.getItem("ride1");
     var ride1 = JSON.parse(ride1Raw);
 
-    var ride2Raw = localStorage.getItem("ride2");
-    ride2 = JSON.parse(ride2Raw);
+    ride2Raw = localStorage.getItem("ride2");
+    var ride2 = JSON.parse(ride2Raw);
 
     console.log(ride1);
     console.log(ride2);
@@ -106,10 +125,9 @@ $(document).ready(function (){
     });
         
 
-    document.getElementById("confirm-pay").addEventListener('click', storeRecord)
     document.getElementById("confirm-pay").onclick = function (){
         hideUnselected();
-        if (finalSelection != null){
+        if (finalSelection != null && finalSelection != undefined){
             alert("Success! Trip added to DB");
             $("#payment").css("display","none");
             $("#payment-header").text("Please wait for your ride.");
@@ -122,6 +140,8 @@ $(document).ready(function (){
             'align-items' : 'center',
             'padding' : 'inherit',
             'justify-content' : 'center'});
+            storeRecord()
+
         }
         
 
