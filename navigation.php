@@ -44,12 +44,16 @@
           <li class="nav-item">
             <a class="nav-link" href="#!rideAndDeliv">Ride & Deliver</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#!driverSignup">Become a Driver</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#!aboutUs">About Us</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#!contactUs">Contact Us</a>
           </li>
+          
           <?php
           //is the user logged in? if they are then change nav bar
             if(isset($_SESSION["userid"])){
