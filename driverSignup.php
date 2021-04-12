@@ -77,7 +77,7 @@
                 <label class="form-check-label" for="dPrivacy">I accept the <a href="http://www.godhatesshrimp.com/">Privacy Policy</a> </label>
             </div>
             <br>
-            <button type="submit" name ="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
     <?php
             // if(isset($_GET["error"])){
