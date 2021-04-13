@@ -43,4 +43,7 @@ app.config(function($routeProvider) {
     .when("/thankyou", {
         templateUrl : "thankyou.php"
     })
+    .when("/dbMaintain", {
+        templateUrl : "dbMaintain.php"
+    })
 });

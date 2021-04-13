@@ -72,8 +72,9 @@ function uidExists($conn, $username, $email){
 //okay now actually create the user
 function createUser($conn, $name, $email, $username, $pwd){
     $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES(?,?,?,?);"; 
-    // question mark is placeholder bc were gonna be
-    //using prepared data instead of what the user inputted directly cause thats not good
+    // question mark is placeholder because we're going be
+    //using prepared data instead of what the user inputted directly because that is
+    //a security risk
 
     //PREPARE STATEMENT -- initilizing a new prepared statement -- tell it the connection
     $stmt = mysqli_stmt_init($conn); // this makes it secure so people dont write code into inputs
@@ -104,7 +105,7 @@ function loginUser($conn, $username, $pwd){
     $uidExists = uidExists($conn, $username, $username); //bc we said OR in our sql statement
 
     if($uidExists === false){
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../home.php#!/login?error=wronglogin");
         exit(); //stop the script
     }
     //check for password match
@@ -112,7 +113,7 @@ function loginUser($conn, $username, $pwd){
     $checkPwd = password_verify($pwd, $pwdHashed);
 
     if($checkPwd === false){
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../home.php#!/login?error=wronglogin");
         exit(); //stop the script
     }
     else if($checkPwd === true){
@@ -126,17 +127,17 @@ function loginUser($conn, $username, $pwd){
 }
 function createApplication($conn, $email, $phone, $city, $car, $tier){
     $sql = "INSERT INTO applications (email, phone, city, car, tier) VALUES(?,?,?,?,?);"; 
-    // question mark is placeholder bc were gonna be
-    //using prepared data instead of what the user inputted directly cause thats not good
+    // question mark is placeholder because we're going be
+    //using prepared data instead of what the user inputted directly because that is
+    //a security risk
 
-    //PREPARE STATEMENT -- initilizing a new prepared statement -- tell it the connection
+    //PREPARE STATEMENT -- initilizing a new prepared statement -- giving it the connection
     $stmt = mysqli_stmt_init($conn); // this makes it secure so people dont write code into inputs
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../driverSignup.php?error=stmtfailed");
+        header("location: ../home.php#!/driverSignup?error=stmtfailed");
         exit(); //stop the script
     }
 
-    //where is the preapred statmetent? ss -- two strings 
     mysqli_stmt_bind_param($stmt, "sssss", $email, $phone, $city, $car, $tier);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);

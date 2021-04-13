@@ -1,3 +1,9 @@
+<?php
+  if(!isset($_SESSION)) 
+  { 
+      session_start(); 
+  } 
+?>
 <html>
     <head>
         <title>Plan for Smart Services (PS2)</title>

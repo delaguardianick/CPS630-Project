@@ -66,11 +66,11 @@
             <br><br>
             <div class="form-group">
                 <label for="dExperience">Please describe your previous personal and professional experience as a driver.</label>
-                <textarea class="form-control" name="dExperience" rows="3" placeholder="I can't drive"></textarea>
+                <textarea type="text" class="form-control" name="dExperience" rows="3" placeholder="I can't drive"></textarea>
             </div>
             <div class="form-group">
                 <label for="dCovid">Explain how you would make sure to follow the PS2-COVID-19 driver guidelines.</label>
-                <textarea class="form-control" name="dCovid" rows="3" placeholder="mask"></textarea>
+                <textarea type="text" class="form-control" name="dCovid" rows="3" placeholder="mask"></textarea>
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="dPrivacy">

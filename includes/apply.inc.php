@@ -1,13 +1,15 @@
 <?php
 
 if (isset($_POST["submit"])){
-    // echo "it works";
+    echo "it works";
     $email = $_POST["dEmail"];
     $phone = $_POST["dPhone"];
     $city = $_POST["dCity"];
     $car = $_POST["dCar"];
     $tier = $_POST["dTier"];
-
+    // $experience = $POST["dExperience"];
+    // $covid = $POST["dCovid"];
+    echo $email . " "  . $phone . " " . $city . " " . $car . " " . $tier;
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
 

@@ -58,7 +58,7 @@
               echo "<li class='nav-item'><a class='nav-link' href='#!index'>". $_SESSION["userid"] ."</a></li>";
               echo "<li class='nav-item'><a class='nav-link' href='includes/logout.inc.php'>Logout</a></li>";
               if ($_SESSION["userid"] == 'admin'){
-                echo "<li class='nav-item'><a class='nav-link' href='dbMaintain.php'>DB Maintian</a></li>";
+                echo "<li class='nav-item'><a class='nav-link' href='#!dbMaintain'>DB Maintian</a></li>";
                 
               }
             }
