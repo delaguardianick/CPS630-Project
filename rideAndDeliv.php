@@ -45,12 +45,12 @@
                         <div id="pickup-location"> <h4>Where are you:</h4>
                             <input class="form-control" type="text" name="origin" id="origin" placeholder="your location">
                             <button id="find-me" class="btn btn-dark m-1" >Find me</button>
-    
+
                             <button type="button" class="btn btn-dark  m-1" id="show-map">Search</button>
                             <div class="words">
                                 <div id="status"></div>
                                 <div id="radius"></div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,13 +58,13 @@
                     <div id="map"></div>
                 </div>
             </div>
-         
+
             <br>
             <br>
-           
+
             <div id="show-car-table"></div>
             <div id="price"></div>
-        </div> 
+        </div>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIumcSOTeP890tfGtNPajH0WmErIjAgcM&libraries=places&map_ids-6789a6679abe1ef1&callback=initMap"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
