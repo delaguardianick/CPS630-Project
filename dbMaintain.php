@@ -15,6 +15,7 @@
             <!-- <p>Please select a tier:</p> -->
             <select class="form-select" aria-label="Default select example" name="users" onchange="" id="">
                 <option value="">Select a DB mode:</option>
+                <option value="edit">edit</option>
                 <option value="delete">Delete</option>
                 <option value="insert">Insert</option>
             </select>
@@ -29,6 +30,9 @@
                 <option value="">Select a DB Table:</option>
                 <option value="items">Item Records</option>
                 <option value="rcars">Car Records</option>
+                <option value="users">Users Records</option>
+                <option value="orders">Order Records</option>
+                <option value="rTrips">Trip Records</option>
             </select>
         </form>
 
