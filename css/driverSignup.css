@@ -1,0 +1,29 @@
+#driver-form{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 8%;
+}
+
+#imgMoney, #imgEasy, #imgTime{
+    width: 30%;
+}
+
+#left-side{
+    display: flex;
+    flex-direction: column;
+}
+
+#dTitle{
+    margin-bottom: 2%;
+}
+
+.row{
+    margin-left: 0;
+    margin-bottom: 10%;
+}
+
+#smallText{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

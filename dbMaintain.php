@@ -7,9 +7,9 @@
         <script src="js/dbMaintain.js"></script>
     </head>
     <body>
-    <nav>
-        <?php include 'navigation.php';?>
-    </nav>
+    <!-- <nav>
+        <?//php include 'navigation.php';?>
+    </nav> -->
 
         <form id="mode-select">
             <!-- <p>Please select a tier:</p> -->

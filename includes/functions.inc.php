@@ -72,8 +72,9 @@ function uidExists($conn, $username, $email){
 //okay now actually create the user
 function createUser($conn, $name, $email, $username, $pwd){
     $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES(?,?,?,?);"; 
-    // question mark is placeholder bc were gonna be
-    //using prepared data instead of what the user inputted directly cause thats not good
+    // question mark is placeholder because we're going be
+    //using prepared data instead of what the user inputted directly because that is
+    //a security risk
 
     //PREPARE STATEMENT -- initilizing a new prepared statement -- tell it the connection
     $stmt = mysqli_stmt_init($conn); // this makes it secure so people dont write code into inputs
@@ -86,7 +87,7 @@ function createUser($conn, $name, $email, $username, $pwd){
     mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../signup.php?error=none");
+    header("location: ../home.php#!/login?error=none");
     exit(); //stop the script
 }
 function emptyInputLogin($username,$pwd){
@@ -104,7 +105,7 @@ function loginUser($conn, $username, $pwd){
     $uidExists = uidExists($conn, $username, $username); //bc we said OR in our sql statement
 
     if($uidExists === false){
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../home.php#!/login?error=wronglogin");
         exit(); //stop the script
     }
     //check for password match
@@ -112,15 +113,36 @@ function loginUser($conn, $username, $pwd){
     $checkPwd = password_verify($pwd, $pwdHashed);
 
     if($checkPwd === false){
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../home.php#!/login?error=wronglogin");
         exit(); //stop the script
     }
     else if($checkPwd === true){
         session_start();
         $_SESSION["userid"] =  $uidExists["usersId"];
         $_SESSION["userid"] =  $uidExists["usersUid"];
-        header("location: ../index.php?");
+        header("location: ../home.php?");
         exit(); //stop the script
         
     }
+}
+function createApplication($conn, $email, $phone, $city, $car, $tier){
+    $sql = "INSERT INTO applications (email, phone, city, car, tier) VALUES(?,?,?,?,?);"; 
+    // question mark is placeholder because we're going be
+    //using prepared data instead of what the user inputted directly because that is
+    //a security risk
+
+    //PREPARE STATEMENT -- initilizing a new prepared statement -- giving it the connection
+    $stmt = mysqli_stmt_init($conn); // this makes it secure so people dont write code into inputs
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../home.php#!/driverSignup?error=stmtfailed");
+        exit(); //stop the script
+    }
+
+    mysqli_stmt_bind_param($stmt, "sssss", $email, $phone, $city, $car, $tier);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../home.php#!/thankyou?error=none");
+    // header("location: ../home.php#!/signUp?error=none");
+
+    exit(); //stop the script
 }

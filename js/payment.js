@@ -1,21 +1,28 @@
-var myJSON;
-$(function() {
-    $('[data-toggle="tooltip"]').tooltip()
-    })
+var ride1Raw;
+var ride1;
+var ride2;
+var dual = false;
+var ratings = [];
+var firstRating ;
 
-function setSummaryData(obj){
-    //var userID = obj.userId;
-    var pickup = obj.pickup;
-    var destination = obj.destination;
-    var distance = obj.distance;
-    var price = obj.price;
-    var tripTime = obj.tripTime;
-    var tier = obj.tier;
-    var date = obj.date.date;
-    var time = obj.date.time;
-    var carId = obj.carInfo.carId;
-    var carModel = obj.carInfo.carModel;
-    var driver = obj.carInfo.driver;
+// $(function() {
+//     $('[data-toggle="tooltip"]').tooltip()
+//     })
+
+
+function setSummaryData(ride1){
+    //var userID = ride1.userId;
+    var pickup = ride1.pickup;
+    var destination = ride1.destination;
+    var distance = ride1.distance;
+    var price = ride1.price;
+    var tripTime = ride1.tripTime;
+    var tier = ride1.tier;
+    var date = ride1.date.date;
+    var time = ride1.date.time;
+    var carId = ride1.carInfo.carId;
+    var carModel = ride1.carInfo.carModel;
+    var driver = ride1.carInfo.driver;
 
     //document.getElementById("userId").innerHTML = userID;
     document.getElementById("pickup").textContent = pickup;
@@ -30,9 +37,23 @@ function setSummaryData(obj){
 }
 
 function storeRecord(){
+    console.log("Sending JSON to Database");
+    console.log(ride1Raw)
     $.post("sql/storeTripRecord.php",
     {
-      json: myJSON,
+      json: ride1Raw,
+    },
+    function(data, status){
+        // document.getElementById("payment-status").innerHTML = data;
+        console.log("Data: " + data + "\nStatus: " + status);
+    });
+}
+
+function storeReview(){
+    console.log(firstRating);
+    $.post("sql/ratingsRecord.php",
+    {
+      rating: firstRating,
     },
     function(data, status){
         // document.getElementById("payment-status").innerHTML = data;
@@ -42,12 +63,28 @@ function storeRecord(){
 
 $(document).ready(function (){
     // document.getElementById("payment-status").innerHTML = '';
-    myJSON = localStorage.getItem("json");
-    // console.log(myJSON);
+    ride1Raw = localStorage.getItem("ride1");
+    var ride1 = JSON.parse(ride1Raw);
 
-    var obj = JSON.parse(myJSON);
-    // console.log(obj);
-    setSummaryData(obj);
+    // var ride2Raw = localStorage.getItem("ride2");
+    // ride2 = JSON.parse(ride2Raw);
+
+    console.log(ride1);
+    console.log(ride2);
+    setSummaryData(ride1);
+    console.log(dual);
+
+    $("input[type='radio']").click(function(){
+        ratings;
+        var sim = $("input[type='radio']:checked").val();
+        //alert(sim);
+        if (sim<3) { $('.myratings').css('color','red'); $(".myratings").text(sim); }else{ $('.myratings').css('color','green'); $(".myratings").text(sim); } 
+        $('#thanks').html("Thank you!");
+        var rating = $('input[name=rating]:checked').val();
+        ratings.push(rating);
+        firstRating = ratings[0];
+        storeReview();
+    });
 
     document.getElementById("confirm-pay").addEventListener('click', storeRecord)
     document.getElementById("confirm-pay").onclick = function (){
@@ -56,5 +93,12 @@ $(document).ready(function (){
         $("#payment-header").text("Please wait for your ride.");
         $("#summary").css("margin-right","auto");
         $("#summary").css("margin-left","auto");
+
+        $('#rating-all').css({'display':'flex',
+            'flex-direction' : 'column',
+            'align-items' : 'center',
+            'padding' : 'inherit',
+            'justify-content' : 'center'});
     }
+      
 });

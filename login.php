@@ -2,7 +2,7 @@
     <head>
         <title>Login</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/ridetoDest.css">
+        <!-- <link rel="stylesheet" href="css/ridetoDest.css"> -->
         <link rel="stylesheet" href="css/sign-up.css">
     </head>
     <body>
@@ -11,7 +11,7 @@
             <form action="includes/login.inc.php" method="post">
                 <input type="text" name="uid" placeholder="Username/Email"></br>
                 <input type="password" name="pwd" placeholder="Password"></br>
-                <button type="submit" name="submit">Login</button>
+                <button type="submit" name="submit" class="btn btn-dark">Login</button>
             </form>
             <?php
                 if(isset($_GET["error"])){

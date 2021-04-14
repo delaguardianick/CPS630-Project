@@ -38,25 +38,27 @@
             <a class="dropdown-item" href="#!rideAndDeliv">Ride & Deliver</a>
           </div>
         </li> -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="#!rideToDest">Ride to Destination</a>
         </li>
           <li class="nav-item">
             <a class="nav-link" href="#!rideAndDeliv">Ride & Deliver</a>
         </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#!aboutUs">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#!contactUs">Contact Us</a>
-          </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#!driverSignup">Become a Driver</a>
+          </li> -->
+
+          
           <?php
           //is the user logged in? if they are then change nav bar
             if(isset($_SESSION["userid"])){
+              echo "<li class='nav-item'><a class='nav-link' href='#!rideToDest'>Ride to Destination</a></li>";
+              echo "<li class='nav-item'><a class='nav-link' href='#!rideAndDeliv'>Ride & Deliver</a></li>";
+              echo "<li class='nav-item'><a class='nav-link' href='#!driverSignup'>Become a Driver</a></li>";
               echo "<li class='nav-item'><a class='nav-link' href='#!index'>". $_SESSION["userid"] ."</a></li>";
               echo "<li class='nav-item'><a class='nav-link' href='includes/logout.inc.php'>Logout</a></li>";
               if ($_SESSION["userid"] == 'admin'){
-                echo "<li class='nav-item'><a class='nav-link' href='dbMaintain.php'>DB Maintian</a></li>";
+                echo "<li class='nav-item'><a class='nav-link' href='#!dbMaintain'>DB Maintian</a></li>";
                 
               }
             }
@@ -66,6 +68,12 @@
               echo "<li class='nav-item'><a class='nav-link' href='#!login'>Login</a></li>";
             }
           ?>
+          <li class="nav-item">
+            <a class="nav-link" href="#!aboutUs">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#!contactUs">Contact Us</a>
+          </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

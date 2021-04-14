@@ -27,5 +27,23 @@ app.config(function($routeProvider) {
     })
     .when("/payment", {
         templateUrl : "payment.php"
-    });
+    })
+    .when("/paymentItems", {
+        templateUrl : "paymentItems.php"
+    })
+    .when("/doublePayment", {
+        templateUrl : "doublePayment.php"
+    })
+    .when("/doubleItems", {
+        templateUrl : "doubleItems.php"
+    })
+    .when("/driverSignup", {
+        templateUrl : "driverSignup.php"
+    })
+    .when("/thankyou", {
+        templateUrl : "thankyou.php"
+    })
+    .when("/dbMaintain", {
+        templateUrl : "dbMaintain.php"
+    })
 });

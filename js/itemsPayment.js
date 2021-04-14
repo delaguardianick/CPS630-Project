@@ -1,9 +1,8 @@
-
 var myJSON;
 $(function() {
     $('[data-toggle="tooltip"]').tooltip()
     })
-
+console.log("hi");
 function setSummaryData(obj){
     //var userID = obj.userId;
     var pickup = obj.itemInfo.pickup;
