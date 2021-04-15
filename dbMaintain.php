@@ -7,41 +7,246 @@
         <script src="js/dbMaintain.js"></script>
     </head>
     <body>
-    <!-- <nav>
-        <?//php include 'navigation.php';?>
-    </nav> -->
+    <?php 
+    $address = $_GET['q'];
 
-        <form id="mode-select">
-            <!-- <p>Please select a tier:</p> -->
-            <select class="form-select" aria-label="Default select example" name="users" onchange="" id="">
-                <option value="">Select a DB mode:</option>
-                <option value="edit">edit</option>
-                <option value="delete">Delete</option>
-                <option value="insert">Insert</option>
-            </select>
-        </form>
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "project";
 
-        <input type="text" id="opOnId" placeholder="ID of record to delete">
-        <br>
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    // $sql = "SELECT * FROM `rcars` WHERE `storeCode` = $store";
+    $sql = 'SELECT * FROM `users`';
+    // ERROR IS HERE ^^^^^^^^^^^^^^^^^^
+    $result = $conn->query($sql) or die($conn->error);
+    ?>
+    <h2>user table</h2>
+    <?php 
+    if ($result->num_rows > 0) {
+        echo'
+        
+        <table class="center"; cellpadding="4"; cellspacing:"100"; text-align:"center" id="car-table";>
+            <tr>
+                <th></th>
+                <th>UserID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>UID</th>
+                <th>password</th>
+                <th>Action</th>
+            </tr>';
 
-        <form id="table-select">
-            <!-- <p>Please select a tier:</p> -->
-            <select class="form-select" aria-label="Default select example" name="users" onchange="dbView(this.value)" id="mode">
-                <option value="">Select a DB Table:</option>
-                <option value="items">Item Records</option>
-                <option value="rcars">Car Records</option>
-                <option value="users">Users Records</option>
-                <option value="orders">Order Records</option>
-                <option value="rTrips">Trip Records</option>
-            </select>
-        </form>
+        // output data of each row
+        $inc = 1; 
+        while($row = $result->fetch_assoc()) {
+            echo'<tr>
+            <td scope="row">
+            <div class="radio">
+                <label><input type="radio" id="r' . strval($inc) . '" name="rowSelect" value="' . strval($inc) . '"></label>
+            </div></td>
+                <td>' . $row['id'] . '</td>
+                <td>' . $row['usersName'] . '</td>
+                <td>' . $row['usersEmail'] . '</td>
+                <td>' . $row['usersUid'] . '</td>
+                <td>' . $row['usersPwd'] . '</td>
+                <td><a href="edit.php?id='.$row['id'].'">Edit</a> | <a href="delete.php?id='.$row['id'].'"onClick="return confirm("Are you sure you want to delete?")">Delete</a></td>
+                </tr>';
+            $inc += 1;
+        } 
+        echo ' </tbody>
+                </table>';
+                
+    }else {
+        echo "0 results";
+    }
+    ?>
+    <h2>Items table</h2>
+    <?php
+    $sql = 'SELECT * FROM `items`';
+    $result = $conn->query($sql) or die($conn->error);
 
-        <div id="show-table"></div>
-        <div id="operation-status"></div>
+    if ($result->num_rows > 0) {
+        echo'
+        
+        <table class="center"; cellpadding="4"; cellspacing:"100"; text-align:"center" id="car-table";>
+            <tr>
+                <th></th>
+                <th>Item ID</th>
+                <th>Item</th>
+                <th>Store</th>
+                <th>Price</th>
+                <th>Action</th>
+                
+            </tr>';
 
+        // output data of each row
+        $inc = 1; 
+        while($row = $result->fetch_assoc()) {
+            echo'<tr>
+            <td scope="row">
+            <div class="radio">
+                <label><input type="radio" id="r' . strval($inc) . '" name="rowSelect" value="' . strval($inc) . '"></label>
+            </div></td>
+                <td>' . $row['id'] . '</td>
+                <td>' . $row['item'] . '</td>
+                <td>' . $row['store_name'] . '</td>
+                <td>' . $row['price'] . '</td>
+                <td><a href="#!edit?id='.$row['id'].'">Edit</a> | <a href="#!delete?id='.$row['id'].'"onClick="return confirm("Are you sure you want to delete?")">Delete</a></td>
+            </tr>';
+            $inc += 1;
+        } 
+        echo ' </tbody>
+                </table>';
+                
+    }else {
+        echo "0 results";
+    }
+    ?>
+    <h2>Cars table</h2>
+    <?php
+    $sql = 'SELECT * FROM `items`';
+    $result = $conn->query($sql) or die($conn->error);
 
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    if ($result->num_rows > 0) {
+        echo'
+        
+        <table class="center"; cellpadding="4"; cellspacing:"100"; text-align:"center" id="car-table";>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Car ID</th>
+                <th scope="col">Model</th>
+                <th scope="col">Color</th>
+                <th scope="col">Service Tier</th>
+                <th scope="col">Driver</th>
+                <th>Action</th>
+                
+            </tr>';
+
+        // output data of each row
+        $inc = 1; 
+        while($row = $result->fetch_assoc()) {
+            echo'<tr>
+            <td scope="row">
+            <div class="radio">
+                <label><input type="radio" id="r' . strval($inc) . '" name="rowSelect" value="' . strval($inc) . '"></label>
+            </div></td>
+                <td>' . $row['id'] . '</td>
+                <td>' . $row['model'] . '</td>
+                <td>' . $row['color'] . '</td>
+                <td>' . $row['tierCode'] . '</td>
+                <td>' . $row['driver'] . '</td>
+                <td><a href="#!edit?id='.$row['id'].'">Edit</a> | <a href="#!delete?id='.$row['id'].'"onClick="return confirm("Are you sure you want to delete?")">Delete</a></td>
+            </tr>';
+            $inc += 1;
+        } 
+        echo ' </tbody>
+                </table>';
+                
+    }else {
+        echo "0 results";
+    }
+    ?>
+    <h2>Trips table</h2>
+    <?php
+    $sql = 'SELECT * FROM `items`';
+    $result = $conn->query($sql) or die($conn->error);
+
+    if ($result->num_rows > 0) {
+        echo'
+        
+        <table class="center"; cellpadding="4"; cellspacing:"100"; text-align:"center" id="car-table";>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">User ID</th>
+                <th scope="col">Car ID</th>
+                <th scope="col">Origin</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Distance</th>
+                <th scope="col">tier</th>
+                <th scope="col">Price</th>
+                <th>Action</th>
+                
+            </tr>';
+
+        // output data of each row
+        $inc = 1; 
+        while($row = $result->fetch_assoc()) {
+            echo'<tr>
+            <td scope="row">
+            <div class="radio">
+                <label><input type="radio" id="r' . strval($inc) . '" name="rowSelect" value="' . strval($inc) . '"></label>
+            </div></td>
+                <td>' . $row['userID'] . '</td>
+                <td>' . $row['carID'] . '</td>
+                <td>' . $row['origin'] . '</td>
+                <td>' . $row['dest'] . '</td>
+                <td>' . $row['distance'] . '</td>
+                <td>' . $row['tier'] . '</td>
+                <td>' . $row['price'] . '</td>
+                <td><a href="#!edit?id='.$row['id'].'">Edit</a> | <a href="#!delete?id='.$row['id'].'"onClick="return confirm("Are you sure you want to delete?")">Delete</a></td>
+            </tr>';
+            $inc += 1;
+        } 
+        echo ' </tbody>
+                </table>';
+                
+    }else {
+        echo "0 results";
+    }
+    ?>
+    <h2>Orders table</h2>
+    <?php
+    $sql = 'SELECT * FROM `items`';
+    $result = $conn->query($sql) or die($conn->error);
+
+    if ($result->num_rows > 0) {
+        echo'
+        
+        <table class="center"; cellpadding="4"; cellspacing:"100"; text-align:"center" id="car-table";>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Item ID</th>
+                <th scope="col">Store Name</th>
+                <th scope="col">Store Address</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Item</th>
+                <th scope="col">Price</th>
+                <th>Action</th>
+                
+            </tr>';
+
+        // output data of each row
+        $inc = 1; 
+        while($row = $result->fetch_assoc()) {
+            echo'<tr>
+            <td scope="row">
+            <div class="radio">
+                <label><input type="radio" id="r' . strval($inc) . '" name="rowSelect" value="' . strval($inc) . '"></label>
+            </div></td>
+                <td>' . $row['userId'] . '</td>
+                <td>' . $row['ItemId'] . '</td>
+                <td>' . $row['store_name'] . '</td>
+                <td>' . $row['store_address'] . '</td>
+                <td>' . $row['dest'] . '</td>
+                <td>' . $row['item'] . '</td>
+                <td><a href="#!edit?id='.$row['id'].'">Edit</a> | <a href="#!delete?id='.$row['id'].'"onClick="return confirm("Are you sure you want to delete?")">Delete</a></td>
+            </tr>';
+            $inc += 1;
+        } 
+        echo ' </tbody>
+                </table>';
+                
+    }else {
+        echo "0 results";
+    }
+    mysqli_close($conn);
+    // <button class="show-price" onclick="infoForPayment()">log price</button>
+?>
     </body>
 </html>

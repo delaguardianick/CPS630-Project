@@ -29,7 +29,7 @@
     } else {
         echo "Error creating table: " . mysqli_error($conn);
     }
-    // sql to create car table
+    // sql to create user table
     $sql = "CREATE TABLE `users` (
         `usersId` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         `usersName` varchar(128) NOT NULL,

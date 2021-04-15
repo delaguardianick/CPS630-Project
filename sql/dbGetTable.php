@@ -115,6 +115,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col"></th>
+                    <th scope="col">ID</th>
                     <th scope="col">User ID</th>
                     <th scope="col">User Name</th>
                     <th scope="col">User Email</th>
@@ -132,11 +133,12 @@
                 <div class="radio">
                     <label><input type="radio" id="r' . strval($inc) . '" name="rowSelect" value="' . strval($inc) . '"></label>
                 </div></th>
+                    <td>' . $row['id'] . '</td>
                     <td>' . $row['userUid'] . '</td>
                     <td>' . $row['usersName'] . '</td>
                     <td>' . $row['usersEmail'] . '</td>
                     <td>' . $row['usersPwd'] . '</td>
-                    <td> <a href="deleteRecord.php"></td>
+                    <td> <a href="#!deleteRecord">Delete</a><a href="#!addRecord"> edit</a></td>
                 </tr>';
                 $inc += 1;
             } 

@@ -43,7 +43,19 @@ app.config(function($routeProvider) {
     .when("/thankyou", {
         templateUrl : "thankyou.php"
     })
+    .when("/deleteRecord", {
+        templateUrl : "deleteRecord.php"
+    })
+    .when("/dbGetTable.php", {
+        templateUrl : "dbGetTable.php"
+    })
+    .when("/editRecord.php", {
+        templateUrl : "editRecord.php"
+    })
     .when("/dbMaintain", {
         templateUrl : "dbMaintain.php"
+    })
+    .when("/edit", {
+        templateUrl : "edit.php"
     })
 });
