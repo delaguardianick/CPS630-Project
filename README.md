@@ -6,7 +6,8 @@ In order to achieve database functionality please run following files starting w
   2. sql/populateCars.php
   3. sql/populateItems.php
 
-Website is not currently hosted. Screenshots:
+Screenshots below since the website is not currently hosted.
+
 Home:
 ![home](https://user-images.githubusercontent.com/52568848/118531406-cf976800-b713-11eb-97cf-b7b24c38f3ad.jpg)
 
