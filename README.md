@@ -1,4 +1,5 @@
-# CPS630-Project
+# Delivery Website 
+CPS630-Final-Project
 
 In order to achieve database functionality please run following files starting with 1:
   1. sql/createTables.php
